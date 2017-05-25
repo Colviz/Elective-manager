@@ -8,7 +8,7 @@ run as `php -S localhost:3000`
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
-> PHP, Javascript, MySql, Google Material Design
+> PHP, Javascript, MySql, Google Material Design, PHP-CRUD API
 
 ## Features to Implement
 
@@ -51,14 +51,7 @@ else if ( no. of students > no. of seats available) { then no. of students till 
 - [ ] if (the elective poster rejects any student with the status as **Confirmed** by default) { then he/she needs to give a strong and valid reason for rejection with reason of min. characters 10.<br>Student gets its notification by mail and on the interface. }
 - [ ] Add auto close registration when the no. of students == no. of seats available, will opt for this option on the time of publishing of elective.
 - [ ] Can view the list of students selected and the students who've applied for the elective.
-- [ ] When posting elective will post the following details -
-<ol>
-<li>No. of seats</li>
-<li>Elective code (as multiple electives)</li>
-<li>Name of professor taking the course</li>
-<li>Any additional information</li>
-<li>Auto close registration/not</li>
-</ol><br>
+- [ ] When posting elective will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course, Any additional information, Auto close registration/not.
 - [ ] Have the option to update elective details after posting (Keep in mind about auto close registration case).
 - [ ] Timestamp will be added on every registration request,rejection, publishing elective, super admin confirmation, updating, etc.
 - [ ] Department name, elective names, etc. will be available from CC.
