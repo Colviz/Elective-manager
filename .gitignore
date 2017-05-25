@@ -1,0 +1,5 @@
+composer.phar
+composer.lock
+composer.json
+vendor/composer
+vendor/klein
