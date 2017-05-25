@@ -1,0 +1,22 @@
+.page-content {
+	padding-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 7%;
+}
+.side-separator {
+  height: 1px;
+  background-color: #dcdcdc;
+  margin: 8px 0;
+}
+.footer {
+	padding-bottom: 0%;
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+}
+
+
+
+

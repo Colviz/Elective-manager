@@ -5,14 +5,62 @@ $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
 // Route it up!
 switch ($request_uri[0]) {
-    // Home page
+    
     case '/':
         include_once('views/public/index.php');
         break;
-    // About page
+    
     case '/about':
         include_once('views/public/about.php');
         break;
+    
+    case '/contact':
+        include_once('views/public/contact.php');
+        break;
+
+     //Interfaces   
+    // Admin interface
+    case '/admin':
+        include_once('views/admin/index.php');
+        break;
+
+    case '/admin/login':
+        include_once('views/admin/login.php');
+        break;
+
+    case '/admin/register':
+        include_once('views/admin/register.php');
+        break;
+
+
+    // Student interface
+    case '/student':
+        include_once('views/student/index.php');
+        break;
+
+    case '/student/login':
+        include_once('views/student/login.php');
+        break;
+
+    case '/student/register':
+        include_once('views/student/register.php');
+        break;
+
+
+    // Department interface
+    case '/department':
+        include_once('views/department/index.php');
+        break;
+
+    case '/department/login':
+        include_once('views/department/login.php');
+        break;
+
+    case '/department':
+        include_once('views/department/register.php');
+        break;
+
+
     // Everything else
     default:
         header('HTTP/1.0 404 Not Found');
