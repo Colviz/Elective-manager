@@ -2,6 +2,8 @@
 > This is the Elective Manager which will be used for Elective allotments (Open electives as well as Departmental electives). <br>
 > Develop it keeping in mind its **Flexibility**, **Stability** and **Security**.
 
+run as `php -S localhost:3000`
+
 ## Project Completed - **X/Y - 0%**
 Calculated from Features to Implement completion percentage.
 
@@ -56,7 +58,7 @@ else if ( no. of students > no. of seats available) { then no. of students till 
 <li>Name of professor taking the course</li>
 <li>Any additional information</li>
 <li>Auto close registration/not</li>
-</ol>
+</ol><br>
 - [ ] Have the option to update elective details after posting (Keep in mind about auto close registration case).
 - [ ] Timestamp will be added on every registration request,rejection, publishing elective, super admin confirmation, updating, etc.
 - [ ] Department name, elective names, etc. will be available from CC.
