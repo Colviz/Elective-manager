@@ -47,7 +47,7 @@
 			  <form class="admreg" action="/admin/register" method="post">
 			  <h3>Admin Registration form</h3>
 			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="text" name="uname" id="uname" required>
+    				<input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
     				<label class="mdl-textfield__label" for="uname">Username</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -59,7 +59,7 @@
     				<label class="mdl-textfield__label" for="email">Email</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="text" name="no" pattern="-?[0-9]*(\.[0-9]+)?" id="no" required>
+    				<input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
     				<label class="mdl-textfield__label" for="no">Mobile no.</label>
   					</div>
   					<!-- Raised button with ripple -->

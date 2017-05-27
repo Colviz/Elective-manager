@@ -31,7 +31,10 @@
         if ($ret == 1)	{
         	
         	$_SESSION['login_user'] = $username;
-        	header("location: /admin/profile/");
+
+        	include_once('views/admin/admin_session.php');
+
+        	//header("location: /admin/profile/");
         }
         else 	{
         
@@ -50,11 +53,11 @@
 			  <form class="admreg" action="/admin/login" method="post">
 			  <h3>Admin Login</h3>
 			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="text" name="uname" id="uname" required>
+    				<input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
     				<label class="mdl-textfield__label" for="uname">Username</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="password" name="pass" id="pass" required>
+    				<input class="mdl-textfield__input" type="password" name="pass" pattern="[A-Za-z0-9]+" id="pass" required>
     				<label class="mdl-textfield__label" for="pass">Password</label>
   					</div>
   					<!-- Raised button with ripple -->
@@ -65,11 +68,12 @@
 					</div>
 				</form>			
 			</div>
-<?php
-		}
-?>
+
 
   	</div>
+  	<?php
+  			include_once('views/admin/admin_session.php');
+  	?>
   		
 
 		</div>
