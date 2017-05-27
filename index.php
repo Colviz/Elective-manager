@@ -32,6 +32,9 @@ switch ($request_uri[0]) {
         include_once('views/admin/register.php');
         break;
 
+    case '/admin/logout':
+        include_once('views/public/logout.php');
+        break;
 
     // Student interface
     case '/student':
@@ -44,6 +47,10 @@ switch ($request_uri[0]) {
 
     case '/student/register':
         include_once('views/student/register.php');
+        break;
+
+    case '/student/logout':
+        include_once('views/public/logout.php');
         break;
 
 
@@ -60,6 +67,9 @@ switch ($request_uri[0]) {
         include_once('views/department/register.php');
         break;
 
+    case '/department/logout':
+        include_once('views/public/logout.php');
+        break;
 
     // Everything else
     default:

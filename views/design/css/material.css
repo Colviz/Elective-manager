@@ -7304,7 +7304,7 @@ input.mdl-button[type="submit"] {
   z-index: 4; }
   .mdl-layout__header .mdl-layout__drawer-button {
     position: absolute;
-    color: rgb(255,255,255);
+    color: rgb(0,0,0);
     background-color: inherit; }
     @media screen and (max-width: 1024px) {
       .mdl-layout__header .mdl-layout__drawer-button {
@@ -7468,7 +7468,7 @@ input.mdl-button[type="submit"] {
         height: 56px; } }
   .mdl-layout__header-row .mdl-navigation__link {
     display: block;
-    color: rgb(255,255,255);
+    color: rgb(0,0,0);
     line-height: 64px;
     padding: 0 24px; }
     @media screen and (max-width: 1024px) {
