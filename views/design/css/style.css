@@ -16,7 +16,7 @@
   	bottom: 0;
   	left: 0;
 }
-.demo-card-wide.mdl-card {
+.demo-card-wide .mdl-card {
   width: auto;
 }
 .demo-card-wide > .mdl-card__title {
@@ -27,6 +27,13 @@
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
+.demo-card-wide1 {
+  width: auto;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+
 .admreg {
   background-color: white;
   text-align: center;

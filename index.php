@@ -36,6 +36,10 @@ switch ($request_uri[0]) {
         include_once('views/public/logout.php');
         break;
 
+    case '/admin/profile':
+        include_once('views/admin/admin_profile.php');
+        break;
+
     // Student interface
     case '/student':
         include_once('views/student/index.php');

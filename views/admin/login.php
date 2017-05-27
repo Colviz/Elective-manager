@@ -34,7 +34,7 @@
 
         	include_once('views/admin/admin_session.php');
 
-        	//header("location: /admin/profile/");
+        	header("location: /admin/profile/");
         }
         else 	{
         
@@ -50,7 +50,7 @@
 ?>
   		<div class="mdl-cell mdl-cell--6-col">
 			
-			  <form class="admreg" action="/admin/login" method="post">
+			  <form class="admlog" action="/admin/login" method="post">
 			  <h3>Admin Login</h3>
 			  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     				<input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
@@ -71,9 +71,6 @@
 
 
   	</div>
-  	<?php
-  			include_once('views/admin/admin_session.php');
-  	?>
   		
 
 		</div>
