@@ -34,7 +34,7 @@
 
         	include_once('views/admin/admin_session.php');
 
-        	header("location: /admin/profile/");
+        	//header("location: /admin/profile");
         }
         else 	{
         

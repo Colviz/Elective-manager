@@ -1,6 +1,7 @@
 <?php
 		//include_once('views/includes/header.php');
-    //include_once('views/admin/admin_session.php');
+    include_once('dbconnect.php');
+    include_once('views/admin/admin_session.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,7 +24,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title"><a href="/" style="text-decoration: none; color: black">Welcome <?php echo $login_session; ?></a></span>
+      <span class="mdl-layout-title"><a href="/admin/profile" style="text-decoration: none; color: black">Welcome <?php echo $login_session; ?></a></span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -161,7 +162,7 @@
   </div>
   <?php
         
-        include_once('dbconnect.php');
+        
 
       if(!empty($_POST['allowdept']))  {  
         //generating the registration tokens
