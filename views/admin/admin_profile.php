@@ -29,9 +29,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/admin/profile/registered">Registered Students</a>
         <a href="/admin/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
       </nav>
     </div>
@@ -41,10 +39,7 @@
       <a class="mdl-navigation__link" href="/about">About</a>
       <a class="mdl-navigation__link" href="/contact">Contact</a>
       <a class="mdl-navigation__link" href="/admin">Admin Interface</a>
-      <a class="mdl-navigation__link" href="/department">Department Interface</a>
-      <a class="mdl-navigation__link" href="/student">Student Interface</a>
-      <a class="mdl-navigation__link mdl-button" href="/admin/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
-    </nav>
+      </nav>
   </div>
      
   <main class="mdl-layout__content mdl-color--grey-100">
@@ -219,5 +214,6 @@
 </div>
 
     <script src="../views/design/js/material.min.js"></script>
+    <script src="../views/design/js/style.js"></script>
   </body>
 </html>

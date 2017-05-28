@@ -30,11 +30,12 @@
         //checking the return value from the database
         if ($ret == 1)	{
         	
-        	$_SESSION['login_user'] = $username;
+        	session_start();
+          $_SESSION['login_user'] = $username;
 
         	include_once('views/admin/admin_session.php');
 
-        	//header("location: /admin/profile");
+        	header("location: /admin/profile");
         }
         else 	{
         

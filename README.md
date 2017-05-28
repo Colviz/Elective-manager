@@ -35,8 +35,8 @@ Calculated from Features to Implement completion percentage.
 - [ ] Can see all the available departments.
 - [ ] Can see all the departments with no. of published electives.
 - [ ] Can delete/unpublish/close registration for any elective.
-- [ ] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
-- [ ] If the tokens are already generated then admin can view both the tokens.
+- [x] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
+- [x] If the tokens are already generated then admin can view both the tokens.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
 
 ### **Department Interface**
