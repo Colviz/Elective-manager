@@ -154,14 +154,16 @@
 </div>
 </div>
 
-<div class="mdl-cell mdl-cell--6-col">
+<div id="tokens" class="mdl-cell mdl-cell--6-col">
   <div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
   <h4>Open registration for Departments & Super Admins</h4>
   </div>
   <?php
         
-      if(!empty($_POST))  {  
+        include_once('dbconnect.php');
+
+      if(!empty($_POST['allowdept']))  {  
         //generating the registration tokens
         function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -173,15 +175,36 @@
         return $randomString;
         }
         $superadmin = generateRandomString();
+        $superadmin = md5($superadmin);
         $deptuser = generateRandomString();
+        $deptuser = md5($deptuser);
+        
+        echo "Super Admin Token - <b><code>$superadmin</code></b><br>";
+        echo "Department Token - <b><code>$deptuser</code></b><br>";
 
-      //$dept = Database::deptregistration($superadmin,$deptuser);
-      }
+      $deptreg = Database::deptregistration($superadmin,$deptuser);
+    }
   ?>
     <form class="admlog" action="/admin/profile" method="post">
       <!-- Raised button with ripple -->
        <button name="allowdept" value="allowdept" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-            Generate the registration token
+            Generate the registration tokens
+       </button>
+    </form>
+    <h3>OR</h3>
+
+<?php
+
+      if(!empty($_POST['allowdept1']))  {  
+        
+        $deptreg = Database::deptregistrationprint();
+    }
+  ?>
+
+    <form class="admlog1" action="/admin/profile" method="post">
+      <!-- Raised button with ripple -->
+       <button name="allowdept1" value="allowdept1" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+            Fetch the already generated tokens
        </button>
     </form>
       
