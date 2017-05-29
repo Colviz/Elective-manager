@@ -1,9 +1,8 @@
 <?php
-// Grabs the URI and breaks it apart in case we have querystring stuff
+// Grabs the URI and breaks it in parts
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
-//$request_uri = explode('?', basename($_SERVER['PHP_SELF']), 2);
 
-// Route it up!
+// URL Routing 
 switch ($request_uri[0]) {
 
     //home, root    

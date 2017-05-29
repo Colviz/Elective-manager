@@ -13,8 +13,8 @@
   <i class="material-icons">&hearts;</i>
 </button></a> By Team .EXE</div>
   -->
-  <div class="mdl-logo"><a href=""><button style="color: white;" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Report bugs</button></a></div>
-  <a href=""><button style="color: white;" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Credits</button></a>
+  <div class="mdl-logo"><a href="/bugs"><button style="color: white;" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Report bugs</button></a></div>
+  <a href="/credits"><button style="color: white;" class="mdl-button mdl-js-button mdl-js-ripple-effect"> Credits</button></a>
   </div>
 </footer>
 
