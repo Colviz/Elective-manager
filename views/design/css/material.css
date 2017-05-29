@@ -5717,7 +5717,7 @@ input.mdl-button[type="submit"] {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 32px 16px;
+  padding: 8px 8px;
   color: rgb(158,158,158);
   background-color: rgb(66,66,66); }
   .mdl-mini-footer:after {

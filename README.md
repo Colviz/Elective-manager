@@ -14,16 +14,16 @@ Calculated from Features to Implement completion percentage.
 
 ### **General**
 - [ ] Should work for both Open elective as well as Departmental elective allotments.
-- [ ] Should have a secure password recovery mechanism.
+- [ ] Should have a secure password recovery mechanism for all the interfaces.
 - [x] 3 login interfaces - **Admin**, **Student** and **Department**.
 - [x] Do routing.
 - [x] Use OOP and functions to get the work done.
-- [ ] Use Javascript for field validations.
+- [x] Use Javascript for field validations.
 - [ ] Use Ajax for real time loading.
 - [x] Responsive Design.
 - [ ] Open source this project and provide long term support.
-- [ ] Prevent attacks eg. Sql Injection etc.
-- [ ] Avoid code redundancy.
+- [x] Prevent attacks eg. Sql Injection etc.
+- [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
 - [ ] Use google API for sending all kinds of mails.
 - [ ] Make a report bugs page, it's link should be on the footer.

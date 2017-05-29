@@ -53,10 +53,4 @@
 	</div>
 
 
-    </div>
-  </main>
-</div>
-
-    <script src="views/design/js/material.min.js"></script>
-  </body>
-</html>
+    </div> 

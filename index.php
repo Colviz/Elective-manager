@@ -112,6 +112,7 @@ switch ($request_uri[0]) {
         break;
 }
 
-    //include footer here, when its done
+    //footer here
+    include_once('views/includes/footer.php');
 
 ?>
