@@ -51,7 +51,7 @@
     				<label class="mdl-textfield__label" for="uname">Username</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="password" name="pass" id="pass" required>
+    				<input class="mdl-textfield__input" type="password" name="pass" pattern="[A-Za-z0-9]+" id="pass" required>
     				<label class="mdl-textfield__label" for="pass">Password</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
