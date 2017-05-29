@@ -40,6 +40,10 @@ switch ($request_uri[0]) {
         include_once('views/admin/admin_profile.php');
         break;
 
+    case '/admin/forget':
+        include_once('views/admin/admin_forget.php');
+        break;
+
     case '/admin/profile/registered':
         include_once('views/admin/admin_registered.php');
         break;

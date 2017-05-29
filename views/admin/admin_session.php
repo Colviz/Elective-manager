@@ -20,7 +20,7 @@
    
    if(!isset($_SESSION['login_user'])|| $login_session=='')
    {
-      //header("location:/admin/login");
-      echo "no login user set<br>";
+      header("location:/admin/login");
+      //echo "no login user set<br>";
    }
 ?>

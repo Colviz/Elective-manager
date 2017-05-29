@@ -1,3 +1,4 @@
+//JS used to copy material to keyboard
 function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);

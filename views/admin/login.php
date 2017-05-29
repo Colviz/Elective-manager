@@ -68,6 +68,9 @@
 					</button>
 					</div>
 				</form>			
+        <a style="text-decoration: none;" href="/admin/forget"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+            Forgot Password?
+        </button></a>
 			</div>
 
 
