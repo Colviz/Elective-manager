@@ -39,6 +39,7 @@
       <a class="mdl-navigation__link" href="/about">About</a>
       <a class="mdl-navigation__link" href="/contact">Contact</a>
       <a class="mdl-navigation__link" href="/admin">Admin Interface</a>
+      <a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" href="/admin/change">Change Password</a>
       </nav>
   </div>
      
