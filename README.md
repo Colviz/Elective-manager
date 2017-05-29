@@ -4,11 +4,11 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **X/Y - 0%**
+## Project Completed - **13/52 - 25%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
-> PHP, Javascript, MySql, Google Material Design, PHP-CRUD API
+> PHP, Javascript, MySql, Google Material Design, PHP-API (self created)
 
 ## Features to Implement
 
@@ -44,7 +44,7 @@ Calculated from Features to Implement completion percentage.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
 - [ ] Remove the temporary display of email contents and uncoment the mail() function.
 - [x] If session already set, then login directly on register and login pages.
-- [ ] Redirect to login page after successful registration.
+- [x] Redirect to login page after successful registration.
 
 ### **Department Interface**
 - [ ] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
