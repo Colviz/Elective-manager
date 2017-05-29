@@ -28,7 +28,8 @@ Calculated from Features to Implement completion percentage.
 - [ ] Use google API for sending all kinds of mails.
 - [ ] Make a report bugs page, it's link should be on the footer.
 - [ ] Make an interactive 404 error page, can also display the names of developers on the page.
-- [ ] Footer should have a credits link also.
+- [x] Footer should have a credits link also.
+- [ ] Add page hits counter
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.
@@ -41,7 +42,9 @@ Calculated from Features to Implement completion percentage.
 - [x] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
 - [x] If the tokens are already generated then admin can view both the tokens.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
--[ ] Remove the temporary display of email contents and uncoment the mail() function.
+- [ ] Remove the temporary display of email contents and uncoment the mail() function.
+- [x] If session already set, then login directly on register and login pages.
+- [ ] Redirect to login page after successful registration.
 
 ### **Department Interface**
 - [ ] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
