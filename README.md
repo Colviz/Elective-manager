@@ -26,10 +26,11 @@ Calculated from Features to Implement completion percentage.
 - [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
 - [ ] Use google API for sending all kinds of mails.
-- [ ] Make a report bugs page, it's link should be on the footer.
+- [ ] Make a report bugs page, it's link should be on the footer, while reporting a bug if the session is set then also send the name of session user in the report.
 - [ ] Make an interactive 404 error page, can also display the names of developers on the page.
 - [x] Footer should have a credits link also.
 - [ ] Add page hits counter
+- [	] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.

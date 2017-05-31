@@ -1,1 +1,4 @@
 dbconnect.php
+composer.json
+composer.lock
+vendor/*
