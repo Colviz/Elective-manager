@@ -1,4 +1,2 @@
 dbconnect.php
-composer.json
-composer.lock
-vendor/*
+discuss.md

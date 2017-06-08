@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **13/52 - 25%**
+## Project Completed - **13/56 - 23%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -22,7 +22,7 @@ Calculated from Features to Implement completion percentage.
 - [ ] Use Ajax for real time loading.
 - [x] Responsive Design.
 - [ ] Open source this project and provide long term support.
-- [x] Prevent attacks eg. Sql Injection etc.
+- [x] Prevent attacks eg. Sql Injections (Use PDO, prepare queries, mysqli_real_escape_string(), stripslashes()).
 - [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
 - [ ] Use google API for sending all kinds of mails.
@@ -31,6 +31,7 @@ Calculated from Features to Implement completion percentage.
 - [x] Footer should have a credits link also.
 - [ ] Add page hits counter
 - [	] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
+- [ ] Store logs for every activity.
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.
@@ -46,6 +47,8 @@ Calculated from Features to Implement completion percentage.
 - [ ] Remove the temporary display of email contents and uncoment the mail() function.
 - [x] If session already set, then login directly on register and login pages.
 - [x] Redirect to login page after successful registration.
+- [ ] Admin can delete any user (Student/Department)
+- [ ] Add request handlers for fake students registrations/resetting of account (can use registration no. of JEE Mains, feedback verification password).
 
 ### **Department Interface**
 - [ ] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
@@ -73,3 +76,4 @@ else if ( no. of students > no. of seats available) { then no. of students till 
 - [ ] Show students all info available for the elective including the no. of vacant seats, also the last CGPI selected and applied (update dynamically).
 - [ ] After the student applies show his/her status in each elective (update dynamically).
 - [ ] Timestamp while setting priorities will also be set.
+- [ ] Allow students to change and recover passwords.
