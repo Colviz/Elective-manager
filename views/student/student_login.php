@@ -17,11 +17,11 @@
 
 
 
-<form>
+<form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
 <input placeholder="Roll No" pattern="[A-Za-z0-9]{1,7}" type="text" required="">
 <input placeholder="Password" pattern="[A-Za-z0-9]+" type="password" required="">
 
 <button class="login">Login</button>
-<a href="#" target="_blank">Forgot Password</a>
+<a href="/student/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>
 </form>

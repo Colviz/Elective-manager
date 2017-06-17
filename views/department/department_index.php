@@ -1,3 +1,4 @@
 <?php
-	echo "Hello this is /views/department/index.php<br>";
+		
+		include_once('views/department/department_login.php');
 ?>
