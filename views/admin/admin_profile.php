@@ -55,7 +55,7 @@
 <div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
-      Registered Departments
+      Registered Departments - <a><?php   $redept = Database::registereddepartments();  ?></a>
     </h4>
   </div>
     <table class="mdl-data-table mdl-js-data-table">
@@ -87,7 +87,7 @@
 <div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives
+      Published Electives - <a><?php   $redept = Database::publishedelectives();  ?></a>
     </h4>
   </div>
   <table class="mdl-data-table mdl-js-data-table">
