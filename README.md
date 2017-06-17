@@ -13,6 +13,7 @@ Calculated from Features to Implement completion percentage.
 ## Features to Implement
 
 ### **General**
+- [ ] Add captcha on every form.
 - [ ] Should work for both Open elective as well as Departmental elective allotments.
 - [ ] Should have a secure password recovery mechanism for all the interfaces.
 - [x] 3 login interfaces - **Admin**, **Student** and **Department**.

@@ -1,8 +1,6 @@
 <?php
       include_once('views/includes/includes_header.php');
 ?>
-
-
 <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
       <a class="mdl-navigation__link" href="/contact">Contact</a>
@@ -19,15 +17,11 @@
 
 
 
-
-  <form>
+<form>
 <h1 class="dept">Department login</h1>
 <input placeholder="Username" pattern="[A-Za-z0-9]{1,15}" type="text" required="">
 <input placeholder="Password" pattern="[A-Za-z0-9]+" type="password" required="">
 
 <button class="login">Login</button>
 <a href="#" target="_blank">Forgot Password</a>
-
-
-
 </form>
