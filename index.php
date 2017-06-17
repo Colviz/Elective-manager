@@ -112,6 +112,21 @@ switch ($request_uri[0]) {
         include_once('views/department/department_register.php');
         break;
 
+        //department superuser profile
+    case '/department/profile':
+        include_once('views/department/department_profile.php');
+        break;
+
+        //department password change
+    case '/department/change':
+        include_once('views/department/department_change.php');
+        break;
+
+        //department password recovery
+    case '/department/forget':
+        include_once('views/department/department_forget.php');
+        break;
+
         //department logout
     case '/department/logout':
         include_once('views/public/public_logout.php');

@@ -15,16 +15,62 @@
     <!-- Your content goes here -->
     <div class="mdl-grid">
 
+<?php
+      //Admin registration
+      include_once('dbconnect.php');
+      
+      //automatic login if session is set
+      session_start();
+      echo $_SESSION['login_user'];
+      
+      if(isset($_SESSION['login_user']))  {
 
+          header("location: /department/profile");
+      }
+
+        if (!empty($_POST)) {
+      
+        //collecting values
+        $username = $_POST['uname'];
+        $password = md5($_POST['pass']);
+        
+    //inserts data in admin registration database       
+        $ret = Database::departmentlogin($username,$password);
+        
+        //checking the return value from the database
+        if ($ret == 1)  {
+          
+          session_start();
+          $_SESSION['login_user'] = $username;
+
+          include_once('views/department/department_session.php');
+
+          header("location: /department/profile");
+        }
+        else  {
+        
+?>
+    <!-- Registration unsuccessful -->
+<span class="mdl-chip mdl-chip--contact">
+    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
+</span>
+<?php
+    }
+  }
+?>
 
 <form class="admlog" action="/department/login" method="post">
 <h1 class="dept">Department login</h1>
-<input placeholder="Username" pattern="[A-Za-z0-9]{1,15}" type="text" required="">
-<input placeholder="Password" pattern="[A-Za-z0-9]+" type="password" required="">
+<input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
+<input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
 
 <button class="login">Login</button>
 <a href="/department/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>
 </form>
+
+
+
 
 </div>
 </div>
