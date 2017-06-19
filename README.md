@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **13/56 - 23%**
+## Project Completed - **13/55 - 23%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -26,7 +26,7 @@ Calculated from Features to Implement completion percentage.
 - [x] Prevent attacks eg. Sql Injections (Use PDO, prepare queries, mysqli_real_escape_string(), stripslashes()).
 - [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
-- [ ] Use google API for sending all kinds of mails.
+- [x] Use google API for sending all kinds of mails - used mailgun (opensource).
 - [ ] Make a report bugs page, it's link should be on the footer, while reporting a bug if the session is set then also send the name of session user in the report.
 - [ ] Make an interactive 404 error page, can also display the names of developers on the page.
 - [x] Footer should have a credits link also.
@@ -36,7 +36,6 @@ Calculated from Features to Implement completion percentage.
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.
-- [ ] Gets the final confirmation from department for publishing elective (Already approved by Super Admin).
 - [ ] Gets the notification when department deletes an elective/closes registration.
 - [ ] Admin will get a mail if any of the above things happen.
 - [ ] Can see all the available departments.
@@ -52,13 +51,13 @@ Calculated from Features to Implement completion percentage.
 - [ ] Add request handlers for fake students registrations/resetting of account (can use registration no. of JEE Mains, feedback verification password).
 
 ### **Department Interface**
-- [ ] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
+- [x] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
 - [ ] Super Admin gets the final list of students selected for each elective.
 - [ ] Elective poster have the ability to post multiple electives.
 - [ ] Elective posting confirmation will go to Admin once approved by Super Admin.
 - [ ] Elective when approved by Super Admin and published, will be open for registrations.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
-- [ ] Add UG/PG Elective, subject codes will be chosen from dropdown.
+- [x] Add UG/PG Elective, subject codes will be chosen from dropdown.
 - [ ] Add option for no. of seats available for the elective.
 - [ ] if (no. of registered students for the elective <= no. of seats available) { Students status will remain automatically **Confirmed** }<br>
 else if ( no. of students > no. of seats available) { then no. of students till no. of seats (sorted by CGPA and priority) will have their status as **Confirmed** by default and others status will be **Waiting** }
@@ -68,7 +67,7 @@ else if ( no. of students > no. of seats available) { then no. of students till 
 - [ ] When posting elective will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course, Any additional information, Auto close registration/not.
 - [ ] Have the option to update elective details after posting (Keep in mind about auto close registration case).
 - [ ] Timestamp will be added on every registration request,rejection, publishing elective, super admin confirmation, updating, etc.
-- [ ] Department name, elective names, etc. will be available from CC.
+- [x] Department name, elective names, etc. will be available from CC.
 
 ### **Student Interface**
 - [ ] Mail sending on successful allotment of seat, rejection.
