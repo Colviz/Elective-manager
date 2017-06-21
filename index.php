@@ -117,6 +117,11 @@ switch ($request_uri[0]) {
         include_once('views/department/department_profile.php');
         break;
 
+        //department normaluser registration
+    case '/department/profile/register':
+        include_once('views/department/department_register.php');
+        break;
+
         //department password change
     case '/department/change':
         include_once('views/department/department_change.php');
