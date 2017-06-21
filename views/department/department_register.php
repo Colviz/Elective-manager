@@ -1,3 +1,3 @@
 <?php
-	echo "This is the register page<br>";
+    include_once('views/department/department_dashboard.php');
 ?>
