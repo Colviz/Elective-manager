@@ -41,13 +41,13 @@ class Database
     //Admin Register, Login, Sessions, Password recovery , Change password
 
     public static function adminregister($username,$password,$mobileno,$email)    {
-    	
+        
         //some predefined values
         $usertype = "admin";
         $active = 1;
         $deptcode = "adm";
-    	//inserts data in admin registration database
-    	$pdo = Database::connect();
+        //inserts data in admin registration database
+        $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO users (username,password,email,mobileno,usertype,active,deptcode) values(?, ?, ?, ?, ?, ?, ?)";
         $q = $pdo->prepare($sql);
@@ -55,10 +55,10 @@ class Database
         Database::disconnect();
     }
 
-    public static function adminlogin($username,$password)	{
+    public static function adminlogin($username,$password)  {
 
-    	//data validation
-    	$pdo = Database::connect();
+        //data validation
+        $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT password,usertype FROM users WHERE username = ?";
         $q = $pdo->prepare($sql);
@@ -67,15 +67,15 @@ class Database
         Database::disconnect();
 
         //check whether the password matches
-        if($data['password']==$password && $data['usertype']=='admin')	{
+        if($data['password']==$password && $data['usertype']=='admin')  {
             return 1;
         }
     }
 
-    public static function adminsession($user_check)	{
+    public static function adminsession($user_check)    {
 
-    	//data validation
-    	$pdo = Database::connect();
+        //data validation
+        $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT username,usertype FROM users WHERE username = ?";
         $q = $pdo->prepare($sql);
@@ -84,15 +84,15 @@ class Database
         Database::disconnect();
 
         //check whether username exists
-        if($data['username'] == $user_check && $data['usertype']=='admin')	{
-        	return 1;
+        if($data['username'] == $user_check && $data['usertype']=='admin')  {
+            return 1;
         }
     }
 
-    public static function adminrecovery($username,$mobileno,$email)	{
+    public static function adminrecovery($username,$mobileno,$email)    {
 
-    	//Recovering admin password
-    	$pdo = Database::connect();
+        //Recovering admin password
+        $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT username,usertype,email,mobileno FROM admin WHERE username = ?";
         $q = $pdo->prepare($sql);
@@ -101,15 +101,15 @@ class Database
         Database::disconnect();
 
         //check whether the provided values are correct
-        if($data['username'] == $username && $data['email'] == $email && $data['mobileno'] == $mobileno && $data['usertype'] == "admin")	{
-        	return 1;
+        if($data['username'] == $username && $data['email'] == $email && $data['mobileno'] == $mobileno && $data['usertype'] == "admin")    {
+            return 1;
         }
     }
 
-    public static function adminchangepassword($username,$newpassdb)	{
+    public static function adminchangepassword($username,$newpassdb)    {
 
-    	//changing admin password
-    	$pdo = Database::connect();
+        //changing admin password
+        $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "UPDATE admin SET password = ? WHERE username = ?";
         $q = $pdo->prepare($sql);
@@ -137,6 +137,22 @@ class Database
         if($data['password']==$password && $data['usertype']=='superuser')  {
             return 1;
         }
+    }
+
+    //department normal user registration, unactivated account
+    public static function departmentregister($username,$password,$mobileno,$email,$department,$token)    {
+        
+        //some predefined values
+        $usertype = "normaluser";
+        //inserts data in department registration database
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "INSERT INTO users (username,password,email,mobileno,usertype,active,deptcode) values(?, ?, ?, ?, ?, ?, ?)";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username,$password,$email,$mobileno,$usertype,$token,$department));
+        Database::disconnect();
+
+        return 1;
     }
 
     public static function departmentsession($user_check)    {
@@ -277,7 +293,7 @@ class Database
 
             //ECE
             case 'eced':
-            $name = "   Electronics and Communication Engineering";
+            $name = "Electronics and Communication Engineering";
             break;
 
             //EEE
@@ -300,6 +316,26 @@ class Database
             $name = "Architecture";
             break;
 
+            //Physics
+            case 'phys':
+            $name = "Physics";
+            break;
+
+            //Chemistry
+            case 'chem':
+            $name = "Chemistry";
+            break;
+
+            //Maths
+            case 'math':
+            $name = "Maths";
+            break;
+
+            //Management & Humanities
+            case 'huma':
+            $name = "Management and Humanities";
+            break;
+
             //default case
             default:
             $name = "Unknown Department";
@@ -308,6 +344,25 @@ class Database
         echo $name;
     }
 
+    //other functions
+    //generating the tokens
+    public static function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    public static function mailthedetails($to,$subject,$message) {
+        
+        //sending the mail through 3rd party API - mailgun.com
+        exec("curl -s --user 'api:key-[YOUR-API-KEY-HERE]' \    https://api.mailgun.net/v3/sandboxb6377426d4624727b78a197408029a96.mailgun.org/messages \  -F headers='MIME-Version: 1.0\r\n' -F headers='Content-Type: text/html; charset=ISO-8859-1\r\n'  -F from='nith.ac.in <do-not-reply@nith.ac.in>' \    -F to='$to' \    -F subject='$subject' \    -F text='$message'");
+
+        return 1;
+    }
 
 }
 ?>

@@ -1,15 +1,14 @@
 <?php
     include_once('views/department/department_dashboard.php');
+    include_once('dbconnect.php');
 ?>
-   
+
   <main class="mdl-layout__content mdl-color--grey-100">
     <div class="page-content">
     <!-- Your content goes here -->
 
 <!-- Wide card with share menu button -->
 <?php
-      include_once('dbconnect.php');
-
         if ( !empty($_POST)) {
       
         //collecting values
