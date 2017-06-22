@@ -30,6 +30,11 @@ switch ($request_uri[0]) {
         include_once('views/public/public_credits.php');
         break;
 
+    //account activation page
+    case '/activate':
+        include_once('views/public/public_account_activate.php');
+        break;
+
      //Interfaces   
 
     // Admin interface

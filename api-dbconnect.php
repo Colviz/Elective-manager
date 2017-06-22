@@ -197,7 +197,63 @@ class Database
         Database::disconnect();
 
         //check whether the provided values are correct
-        if($data['username'] == $username && $data['email'] == $email && $data['mobileno'] == $mobileno && $data['usertype'] != "admin")    {
+        if($data['email'] == $email && $data['mobileno'] == $mobileno && $data['usertype'] != "admin")    {
+            return 1;
+        }
+    }
+
+    //department account activation 
+    public static function departmentactivation($username,$password,$email,$activation)    {
+
+        //Activating department normaluser account
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT username,password,email,active FROM users WHERE username = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether the provided values are correct
+        if($data['email'] == $email && $data['password'] == $password && $data['active'] == $activation)    {
+            
+            //activating the account
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE users SET `active`= 1 WHERE username = ?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username));
+            Database::disconnect();
+
+            return 1;
+        }
+    }
+
+    //Student Register, Login, Sessions, Password recovery , Change password
+    
+    //Student account activation 
+    public static function studentactivation($username,$password,$email,$activation)    {
+
+        //Activating department normaluser account
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT rollno,password,email,activate FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether the provided values are correct
+        if($data['email'] == $email && $data['password'] == $password && $data['activate'] == $activation)    {
+            
+            //activating the account
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE students SET `activate`= 1 WHERE rollno = ?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username));
+            Database::disconnect();
+
             return 1;
         }
     }
@@ -342,6 +398,7 @@ class Database
             break;
         }
         echo $name;
+        return $name;
     }
 
     //other functions

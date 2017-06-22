@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **13/55 - 23%**
+## Project Completed - **15/55 - 27%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -38,8 +38,8 @@ Calculated from Features to Implement completion percentage.
 - [ ] Gets the final list of students selected for each elective.
 - [ ] Gets the notification when department deletes an elective/closes registration.
 - [ ] Admin will get a mail if any of the above things happen.
-- [ ] Can see all the available departments.
-- [ ] Can see all the departments with no. of published electives.
+- [x] Can see all the available departments.
+- [x] Can see all the departments with no. of published electives.
 - [ ] Can delete/unpublish/close registration for any elective.
 - [x] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
 - [x] If the tokens are already generated then admin can view both the tokens.
