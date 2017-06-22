@@ -421,5 +421,16 @@ class Database
         return 1;
     }
 
+    //validating reCAPTCHA
+    public static function reCAPTCHAvalidate($captcha)  {
+
+        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeITyYUAAAAAOTXL2fmOhNk9RYc-uMVgNkJdr8Z&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+        $obj = json_decode($response);
+        if($obj->success == true)   {
+                return 1;
+            }
+    }
+
+    
 }
 ?>

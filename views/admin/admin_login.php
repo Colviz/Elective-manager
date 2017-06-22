@@ -28,36 +28,46 @@
           header("location: /admin/profile");
       }
 
-        if (!empty($_POST)) {
+        if (!empty($_POST['admlog'] && $_POST['g-recaptcha-response'])) {
       
-        //collecting values
-        $username = $_POST['uname'];
-        $password = md5($_POST['pass']);
-        
-    //inserts data in admin registration database       
-        $ret = Database::adminlogin($username,$password);
-        
-        //checking the return value from the database
-        if ($ret == 1)  {
-          
-          session_start();
-          $_SESSION['login_user'] = $username;
+            $captcha=$_POST['g-recaptcha-response'];
+            $captcha = Database::reCAPTCHAvalidate($captcha);
 
-          include_once('views/admin/admin_session.php');
+              //checking for the recaptcha value
+                if($captcha == 1) {
 
-          header("location: /admin/profile");
-        }
-        else  {
+                  //collecting values
+                          $username = $_POST['uname'];
+                          $password = md5($_POST['pass']);
+                    
+                        //inserts data in admin registration database       
+                    $ret = Database::adminlogin($username,$password);
+                    
+                    //checking the return value from the database
+                    if ($ret == 1)  {
+                      
+                      session_start();
+                      $_SESSION['login_user'] = $username;
+
+                      include_once('views/admin/admin_session.php');
+
+                      header("location: /admin/profile");
+                    }
+                    else  {
         
 ?>
-    <!-- Registration unsuccessful -->
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
-    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
-</span>
+                 <!-- Registration unsuccessful -->
+                            <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+                                <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
+                            </span>
 <?php
     }
   }
+  else  {
+    echo "reCAPTCHA validation failed<br>";
+  }
+}
 ?>
       
       
@@ -65,8 +75,11 @@
         <h1 class="dept">Admin login</h1>
             <input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
             <input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+            
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
             <!-- Raised button with ripple -->
-            <button class="login">Login</button>
+            <button class="login" name="admlog" value="admlog" type="submit">Login</button>
                 <a href="/admin/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>
         </form>
         
