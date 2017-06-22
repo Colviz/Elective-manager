@@ -16,7 +16,8 @@
 
       $login_session = $user_check;
       $_SESSION['login_user'] = $user_check;
-      //echo "session set as $login_session<br>";
+
+      $_SESSION['usertype'] = $user_type;
    }
    
    if(!isset($_SESSION['login_user'])|| $login_session=='')

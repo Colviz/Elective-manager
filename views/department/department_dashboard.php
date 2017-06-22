@@ -51,10 +51,14 @@
             }
 
             else if($i != "register") {
+
+              //checking if a user is superuser or not
+              if($_SESSION['usertype'] == "superuser")  {
       ?>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/department/profile/register">Register User</a>
       <?php
             }
+          }
       ?>
         <a href="/department/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
       </nav>
