@@ -122,7 +122,7 @@ class Database
 
     //Department Register, Login, Sessions, Password recovery , Change password
 
-    public static function departmentlogin($username,$password)  {
+    public static function departmentlogin($username,$password,$user)  {
 
         //data validation
         $pdo = Database::connect();
@@ -134,7 +134,7 @@ class Database
         Database::disconnect();
 
         //check whether the password matches
-        if($data['password']==$password && $data['usertype']=='superuser')  {
+        if($data['password'] == $password && $data['usertype'] == $user)  {
             return 1;
         }
     }
@@ -155,7 +155,7 @@ class Database
         return 1;
     }
 
-    public static function departmentsession($user_check)    {
+    public static function departmentsession($user_check,$user_type)    {
 
         //data validation
         $pdo = Database::connect();
@@ -167,7 +167,7 @@ class Database
         Database::disconnect();
 
         //check whether username exists
-        if($data['username'] == $user_check && $data['usertype']=='superuser')  {
+        if($data['username'] == $user_check && $data['usertype'] == $user_type)  {
             return 1;
         }
     }

@@ -28,24 +28,25 @@
           header("location: /department/profile");
       }
 
-        if (!empty($_POST)) {
+        if (!empty($_POST['deptsu'])) {
       
         //collecting values
         $username = $_POST['uname'];
         $password = md5($_POST['pass']);
+        $user = $_POST['user'];
         
-    //inserts data in admin registration database       
-        $ret = Database::departmentlogin($username,$password);
+       //inserts data in user database       
+        $ret = Database::departmentlogin($username,$password,$user);
         
         //checking the return value from the database
         if ($ret == 1)  {
           
           session_start();
           $_SESSION['login_user'] = $username;
+          $_SESSION['usertype'] = $user;
 
-          include_once('views/department/department_session.php');
-
-          header("location: /department/profile");
+              include_once('views/department/department_session.php');
+              header("location: /department/profile");
         }
         else  {
         
@@ -64,8 +65,14 @@
 <h1 class="dept">Department login</h1>
 <input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
 <input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+<center>
+<select name="user" required>
+      <option>You are a ....?</option>
+      <option value="superuser">Departmental admin</option>
+      <option value="normaluser">Departmental user</option>
+</select></center> <br><br>
 
-<button class="login">Login</button>
+<button class="login" name="deptsu" value="deptsu" type="submit">Login</button>
 <a href="/department/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>
 </form>
 

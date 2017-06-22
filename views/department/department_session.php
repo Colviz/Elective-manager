@@ -4,11 +4,12 @@
    
    //checking user for sessions
    $user_check = $_SESSION['login_user'];
+   $user_type = $_SESSION['usertype'];
    
    
    //checking in database username
    if(!empty($user_check))  {
-   $admses = Database::departmentsession($user_check);
+   $admses = Database::departmentsession($user_check,$user_type);
    }
 
    if($admses == 1)  {
