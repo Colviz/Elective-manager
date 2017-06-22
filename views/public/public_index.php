@@ -7,6 +7,7 @@
       <a class="mdl-navigation__link" href="/admin">Admin Interface</a>
       <a class="mdl-navigation__link" href="/department">Department Interface</a>
       <a class="mdl-navigation__link" href="/student">Student Interface</a>
+      <a class="mdl-navigation__link" href="/activate">Activate account</a>
     </nav>
   </div>
      
@@ -46,6 +47,18 @@
 			  <div class="mdl-card__actions mdl-card--border">
 			    <a href="/student" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 			      Get Started
+			    </a>
+			  </div>
+			</div>
+  		</div>
+  		<div class="mdl-cell mdl-cell--4-col">
+  						<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+			  <div class="mdl-card__title">
+			    <h2 class="mdl-card__title-text">Account activation</h2>
+			  </div>
+			  <div class="mdl-card__actions mdl-card--border">
+			    <a href="/activate" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			      Activate account
 			    </a>
 			  </div>
 			</div>
