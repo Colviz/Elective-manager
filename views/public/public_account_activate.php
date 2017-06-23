@@ -18,7 +18,13 @@
 
 <?php
       
-        if (!empty($_POST['actuser'])) {
+        if (!empty($_POST['actuser'] && $_POST['g-recaptcha-response'])) {
+
+          $captcha=$_POST['g-recaptcha-response'];
+          $captcha = Database::reCAPTCHAvalidate($captcha);
+
+          //checking for the recaptcha value
+          if($captcha == 1) {
       
         //collecting values
         $username = $_POST['uname'];
@@ -58,6 +64,11 @@
         <?php
       }
     }
+    //reCAPTCHA VALIDATION
+    else  {
+    echo "reCAPTCHA validation failed<br>";
+  }
+}
 ?>
 
 
@@ -73,6 +84,9 @@
       <option value="dept">Department User</option>
       <option value="stud">Student</option>
 </select></center> <br><br>
+
+<!-- reCAPTCHA -->
+<div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
 
 <button class="login" name="actuser" value="actuser" type="submit">Activate Account</button><br><br>
 <a href="/department/forget" style="text-decoration: none" target="_blank">Department - Forgot Password?</a><br><br>
