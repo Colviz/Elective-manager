@@ -1,5 +1,6 @@
 <?php
     include_once('views/includes/includes_header.php');
+    include_once('dbconnect.php');
 ?>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
@@ -16,74 +17,72 @@
     <div class="mdl-grid">
 <?php
       //Admin password recovery
-      include_once('dbconnect.php');
-
-        if ( !empty($_POST)) {
       
-        //collecting values
-        $username = $_POST['uname'];
-        $mobileno = $_POST['no'];
-        $email = $_POST['email'];
-    
-        //Values authentication
-        $check = Database::adminrecovery($username,$mobileno,$email);
+        if ( !empty($_POST['admfor'] && $_POST['g-recaptcha-response'])) {
 
-        //checking the return value
-        if($check == 1)  {
+          $captcha=$_POST['g-recaptcha-response'];
+          $captcha = Database::reCAPTCHAvalidate($captcha);
 
-            //generating the new password
-          function generateRandomString($length = 10) {
-          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-          $charactersLength = strlen($characters);
-          $randomString = '';
-          for ($i = 0; $i < $length; $i++) {
-              $randomString .= $characters[rand(0, $charactersLength - 1)];
-          }
-          return $randomString;
-          }
+          //checking for the recaptcha value
+      if($captcha == 1) {
+      
+                    //collecting values
+                    $username = $_POST['uname'];
+                    $mobileno = $_POST['no'];
+                    $email = $_POST['email'];
+                
+                    //Values authentication
+                    $check = Database::adminrecovery($username,$mobileno,$email);
 
-          //calling the new password generating function
-          $newpass = generateRandomString(); //send this to user via email
-          $newpassdb = md5($newpass); //insert this encrypted value in database
+                    //checking the return value
+                    if($check == 1)  {
 
-          //Replacing the existing password with new password
-          $pass = Database::adminchangepassword($username,$newpassdb);
+                      //generating the new password
+                      //calling the new password generating function
+                      $newpass = Database::generateRandomString(); //send this to user via email
+                      $newpassdb = md5($newpass); //insert this encrypted value in database
 
-          if($pass == 1)  {
-          //send the new password in mail
-          
-          //subject of the email
-          $subject = "Admin - account recovery email, $username";
+                      //Replacing the existing password with new password
+                      $pass = Database::adminchangepassword($username,$newpassdb);
 
-          //message content of the email
-          $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
+                      if($pass == 1)  {
+                      //send the new password in mail
+                      
+                      //subject of the email
+                      $subject = "Admin - account recovery email, $username";
 
-          //sending the email
-          //mail($email, $subject, $message);
-          echo "<p>";
-          echo "Account recovery email sent to $email. <br>";
-          echo "Follow the instructions to reset the password. <br>";
-          echo "</p>";
+                      //message content of the email
+                      $message = "Hey, $username\r\nYour request to recover your password is received\r\nYour new password is - $newpass.\r\n";
 
-          //temporarily displaying the contents of the email
-          echo "<p>";
-          echo "<b>Below are the contents of the email</b> - Displaying here temporarily<br>";
-          echo "<b>Subject</b> - $subject<br>";
-          echo "<b>Message</b> - $message<br>";
-          echo "</p>";
-          }
-        }
-        else  {
-        
-?>
-    <!-- Registration successful -->
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-    <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
-</span>
-<?php
-    }
+                      //sending the email
+                      $mailit = Database::mailthedetails($email,$subject,$message);
+
+                          if($mailit == 1)  {
+                          echo "<p>";
+                          echo "Account recovery email sent to $email. <br>";
+                          echo "Follow the instructions to reset the password. <br>";
+                          echo "</p>";
+                          } 
+                          else  {
+                            echo "Account Recovery mail sending failed<br>";
+                            }
+                      }
+                    }
+                    else  {
+                    
+            ?>
+                <!-- Registration successful -->
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+                <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
+            </span>
+            <?php
+                }
   }
+  else  {
+    echo "reCAPTCHA validation failed<br>";
+  }
+}
       else {
 ?>
       <div class="mdl-cell mdl-cell--6-col">
@@ -102,9 +101,13 @@
             <input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
             <label class="mdl-textfield__label" for="no">Mobile no.</label>
             </div>
+            
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+
             <!-- Raised button with ripple -->
             <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+          <button type="submit" name="admfor" value="admfor" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
             Submit
           </button>
           </div>
