@@ -1,6 +1,5 @@
 <?php
 		include_once('views/admin/admin_dashboard.php');
-    include_once('dbconnect.php');
 ?>
      
   <main class="mdl-layout__content mdl-color--grey-100">

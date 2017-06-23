@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../../views/design/css/material.css">
     <link rel="stylesheet" href="../../views/design/css/style.css">
+    <!-- Below script is for captcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
