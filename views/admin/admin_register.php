@@ -1,5 +1,6 @@
 <?php
 		include_once('views/includes/includes_header.php');
+    //DATABASE CONNECTING API FILE IS NOT INCLUDED HERE
 ?>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
