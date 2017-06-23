@@ -27,8 +27,14 @@
           header("location: /admin/profile");
       }
 
-        if ( !empty($_POST)) {
+        if ( !empty($_POST['admreg'] && $_POST['g-recaptcha-response'])) {
+
+            $captcha=$_POST['g-recaptcha-response'];
+            $captcha = Database::reCAPTCHAvalidate($captcha);
       
+        //checking for the recaptcha value
+                if($captcha == 1) {
+
         //collecting values
         $username = $_POST['uname'];
         $password = md5($_POST['pass']);
@@ -48,6 +54,10 @@
 <?php 
 
     header("refresh:5;url=/admin/login");
+  }
+  else  {
+    echo "reCAPTCHA validation failed<br>";
+  }
 		}
 		else {
 ?>
@@ -73,9 +83,13 @@
     				<input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
     				<label class="mdl-textfield__label" for="no">Mobile no.</label>
   					</div>
+
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+
   					<!-- Raised button with ripple -->
   					<div>
-					<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+					<button type="submit" name="admreg" value="admreg" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
   					Register
 					</button>
 					</div>
