@@ -85,21 +85,18 @@
 }
       else {
 ?>
-      <div class="mdl-cell mdl-cell--6-col">
-      
-        <form class="admlog" action="/admin/forget" method="post">
-        <h3>Admin Password recovery</h3>
+           
+        <form action="/admin/forget" method="post">
+        <h1>Admin Password recovery</h1>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
-            <label class="mdl-textfield__label" for="uname">Username</label>
+            <input  type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
+           
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="email" name="email" id="email" required>
-            <label class="mdl-textfield__label" for="email">Email</label>
+              <input  type="email" name="email" placeholder="Email" id="email" required>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
-            <label class="mdl-textfield__label" for="no">Mobile no.</label>
+              <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
             </div>
             
             <!-- reCAPTCHA -->
@@ -107,7 +104,7 @@
 
             <!-- Raised button with ripple -->
             <div>
-          <button type="submit" name="admfor" value="admfor" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+          <button class="admforget" type="submit" name="admfor" value="admfor">
             Submit
           </button>
           </div>
@@ -118,5 +115,4 @@
       ?>
 
 
-    </div>
   </div>
