@@ -1,3 +1,3 @@
 <?php
-	echo "Hello this is /views/student/index.php<br>";
+	include_once('views/student/student_login.php');
 ?>

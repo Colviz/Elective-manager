@@ -20,8 +20,9 @@
 <form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
 <input placeholder="Roll No" pattern="[A-Za-z0-9]{1,7}" type="text" required="">
-<input placeholder="Password" pattern="[A-Za-z0-9]+" type="password" required="">
+<input placeholder="Password" type="password" required="">
 
 <button class="login">Login</button>
-<a href="/student/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>
+<a href="/student/forget" style="text-decoration: none" target="_blank">Forgot Password?</a><br><br>
+<a href="/student/register"><button style="width: 300px; float:left;" class="login">Not registered? Register here</button></a>
 </form>

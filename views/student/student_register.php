@@ -1,6 +1,12 @@
 <?php
     include_once('views/includes/includes_header.php');
 ?>
+    <!-- Below scripts added for datepicker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.css" />
+    <!-- Datepicker scripts ends -->
+
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
       <a class="mdl-navigation__link" href="/contact">Contact</a>
@@ -18,12 +24,18 @@
       //Admin registration
       include_once('dbconnect.php');
 
-       if ( !empty($_POST)) {
+       if ( !empty($_POST['stureg'] && $_POST['g-recaptcha-response'])) {
+
+        $captcha=$_POST['g-recaptcha-response'];
+        $captcha = Database::reCAPTCHAvalidate($captcha);
+
+        //checking for the recaptcha value
+                if($captcha == 1) {
       
         //collecting values
         $rollno= $_POST['rollno'];
         $password = md5($_POST['pass']);
-        $fName=$_POST['fname'];
+        $fname=$_POST['fname'];
         $regno=$_POST['regno'];
         $dob=$_POST['dob'];
         $dept=$_POST['dept'];
@@ -31,58 +43,39 @@
         $mobileno = $_POST['no'];
         
     
-    //inserts data in students database       
-        Database::students($rollno,$password,$fName,$regno,$dob,$dept,$mobileno,$email);
+        //inserts data in students database       
+        //Database::students($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email);
   
     
 ?>
     <!-- Registration successful -->
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
-    <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/student/login" style="text-decoration: none;">Login here</a>.</span>
+    <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/activate" style="text-decoration: none;">Activate your account here</a>.</span>
 </span>
 <?php 
-
-    header("refresh:5;url=/student/login");
+    header("refresh:3;url=/activate");
     }
+    else  {
+    echo "reCAPTCHA validation failed<br>";
+  }
+  }
     else {
 ?>
+
 <form class="studreg" action="/student/register" method="post">
-         
-              <h1 class="studentreg">Student Registration</h1>
-            
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
-        </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" pattern="[A-Za-z0-9]+" id="pass" required>
-        </div>
-       
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
-        </div>
-
-
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" name="dob" placeholder ="DOB(DD-MM-YYYY)" required>
-        </div>
-
-
-           
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" type="text" name="regno" placeholder ="Registration No." required>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" type="email" name="email" id="email" placeholder ="Email" required>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" placeholder ="Moblie Number" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
-          </div>
+         <h1 class="studentreg">Student Registration</h1>
+         <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+         <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" id="pass" required>
+         <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
+         <div style="text-align: center; color:#18aa8d;">Date Of Birth (dd/mm/yyyy)
+         <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (dd/mm/yyyy)" type="date" class="date start" required></div>
+         <input  class="mdl-textfield_input" type="text" name="regno" placeholder ="Registration No." required>
+         <input  class="mdl-textfield_input" type="email" name="email" id="email" placeholder ="Email" required>
+         <input  class="mdl-textfield_input" placeholder ="Moblie Number" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>        
          <center>
-        <!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
-    <select name="dept" required>
-      <option> Choose Your Department ....</option>
+        <select  name="dept" required>
+      <option selected="true" disabled="disabled"> Choose Your Department ....</option>
       <option value="csed">Computer Science & Engineering</option>
       <option value="ched">Chemical Engineering</option>
       <option value="civi">Civil Engineering</option>
@@ -95,19 +88,19 @@
       <option value="chem">Chemistry</option>
       <option value="math">Maths</option>
       <option value="huma">Management and Humanities</option>     
-</select></center> <br><br>
-
-        
-          <button class="regbutton" type="submit">
+      </select></center> <br>
+      <!-- reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+        <button class="login" name="stureg" value="stureg" type="submit">
             Register
           </button>
-        </div>
-       
-            
-        
-          
-          
         </form>     
+        <script>
+                $('#jqueryExample .date').datepicker({
+                    'format': 'd/m/yyyy',
+                    'autoclose': true
+                });
+        </script>
       
 <?php
     }
