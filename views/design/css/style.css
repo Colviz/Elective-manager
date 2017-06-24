@@ -131,9 +131,7 @@ button:hover {
 
 select{ 
   color:#18aa8d;
-  margin-left: -20px;
-  width:380px;
-  margin-top: 50px;
+  width:300px;
 }
 
 input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {

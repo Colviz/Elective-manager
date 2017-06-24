@@ -85,34 +85,24 @@
 }
       else {
 ?>
-           
+      
         <form action="/admin/forget" method="post">
         <h1>Admin Password recovery</h1>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input  type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
-           
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input  type="email" name="email" placeholder="Email" id="email" required>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
-            </div>
+            <input  type="email" name="email" placeholder="Email" id="email" required>
+            <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
             
             <!-- reCAPTCHA -->
             <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
 
             <!-- Raised button with ripple -->
-            <div>
-          <button class="admforget" type="submit" name="admfor" value="admfor">
+            <button type="submit" name="admfor" value="admfor" class="login">
             Submit
           </button>
-          </div>
         </form>
-      </div>
       <?php
           }
       ?>
 
-
+    </div>
   </div>
