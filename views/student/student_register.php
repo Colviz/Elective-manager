@@ -29,10 +29,11 @@
         $dept=$_POST['dept'];
         $email = $_POST['email'];
         $mobileno = $_POST['no'];
-        $activate = '0';
+        $token = Database::generateRandomString();
+        $token = md5($token);
     
     //inserts data in students database       
-        Database::studentregister($rollno,$password,$fName,$dob,$regno,$email,$mobileno,$dept,$activate);
+        Database::studentregister($rollno,$password,$fName,$dob,$regno,$email,$mobileno,$dept,$token);
   
     
 ?>
@@ -43,7 +44,7 @@
 </span>
 <?php 
 
-    //header("refresh:5;url=/student/login");
+    header("refresh:5;url=/student/login");
     }
     else {
 ?>
