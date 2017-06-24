@@ -2,20 +2,6 @@
 		//include_once('views/includes/header.php');
     include_once('dbconnect.php');
     include_once('views/department/department_session.php');
-
-    //getting the URI
-    $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
-
-    switch ($request_uri[0]) {
-
-        case '/department/profile':
-        $i = "profile";
-        break;
-
-        case '/department/profile/register':
-        $i = "register";
-        break;
-    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,24 +29,20 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-      <?php 
-              if($i != "profile")  {
-      ?>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/department/profile">Profile</a>
-      <?php
-            }
-
-            else if($i != "register") {
-
+      
+        <a href="/department/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> - 
+        <a href="/department/profile/publish"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Publish Elective </button></a> - 
+      
+           <?php
+            
               //checking if a user is superuser or not
               if($_SESSION['usertype'] == "superuser")  {
       ?>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/department/profile/register">Register User</a>
+        <a href="/department/profile/register"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Register User </button></a> - 
       <?php
             }
-          }
       ?>
-        <a href="/department/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
+        <a href="/department/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"> Logout </button></a>
       </nav>
     </div>
   </header>

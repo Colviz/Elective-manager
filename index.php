@@ -127,6 +127,11 @@ switch ($request_uri[0]) {
         include_once('views/department/department_register.php');
         break;
 
+    //department elective publish
+    case '/department/profile/publish':
+        include_once('views/department/department_publish.php');
+        break;
+
         //department password change
     case '/department/change':
         include_once('views/department/department_change.php');
