@@ -67,7 +67,7 @@
 <input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
 <center>
 <select name="user" required>
-      <option>You are a ....?</option>
+      <option selected="true" disabled="disabled">You are a ....?</option>
       <option value="superuser">Departmental admin</option>
       <option value="normaluser">Departmental user</option>
 </select></center> <br><br>

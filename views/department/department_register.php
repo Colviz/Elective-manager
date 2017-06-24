@@ -68,7 +68,7 @@
 		<input placeholder="Mobile no." name="mobileno" pattern="[0-9]{10,10}" type="text" required>
 		<center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
 		<select name="department" required>
-		  <option>Choose Your Department ....</option>
+		  <option selected="true" disabled="disabled">Choose Your Department ....</option>
 		  <option value="csed">Computer Science & Engineering</option>
 		  <option value="ched">Chemical Engineering</option>
 		  <option value="civi">Civil Engineering</option>
