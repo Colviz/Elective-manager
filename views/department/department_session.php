@@ -5,6 +5,7 @@
    //checking user for sessions
    $user_check = $_SESSION['login_user'];
    $user_type = $_SESSION['usertype'];
+   $type = $_SESSION['temptype'];
    
    
    //checking in database username

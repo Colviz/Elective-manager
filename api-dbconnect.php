@@ -229,6 +229,73 @@ class Database
         }
     }
 
+    //fetching the department code of user provided
+    public static function departmentcode($user)    {
+        //fetching department code
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT deptcode FROM users WHERE username = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $code = $data['deptcode'];
+        Database::disconnect();
+
+        return $code;
+    }
+
+    //fetching elective subject name from elective code
+    public static function departmentsubjectname($subjcode) {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subject_name FROM subject_master WHERE subj_code = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($subjcode));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $sname = $data['subject_name'];
+        Database::disconnect();
+
+        return $sname;
+    }
+    //fetching the subjects details
+    public static function departmentelectivesubjects($user,$electype)   {
+        
+        //fetching department code
+        $code = Database::departmentcode($user);
+
+        //fetching the subjects published
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,subject_name FROM subject_master WHERE deptcode = ? AND $electype = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            //<option value="csed">Computer Science & Engineering</option>
+            echo "<option value=".$data['subj_code'].">".$data['subj_code']." - ".$data['subject_name']."</option>"; 
+        }
+        Database::disconnect();
+
+    }
+
+    //publishing the electives
+    public static function publishelective($loginuser,$electivetype,$subject,$seats,$link,$semester,$info)   {
+
+        //getting the department code
+        $code = Database::departmentcode($loginuser);
+        //getting the subject name
+        $subname = Database::departmentsubjectname($subject);
+        //now publishing the elective
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "INSERT INTO subjects_published (username,deptcode,subj_code,subject_name,total_seats,link,info,subj_type, semester) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($loginuser,$code,$subject,$subname,$seats,$link,$info,$electivetype,$semester));
+        Database::disconnect();
+
+        return 1;
+    }
+
     //Student Register, Login, Sessions, Password recovery , Change password
     
     //Student account activation 

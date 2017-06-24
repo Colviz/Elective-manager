@@ -17,8 +17,6 @@
     <div class="mdl-grid">
 <?php
 	   	//Admin registration
-    	include_once('dbconnect.php');
-
       //automatic login if session is set
       session_start();
       echo $_SESSION['login_user'];
