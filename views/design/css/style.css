@@ -32,17 +32,9 @@
   padding-left: 10px;
   padding-bottom: 10px;
 }
-.admreg {
-  background-color: white;
-  text-align: center;
-  width: auto;
-  height: auto;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  box-shadow: 5px 5px 10px gray;
-}
 
-h1.dept{
+
+h1{
     height: 100px;
   width: 100%;
   font-size: 25px;
@@ -57,15 +49,17 @@ h1.dept{
 
 form {
   box-sizing: border-box;
-  width: 350px;
+  width: 450px;
   margin: 100px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   padding-bottom: 40px;
   border-radius: 3px;
   margin-top: 0;
+
  
 
 }
+
 form h1 {
   box-sizing: border-box;
   padding: 20px;
@@ -73,12 +67,16 @@ form h1 {
 a[target="_blank"]
 {
   margin-left: 25px;
-  color:#0e6252; 
+  color:#0e6252;
+  
+
+ 
 }
+
 
 input {
   margin: 40px 25px;
-  width: 300px;
+  width: 370px;
   display: block;
   border: none;
   padding: 10px 0;
@@ -87,8 +85,8 @@ input {
           transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
-  background-position: -350px 0;
-  background-size: 350px 100%;
+  background-position: -370px 0;
+  background-size: 370px 100%;
   background-repeat: no-repeat;
   color: #0e6252;
 
@@ -105,7 +103,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
           transform: translateY(-20px);
   visibility: visible !important;
 }
-
+ 
 .login{
   border: none;
   background: #1abc9c;
@@ -117,13 +115,42 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   margin-left: 25px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
+.regbutton, .admsubmit, .deptsubmit{
+  border: none;
+  background: #1abc9c;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 250px;
+  color: white;
+  margin-left: 100px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 100px;
+}
+
+
+
+.admreg{
+  height: 850px;
+}
 button:hover {
   -webkit-transform: translateY(-3px);
       -ms-transform: translateY(-3px);
           transform: translateY(-3px);
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
+select{
  
+  color:#18aa8d;
+  margin-left: -20px;
+  width:380px;
+  margin-top: 50px;
+
+
+
+}
+
+
 
 input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   color: #1abc9c;
