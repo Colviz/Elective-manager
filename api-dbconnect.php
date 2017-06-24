@@ -231,6 +231,20 @@ class Database
 
     //Student Register, Login, Sessions, Password recovery , Change password
     
+
+    // Student Registrarion
+    public static function studentregister($rollno,$password,$fName,$dob,$regno,$email,$mobileno,$dept,$activate) {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo $dept;
+        $sql = "INSERT INTO students (rollno,password,fathers_name,dob,reg_no,email,mobile_no,branch,activate) values(?,?,?,?,?,?,?,?,?)";
+        $q = $pdo->prepare($sql); 
+        $q->execute(array($rollno,$password,$fName,$dob,$regno,$email,$mobileno,$dept,$activate));
+        Database::disconnect();
+        return 1;
+        //echo "hey";
+    }
+    
     //Student account activation 
     public static function studentactivation($username,$password,$email,$activation)    {
 

@@ -29,10 +29,10 @@
         $dept=$_POST['dept'];
         $email = $_POST['email'];
         $mobileno = $_POST['no'];
-        
+        $activate = '0';
     
     //inserts data in students database       
-        Database::students($rollno,$password,$fName,$regno,$dob,$dept,$mobileno,$email);
+        Database::studentregister($rollno,$password,$fName,$dob,$regno,$email,$mobileno,$dept,$activate);
   
     
 ?>
@@ -43,7 +43,7 @@
 </span>
 <?php 
 
-    header("refresh:5;url=/student/login");
+    //header("refresh:5;url=/student/login");
     }
     else {
 ?>
@@ -65,7 +65,7 @@
 
 
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input  class="mdl-textfield_input" name="dob" placeholder ="DOB(DD-MM-YYYY)" required>
+          <input  class="mdl-textfield_input" type="date" name="dob" placeholder ="DOB(DD-MM-YYYY)" required>
         </div>
 
 
@@ -82,7 +82,7 @@
          <center>
         <!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
     <select name="dept" required>
-      <option> Choose Your Department ....</option>
+      <option selected="true" disabled="disabled"> Choose Your Department ....</option>
       <option value="csed">Computer Science & Engineering</option>
       <option value="ched">Chemical Engineering</option>
       <option value="civi">Civil Engineering</option>
