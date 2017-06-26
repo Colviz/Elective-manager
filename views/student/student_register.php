@@ -69,7 +69,7 @@
          <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" id="pass" required>
          <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
          <div style="text-align: center; color:#18aa8d;">Date Of Birth (dd/mm/yyyy)
-         <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (dd/mm/yyyy)" type="date" class="date start" required></div>
+         <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (yyyy-mm-dd)" type="date" class="date start" required></div>
          <input  class="mdl-textfield_input" type="text" name="regno" placeholder ="Registration No." required>
          <input  class="mdl-textfield_input" type="email" name="email" id="email" placeholder ="Email" required>
          <input  class="mdl-textfield_input" placeholder ="Moblie Number" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>        
@@ -97,7 +97,7 @@
         </form>     
         <script>
                 $('#jqueryExample .date').datepicker({
-                    'format': 'd/m/yyyy',
+                    'format': 'yyyy/m/d',
                     'autoclose': true
                 });
         </script>
