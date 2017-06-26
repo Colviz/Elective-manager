@@ -118,8 +118,13 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   margin-left: 100px;
 }
-.admreg{
+.admreg {
   height: 850px;
+}
+.update {
+  width: auto;
+  display: inline;
+  box-shadow: none;
 }
 
 button:hover {

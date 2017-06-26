@@ -81,7 +81,7 @@
 
 <div class="mdl-cell mdl-cell--6-col">
 
-<form class="admlog" action="/department/profile/publish" method="post">
+<form class="admlog" action="/department/profile/publish" method="get">
     <h1 class="dept">Publish Elective</h1>
     <center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
       <select name="type" required>

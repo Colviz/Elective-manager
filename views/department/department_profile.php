@@ -15,55 +15,47 @@
 <div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives - <a><?php  Database::registereddepartments();  ?></a>
+      Published Electives - <a><?php  Database::publishedelectivescount($login_session);  ?></a>
     </h4>
   </div>
+  <center>
     <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric">Department</th>
-      <th>Username</th>
-      <th>Registered on</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject code</th>
+      <th>Subject name</th>
+      <th>Semester</th>
+      <th>Link</th>
+      <th>Info</th>
+      <th>Total seats</th>
     </tr>
   </thead>
   <tbody>
-      <?php        Database::registereddepartmentsdetails();  ?>
+      <?php        Database::userpublishedelectives($login_session);  ?>
   </tbody>
+  </center>
 </table>
 </div>
 </div>
-  		
 
-<div class="mdl-cell mdl-cell--6-col">
+  <?php
+        if(isset($_POST['update']))  {
+            //updating code here
+          ?>
+          <div class="mdl-cell mdl-cell--6-col">
 <div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
-      Publish Confirmation pending
+      Update <a><?php echo $_POST['update']; ?></a>
     </h4>
   </div>
-  <table class="mdl-data-table mdl-js-data-table">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Department</th>
-      <th>Elective</th>
-      <th>Confirmation request</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Department 1</td>
-      <td>csd-2</td>
-      <td>10:59 27/15/2017</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Department 1</td>
-      <td>med-2</td>
-      <td>10:59 27/15/2017</td>
-    </tr>    
-  </tbody>
-</table>
+  
 </div>
 </div>
+          <?php
+        }
+
+  ?>
 
 
   		
