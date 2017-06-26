@@ -41,12 +41,35 @@
         $dept=$_POST['dept'];
         $email = $_POST['email'];
         $mobileno = $_POST['no'];
-        
+
+        $token = Database::generateRandomString();
+        $token = md5($token);
 
         //inserts data in students database       
-        Database::studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
+        $ret = Database::studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
   
-    
+         if ($ret == 1)  {
+          
+          //if user created successfully
+          echo " User created successfully<br>";
+          $to = $email;
+          $subject = "Student account activation - nith.ac.in";
+          $message = "Your Roll no. - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
+        
+          //mailing the details
+          $mailit = Database::mailthedetails($to,$subject,$message);
+
+          if($mailit == 1)  {
+          echo "Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.<br>";
+          }
+          else  {
+          echo "Account confirmation mail sending failed<br>";
+          }
+        }
+        else  {
+          echo "User creation failed,Please try again<br>";
+        }
+      
 ?>
     <!-- Registration successful -->
 <span class="mdl-chip mdl-chip--contact">
