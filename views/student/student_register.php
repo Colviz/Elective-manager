@@ -42,9 +42,9 @@
         $email = $_POST['email'];
         $mobileno = $_POST['no'];
         
-    
+
         //inserts data in students database       
-        //Database::students($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email);
+        Database::studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
   
     
 ?>
