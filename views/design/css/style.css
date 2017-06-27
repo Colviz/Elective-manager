@@ -130,6 +130,9 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   text-align: center;
   color: #18aa8d;
 }
+.stuleft  {
+  text-align: left;
+}
 
 button:hover {
   -webkit-transform: translateY(-3px);

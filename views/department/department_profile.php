@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-      <?php        Database::userpublishedelectives($login_session);  ?>
+      <?php  Database::userpublishedelectives($login_session);  ?>
   </tbody>
   </center>
 </table>

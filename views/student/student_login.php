@@ -20,7 +20,6 @@
       
       //automatic login if session is set
       session_start();
-      echo $_SESSION['login_user'];
       
       if(isset($_SESSION['login_user']))  {
 
@@ -39,8 +38,7 @@
         //checking the return value from the database
         if ($ret == 1)  {
           
-          session_start();
-          $_SESSION['login_user'] = $username;
+          $_SESSION['login_user'] = $rollno;
 
               include_once('views/student/student_session.php');
               header("location: /student/profile");

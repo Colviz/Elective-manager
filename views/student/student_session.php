@@ -8,10 +8,10 @@
    
    //checking in database username
    if(!empty($user_check))  {
-   $admses = Database::studentsession($user_check);
+   $stuses = Database::studentsession($user_check);
    }
 
-   if($admses == 1)  {
+   if($stuses == 1)  {
 
       $login_session = $user_check;
       $_SESSION['login_user'] = $user_check;
