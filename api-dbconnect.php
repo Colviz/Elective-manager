@@ -352,6 +352,42 @@ class Database
         return 1;
     }
 
+    //student login
+    public static function studentlogin($rollno,$password)  {
+
+        //data validation
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT password,activate FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($rollno));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether the password matches
+        if($data['password']==$password && $data['activate'] == 1)  {
+            return 1;
+        }
+    }
+
+    //student session
+    public static function studentsession($user_check)    {
+
+        //data validation
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT rollno,activate FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user_check));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether rollno exists
+        if($data['rollno'] == $user_check && $data['activate'] == 1)  {
+            return 1;
+        }
+    }
+
     //Functions for fetching data from database
 
     public static function registereddepartments()  {
