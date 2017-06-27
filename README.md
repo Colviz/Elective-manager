@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **15/55 - 27%**
+## Project Completed - **24/51 - 47%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -13,14 +13,13 @@ Calculated from Features to Implement completion percentage.
 ## Features to Implement
 
 ### **General**
-- [ ] Add captcha on every form.
+- [x] Add captcha on every form.
 - [ ] Should work for both Open elective as well as Departmental elective allotments.
 - [ ] Should have a secure password recovery mechanism for all the interfaces.
 - [x] 3 login interfaces - **Admin**, **Student** and **Department**.
 - [x] Do routing.
 - [x] Use OOP and functions to get the work done.
 - [x] Use Javascript for field validations.
-- [ ] Use Ajax for real time loading.
 - [x] Responsive Design.
 - [ ] Open source this project and provide long term support.
 - [x] Prevent attacks eg. Sql Injections (Use PDO, prepare queries, mysqli_real_escape_string(), stripslashes()).
@@ -31,20 +30,18 @@ Calculated from Features to Implement completion percentage.
 - [ ] Make an interactive 404 error page, can also display the names of developers on the page.
 - [x] Footer should have a credits link also.
 - [ ] Add page hits counter
-- [	] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
+- [x] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
 - [ ] Store logs for every activity.
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.
 - [ ] Gets the notification when department deletes an elective/closes registration.
-- [ ] Admin will get a mail if any of the above things happen.
 - [x] Can see all the available departments.
 - [x] Can see all the departments with no. of published electives.
-- [ ] Can delete/unpublish/close registration for any elective.
 - [x] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
 - [x] If the tokens are already generated then admin can view both the tokens.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
-- [ ] Remove the temporary display of email contents and uncoment the mail() function.
+- [x] Remove the temporary display of email contents and uncoment the mail() function.
 - [x] If session already set, then login directly on register and login pages.
 - [x] Redirect to login page after successful registration.
 - [ ] Admin can delete any user (Student/Department)
@@ -52,26 +49,25 @@ Calculated from Features to Implement completion percentage.
 
 ### **Department Interface**
 - [x] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
-- [ ] Super Admin gets the final list of students selected for each elective.
-- [ ] Elective poster have the ability to post multiple electives.
-- [ ] Elective posting confirmation will go to Admin once approved by Super Admin.
-- [ ] Elective when approved by Super Admin and published, will be open for registrations.
+- [ ] Department admin gets the final list of students selected for each elective.
+- [x] Elective poster have the ability to post multiple electives.
+- [x] Elective posting confirmation will go to Admin once approved by Super Admin.
+- [x] Elective when approved by Super Admin and published, will be open for registrations.
 - [ ] if (total no. of seats for electives < no. ofstudents registered) { then admin will get a notification regarding this along with Super admin. } <sup>problem</sup> there is a problem in it, how can we handle this for all different type of electives(UG 3rd year & PG final year, branch wise).
 - [x] Add UG/PG Elective, subject codes will be chosen from dropdown.
-- [ ] Add option for no. of seats available for the elective.
+- [x] Add option for no. of seats available for the elective.
 - [ ] if (no. of registered students for the elective <= no. of seats available) { Students status will remain automatically **Confirmed** }<br>
 else if ( no. of students > no. of seats available) { then no. of students till no. of seats (sorted by CGPA and priority) will have their status as **Confirmed** by default and others status will be **Waiting** }
-- [ ] if (the elective poster rejects any student with the status as **Confirmed** by default) { then he/she needs to give a strong and valid reason for rejection with reason of min. characters 10.<br>Student gets its notification by mail and on the interface. }
 - [ ] Add auto close registration when the no. of students == no. of seats available, will opt for this option on the time of publishing of elective.
 - [ ] Can view the list of students selected and the students who've applied for the elective.
-- [ ] When posting elective will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course, Any additional information, Auto close registration/not.
-- [ ] Have the option to update elective details after posting (Keep in mind about auto close registration case).
+- [x] When posting elective will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course, Any additional information, Auto close registration/not.
+- [x] Have the option to update elective details after posting (Keep in mind about auto close registration case).
 - [ ] Timestamp will be added on every registration request,rejection, publishing elective, super admin confirmation, updating, etc.
 - [x] Department name, elective names, etc. will be available from CC.
 
 ### **Student Interface**
 - [ ] Mail sending on successful allotment of seat, rejection.
-- [ ] Login will be with the help of roll no.
+- [x] Login will be with the help of roll no.
 - [ ] After logging in student will prioritize electives (Priority once set can't be updated - show prompt).
 - [ ] Show students all info available for the elective including the no. of vacant seats, also the last CGPI selected and applied (update dynamically).
 - [ ] After the student applies show his/her status in each elective (update dynamically).
