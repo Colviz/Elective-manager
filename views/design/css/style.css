@@ -126,6 +126,10 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   display: inline;
   box-shadow: none;
 }
+#forma  {
+  text-align: center;
+  color: #18aa8d;
+}
 
 button:hover {
   -webkit-transform: translateY(-3px);

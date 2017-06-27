@@ -258,6 +258,7 @@ class Database
 
         return $sname;
     }
+    
     //fetching the subjects details
     public static function departmentelectivesubjects($user,$electype)   {
         
@@ -296,8 +297,47 @@ class Database
         return 1;
     }
 
+    //updating the elective
+    public static function updateelective($seats,$link,$info,$sem,$code) {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "UPDATE subjects_published SET total_seats = ?,link = ?,info = ?,semester = ? WHERE subj_code = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($seats,$link,$info,$sem,$code));
+        Database::disconnect();
+
+        return 1;
+    }
+
     //Student Register, Login, Sessions, Password recovery , Change password
     
+    //Student account activation 
+    public static function studentactivation($username,$password,$email,$activation)    {
+
+        //Activating department normaluser account
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT rollno,password,email,activate FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether the provided values are correct
+        if($data['email'] == $email && $data['password'] == $password && $data['activate'] == $activation)    {
+            
+            //activating the account
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE students SET `activate`= 1 WHERE rollno = ?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username));
+            Database::disconnect();
+
+            return 1;
+        }
+    }
 
     //student register
     public static function studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token)    {
@@ -390,6 +430,25 @@ class Database
             echo "</td></tr>";
         }
         Database::disconnect();
+    }
+
+    //fetching the elective details
+    public static function fetchelective($code)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subject_name,total_seats,link,info,semester FROM subjects_published WHERE subj_code = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $name = $data['subject_name'];
+        $seats = $data['total_seats'];
+        $link = $data['link'];
+        $info = $data['info'];
+        $semester = $data['semester'];
+        Database::disconnect();
+
+        return array($seats,$link,$info,$semester,$code,$name);
     }
 
     //counting no. of published electives for admin
