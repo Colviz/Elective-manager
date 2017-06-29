@@ -105,6 +105,11 @@ switch ($request_uri[0]) {
         include_once('views/student/student_apply.php');
         break;
 
+        //Student Forget
+    case '/student/forget':
+        include_once('views/student/student_forget.php');
+        break;
+
         //student logout
     case '/student/logout':
         include_once('views/public/public_logout.php');

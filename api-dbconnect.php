@@ -388,6 +388,36 @@ class Database
         }
     }
 
+    // Student password recovery
+    public static function studentrecovery($username,$mobileno,$email) {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT rollno,email,mobile_no FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($username));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        Database::disconnect();
+
+        //check whether the provided values are correct
+        if($data['email'] == $email && $data['mobile_no'] == $mobileno)    {
+            return 1;
+        }  
+    }
+
+    // Student Change Password
+    public static function studentchangepassword($username,$newpassdb)    {
+
+        //changing admin password
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "UPDATE students SET password = ? WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($newpassdb,$username));
+        Database::disconnect();
+
+        return 1;
+    }
+
     //Functions for fetching data from database
 
     public static function registereddepartments()  {
