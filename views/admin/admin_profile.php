@@ -12,7 +12,6 @@
 <div class="mdl-grid">
 
 <div class="mdl-cell mdl-cell--12-col">
-<div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
       Registered Departments - <a><?php   $redept = Database::registereddepartments();  ?></a>
@@ -31,11 +30,9 @@
   </tbody>
 </table>
 </div>
-</div>
 
 
 <div class="mdl-cell mdl-cell--12-col">
-<div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
       Published Electives - <a><?php   Database::publishedelectives();  ?></a>
@@ -56,9 +53,6 @@
   </tbody>
 </table>
 </div>
-</div>
-
-
 
 
 
@@ -66,6 +60,5 @@
 </center>
 </div>
 </main>
-</div>
 </body>
 </html>

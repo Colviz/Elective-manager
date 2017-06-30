@@ -21,7 +21,7 @@
     </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
@@ -43,4 +43,5 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/logout">Logout</a>
       </nav>
+  </div>
   </div>

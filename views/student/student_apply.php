@@ -37,6 +37,10 @@
             //count the no. of electives
             $count = Database::studentelectivescount($elec,$department);
             $_SESSION['tempcount'] = $count;
+            if ($count == 0 || $count == '') {
+              echo "No $elective published at this time<br>Try after sometime.";
+            }
+            else  {
       ?>
     <div class="mdl-cell mdl-cell--6-col">
     <form class="admlog" action="/student/profile/applied" method="post">
@@ -59,6 +63,7 @@
 
       <?php
       }
+    }
 ?>
 
 

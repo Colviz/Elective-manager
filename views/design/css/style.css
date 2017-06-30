@@ -1,8 +1,14 @@
+.mdl-layout__content  {
+  min-width: 1351px;
+  width: auto;
+}
 .page-content {
   padding-top: 5%;
   padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 7%;
+  width: auto;
+  min-height: 700px;
 }
 .side-separator {
   height: 1px;

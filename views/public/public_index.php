@@ -10,6 +10,7 @@
       <a class="mdl-navigation__link" href="/activate">Activate account</a>
     </nav>
   </div>
+  </div>
      
   <main class="mdl-layout__content mdl-color--grey-100">
     <div class="page-content">

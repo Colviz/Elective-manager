@@ -12,13 +12,11 @@
 
 
 <div class="mdl-cell mdl-cell--12-col">
-<div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
       Published Electives - <a><?php  Database::publishedelectivescount($login_session);  ?></a>
     </h4>
   </div>
-  <center>
     <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
@@ -33,9 +31,7 @@
   <tbody>
       <?php  Database::userpublishedelectives($login_session);  ?>
   </tbody>
-  </center>
 </table>
-</div>
 </div>
 
   <?php

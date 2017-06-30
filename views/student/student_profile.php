@@ -18,7 +18,6 @@
       if(isset($_POST['pubelec']))  {
 ?>
 <div class="mdl-cell mdl-cell--12-col">
-<div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     <h4>
       Published Electives - <a><?php   Database::publishedelectives();  ?></a>
@@ -39,13 +38,11 @@
   </tbody>
 </table>
 </div>
-</div>
 <?php
     }
 
       if(isset($_POST['fillprior']))  {
 ?>
-<div class="mdl-cell mdl-cell--6-col">
 <form class="admlog" action="/student/profile/apply" method="post">
     <h1 class="dept">Apply for elective</h1>
     <center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
@@ -58,7 +55,6 @@
 
     <button name="elective" value="elective" class="login" type="submit">Next</button>
 </form>
-</div>
 <?php
     }
 ?>
