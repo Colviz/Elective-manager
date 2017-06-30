@@ -4,6 +4,7 @@
    
    //checking user for sessions
    $user_check = $_SESSION['login_user'];
+   $_SESSION['tempcount'];
    
    
    //checking in database username

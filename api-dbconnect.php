@@ -258,7 +258,7 @@ class Database
 
         return $sname;
     }
-    
+
     //fetching the subjects details
     public static function departmentelectivesubjects($user,$electype)   {
         
@@ -388,6 +388,22 @@ class Database
         }
     }
 
+    //student department fetching
+    public static function studentdepartment($user) {
+
+        //data validation
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT branch FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $branch = $data['branch'];
+        Database::disconnect();
+
+        return $branch;
+    }
+
     //Functions for fetching data from database
 
     public static function registereddepartments()  {
@@ -485,6 +501,80 @@ class Database
         Database::disconnect();
 
         return array($seats,$link,$info,$semester,$code,$name);
+    }
+
+    //counting the no. of electives to be displayed
+    public static function studentelectivescount($type,$department)  {
+
+        if($type == 'open_elective')    {
+            
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT count(*) AS total FROM subjects_published where subj_type = ? AND deptcode != ? AND active = 1";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($type,$department));
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $count = $data['total'];
+            Database::disconnect();        
+        }
+        else    {
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT count(*) AS total FROM subjects_published where subj_type = ? AND deptcode = ? AND active = 1";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($type,$department));
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $count = $data['total'];
+            Database::disconnect();
+        }
+
+        return $count;
+    }
+
+    //fetching the published electives for prioritizing
+    public static function publishedelectivespriority($type,$department) {
+
+        //checking if its open_elective or other
+        if($type == 'open_elective')    {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,subject_name,total_seats FROM subjects_published where subj_type = ? AND deptcode != ? AND active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($type,$department));
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            echo "<option value=".$data['subj_code'].">".$data['subj_code']." - ".$data['subject_name']." - ".$data['total_seats']."</option>"; 
+        }
+        Database::disconnect();
+        }
+        else    {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,subject_name,total_seats FROM subjects_published where subj_type = ? AND deptcode = ? AND active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($type,$department));
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            echo "<option value=".$data['subj_code'].">".$data['subj_code']." - ".$data['subject_name']." - ".$data['total_seats']."</option>"; 
+        }
+        Database::disconnect();
+        }
+        
+    }
+
+    //insert elective priorities
+    public static function insertelectivepriorities($user,$priority,$subjcode) {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //INSERT INTO `priorities`(`rollno`, `subj_code`, `priority`) VALUES ([value-1],[value-2],[value-3])
+        $sql = "INSERT INTO priorities (rollno,subj_code,priority) VALUES (?, ?, ?)";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user,$subjcode,$priority));
+        Database::disconnect();
+
+        return 1;
     }
 
     //counting no. of published electives for admin

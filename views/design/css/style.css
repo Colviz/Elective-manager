@@ -153,3 +153,6 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
           transform: translateY(-20px);
   visibility: visible !important;
 }
+.go {
+  
+}
