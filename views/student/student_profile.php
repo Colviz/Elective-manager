@@ -13,7 +13,6 @@
 </form>
 
 <div class="mdl-grid">
-
 <?php
       if(isset($_POST['pubelec']))  {
 ?>
@@ -40,6 +39,7 @@
 </table>
 </div>
 </div>
+</div>
 <?php
     }
 
@@ -60,6 +60,27 @@
 <?php
     }
 ?>
+<div class="mdl-grid">
+<div class="mdl-cell">
+  <div class="mdl-card__supporting-text">
+    <h4>Applied for Electives</h4>
+  </div>
+  <div class="table-responsive">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Subject code</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
+      <th>Priority</th>
+      <th>Students applied</th>
+    </tr>
+  </thead>
+  <tbody>
+        <?php  Database::appliedforelectives($_SESSION['login_user']);   ?>
+  </tbody>
+</table>
+</div>
+</div>
 
 
 

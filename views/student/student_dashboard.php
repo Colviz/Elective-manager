@@ -42,6 +42,6 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/profile">Profile</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/logout">Logout</a>
-      </nav>
+    </nav>
   </div>
   </div>
