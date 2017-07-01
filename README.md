@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **24/51 - 47%**
+## Project Completed - **30/51 - 58%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -14,14 +14,14 @@ Calculated from Features to Implement completion percentage.
 
 ### **General**
 - [x] Add captcha on every form.
-- [ ] Should work for both Open elective as well as Departmental elective allotments.
-- [ ] Should have a secure password recovery mechanism for all the interfaces.
+- [x] Should work for both Open elective as well as Departmental elective allotments.
+- [x] Should have a secure password recovery mechanism for all the interfaces.
 - [x] 3 login interfaces - **Admin**, **Student** and **Department**.
 - [x] Do routing.
 - [x] Use OOP and functions to get the work done.
 - [x] Use Javascript for field validations.
 - [x] Responsive Design.
-- [ ] Open source this project and provide long term support.
+- [x] Open source this project and provide long term support.
 - [x] Prevent attacks eg. Sql Injections (Use PDO, prepare queries, mysqli_real_escape_string(), stripslashes()).
 - [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
@@ -68,8 +68,8 @@ else if ( no. of students > no. of seats available) { then no. of students till 
 ### **Student Interface**
 - [ ] Mail sending on successful allotment of seat, rejection.
 - [x] Login will be with the help of roll no.
-- [ ] After logging in student will prioritize electives (Priority once set can't be updated - show prompt).
+- [x] After logging in student will prioritize electives (Priority once set can't be updated - show prompt).
 - [ ] Show students all info available for the elective including the no. of vacant seats, also the last CGPI selected and applied (update dynamically).
 - [ ] After the student applies show his/her status in each elective (update dynamically).
-- [ ] Timestamp while setting priorities will also be set.
-- [ ] Allow students to change and recover passwords.
+- [x] Timestamp while setting priorities will also be set.
+- [x] Allow students to change and recover passwords.

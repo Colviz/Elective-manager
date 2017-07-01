@@ -49,19 +49,23 @@
         if($ret == NULL || $ret == 0) {       
 ?>
 <!-- Activation unsuccessful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
     <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username, Password, email OR Activation code</a> Account activation Failed <a href="/" style="text-decoration: none;">Try Login if already activated</a>.</span>
 </span>
+</div>
 <?php
       }
       else  {
         ?>
-        <!-- Activation successful -->
+<!-- Activation successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
     <span class="mdl-chip__text">Account activation <a style="color: blue; text-decoration: none;">Successful.</a> Go to <a href="/" style="text-decoration: none;"> Login</a> page.</span>
 </span>
+</div>
         <?php
       }
     }

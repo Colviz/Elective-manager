@@ -12,6 +12,10 @@ body  {
   padding-bottom: 20%;
   min-height: 550px;
 }
+.snippet  {
+  margin: auto;
+  display: block;
+}
 .side-separator {
   height: 1px;
   background-color: #dcdcdc;
@@ -167,9 +171,6 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
   }  
   .mdl-mini-footer  {
     width: 100%;
-  }
-  body  {
-    max-width: 96%;
   }
   .table-responsive {
         width: 100%;

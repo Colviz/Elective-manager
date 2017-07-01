@@ -9,7 +9,7 @@
 
 <!-- Wide card with share menu button -->
 <?php
-        if ( !empty($_POST)) {
+        if ( !empty($_POST['deptch'])) {
       
         //collecting values
         $username = $_SESSION['login_user'];
@@ -34,28 +34,14 @@
 
 
 <div class="mdl-cell mdl-cell--6-col">
-<div class="demo-card-wide1 mdl-card mdl-shadow--4dp">
-  <div class="mdl-card__supporting-text">
-    <h4>
-      <a><?php echo $_SESSION['login_user']; ?></a> Change Password
-    </h4>
-  </div>
     <form class="admlog" action="/department/change" method="post">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="password" name="newpass" pattern="[A-Za-z0-9]+" id="newpass" required>
-            <label class="mdl-textfield__label" for="pass">New Password</label>
-            </div>
+    <h1 class="dept"><?php echo $_SESSION['login_user']; ?></a> - Change Password</h1>
+            <input placeholder="Password" name="newpass" pattern="[A-Za-z0-9]+" type="password" required>
+            
             <!-- Raised button with ripple -->
-            <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
-            Change Password
-          </button>
-          </div>
+            <button class="login" name="deptch" value="deptch" type="submit">Change Password</button>
+            <a href="/department/forget" style="text-decoration: none" target="_blank">Recover Account?</a>
         </form>
-        <a style="text-decoration: none;" href="/department/forget"><button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
-            Forgot current Password? Recover here!
-        </button></a>
-</div>
 </div>
 <?php
       }

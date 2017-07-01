@@ -52,11 +52,13 @@
         else  {
         
 ?>
-    <!-- Registration unsuccessful -->
+<!-- Registration unsuccessful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
     <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
 </span>
+</div>
 <?php
     }
   }

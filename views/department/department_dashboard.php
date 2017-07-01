@@ -48,10 +48,15 @@
   </header>
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/about">About</a>
-      <a class="mdl-navigation__link" href="/contact">Contact</a>
-      <a class="mdl-navigation__link" href="/department">Department Interface</a>
-      <a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" href="/department/change">Change Password</a>
-      </nav>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile">Profile</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/change">Change Password</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/publish">Publish Elective</a>
+      <?php if($_SESSION['usertype'] == "superuser")  { ?>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/register">Register user</a>
+      <?php } ?>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/logout">Logout</a>
+    </nav>
   </div>
   </div>

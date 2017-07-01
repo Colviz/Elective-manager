@@ -76,11 +76,13 @@
         else  {
         
 ?>
-    <!-- Registration successful -->
+<!-- Recovery unsuccessful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
     <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
 </span>
+</div>
 <?php
     }
   }

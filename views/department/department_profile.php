@@ -85,17 +85,18 @@
                 if($ret == 1)  {
                     ?>
 <!-- Update successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">s</span>
     <span class="mdl-chip__text">Elective Updation <a style="color: blue; text-decoration: none;">Successful.</a> <a href="/department/profile">Click here</a></span>
 </span>
-                    <?php
-                }
-
-          ?>
-          </div>
-          <?php            
-        }
+</div>
+<?php
+    }
+?>
+</div>
+<?php            
+  }
 ?>
 
   		

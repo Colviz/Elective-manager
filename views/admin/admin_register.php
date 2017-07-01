@@ -46,11 +46,13 @@
 	
     
 ?>
-    <!-- Registration successful -->
+<!-- Registration successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
     <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
 </span>
+</div>
 <?php 
 
     header("refresh:5;url=/admin/login");

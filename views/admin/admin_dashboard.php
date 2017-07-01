@@ -64,10 +64,12 @@
   </header>
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/about">About</a>
-      <a class="mdl-navigation__link" href="/contact">Contact</a>
-      <a class="mdl-navigation__link" href="/admin">Admin Interface</a>
-      <a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" href="/admin/change">Change Password</a>
-      </nav>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile">Profile</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/change">Change Password</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile/registered">Registered Students</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/logout">Logout</a>
+    </nav>
   </div>
   </div>
