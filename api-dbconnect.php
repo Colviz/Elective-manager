@@ -111,7 +111,7 @@ class Database
         //changing admin password
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE admin SET password = ? WHERE username = ?";
+        $sql = "UPDATE users SET password = ? WHERE username = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($newpassdb,$username));
         Database::disconnect();
@@ -127,14 +127,14 @@ class Database
         //data validation
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT password,usertype FROM users WHERE username = ?";
+        $sql = "SELECT password,usertype,active FROM users WHERE username = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($username));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
 
         //check whether the password matches
-        if($data['password'] == $password && $data['usertype'] == $user)  {
+        if($data['password'] == $password && $data['usertype'] == $user && $data['active'] == 1)  {
             return 1;
         }
     }
@@ -160,14 +160,14 @@ class Database
         //data validation
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT username,usertype FROM users WHERE username = ?";
+        $sql = "SELECT username,usertype,active FROM users WHERE username = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($user_check));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         Database::disconnect();
 
         //check whether username exists
-        if($data['username'] == $user_check && $data['usertype'] == $user_type)  {
+        if($data['username'] == $user_check && $data['usertype'] == $user_type && $data['active'] == 1)  {
             return 1;
         }
     }
@@ -568,13 +568,52 @@ class Database
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //INSERT INTO `priorities`(`rollno`, `subj_code`, `priority`) VALUES ([value-1],[value-2],[value-3])
         $sql = "INSERT INTO priorities (rollno,subj_code,priority) VALUES (?, ?, ?)";
         $q = $pdo->prepare($sql);
         $q->execute(array($user,$subjcode,$priority));
         Database::disconnect();
 
         return 1;
+    }
+
+    //applied for electives
+    public static function appliedforelectives($user)    {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,priority FROM `priorities` where rollno = ? order by priority ASC";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user));
+        //$data = $q->fetch(PDO::FETCH_ASSOC);
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            echo '<tr><td class="mdl-data-table__cell--non-numeric">';
+            echo $data['subj_code'];
+            $subname = Database::departmentsubjectname($data['subj_code']);
+            echo '</td><td class="mdl-data-table__cell--non-numeric">';
+            echo $subname;
+            echo "</td><td>";
+            echo $data['priority'];            
+            echo "</td><td>";
+            $applied = Database::studentsappliesforelective($data['subj_code']);
+            echo $applied;
+            echo "</td></tr>";
+        }
+        Database::disconnect();
+    }
+
+    //no. of seats filled in elective
+    public static function studentsappliesforelective($code)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(*) AS total FROM priorities WHERE subj_code = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+
+        return $count;
     }
 
     //counting no. of published electives for admin
@@ -595,16 +634,16 @@ class Database
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT deptcode,subj_code,subject_name,total_seats,semester  FROM `subjects_published` order by subj_code ASC";
+        $sql = "SELECT deptcode,subj_code,subject_name,total_seats,semester  FROM `subjects_published` WHERE active = 1 order by subj_code ASC";
         $q = $pdo->prepare($sql);
         $q->execute();
         //$data = $q->fetch(PDO::FETCH_ASSOC);
         while($data = $q->fetch(PDO::FETCH_ASSOC)) {
             echo '<tr><td class="mdl-data-table__cell--non-numeric">';
             Database::departmentsname($data['deptcode']);
-            echo "</td><td>";
+            echo '</td><td class="mdl-data-table__cell--non-numeric">';
             echo $data['subj_code'];
-            echo "</td><td>";
+            echo '</td><td class="mdl-data-table__cell--non-numeric">';
             echo $data['subject_name'];            
             echo "</td><td>";
             echo $data['semester'];
