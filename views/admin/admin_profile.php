@@ -2,7 +2,7 @@
     include_once('views/admin/admin_dashboard.php');
 ?>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 
@@ -17,6 +17,7 @@
       Registered Departments - <a><?php   $redept = Database::registereddepartments();  ?></a>
     </h4>
   </div>
+  <div class="table-responsive">
     <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
@@ -30,6 +31,7 @@
   </tbody>
 </table>
 </div>
+</div>
 
 
 <div class="mdl-cell mdl-cell--12-col">
@@ -38,6 +40,7 @@
       Published Electives - <a><?php   Database::publishedelectives();  ?></a>
     </h4>
   </div>
+  <div class="table-responsive">
   <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
@@ -52,6 +55,7 @@
         <?php  Database::publishedelectivesdetails();   ?>
   </tbody>
 </table>
+</div>
 </div>
 
 

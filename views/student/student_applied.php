@@ -5,7 +5,7 @@
     
     <script src="../../views/design/js/jquery.min.js"></script>
 
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 

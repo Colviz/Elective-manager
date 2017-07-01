@@ -2,7 +2,7 @@
     include_once('views/student/student_dashboard.php');
 ?>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 <form class="update" action="" method="post">
@@ -17,18 +17,19 @@
 <?php
       if(isset($_POST['pubelec']))  {
 ?>
-<div class="mdl-cell mdl-cell--12-col">
+<div class="mdl-cell">
   <div class="mdl-card__supporting-text">
     <h4>
       Published Electives - <a><?php   Database::publishedelectives();  ?></a>
     </h4>
   </div>
-  <table class="mdl-data-table mdl-js-data-table">
+  <div class="table-responsive">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Department</th>
-      <th>Subject code</th>
-      <th>Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject code</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
       <th>Semester</th>
       <th>Total seats</th>
     </tr>
@@ -37,6 +38,7 @@
         <?php  Database::publishedelectivesdetails();   ?>
   </tbody>
 </table>
+</div>
 </div>
 <?php
     }

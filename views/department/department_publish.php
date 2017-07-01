@@ -2,7 +2,7 @@
     include_once('views/department/department_dashboard.php');
 ?>
 
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 

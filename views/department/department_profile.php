@@ -2,7 +2,7 @@
     include_once('views/department/department_dashboard.php');
 ?>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 
@@ -17,6 +17,7 @@
       Published Electives - <a><?php  Database::publishedelectivescount($login_session);  ?></a>
     </h4>
   </div>
+    <div class="table-responsive">
     <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
@@ -32,6 +33,7 @@
       <?php  Database::userpublishedelectives($login_session);  ?>
   </tbody>
 </table>
+</div>
 </div>
 
   <?php
