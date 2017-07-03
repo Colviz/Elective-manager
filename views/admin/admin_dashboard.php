@@ -44,7 +44,7 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
-      <nav class="mdl-navigation">
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
       <?php 
               if($i != "profile")  {
       ?>

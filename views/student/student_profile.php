@@ -39,15 +39,16 @@
 </table>
 </div>
 </div>
-</div>
 <?php
-    }
+    } ?>
+</div>
+    <?php
 
       if(isset($_POST['fillprior']))  {
 ?>
 <form class="admlog" action="/student/profile/apply" method="post">
     <h1 class="dept">Apply for elective</h1>
-    <center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
+    <center>
       <select name="type" required>
       <option selected="true" disabled="disabled">Choose the type of Elective</option>
       <option value="open_elective">Open Elective</option>
