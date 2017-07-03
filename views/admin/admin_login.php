@@ -76,7 +76,7 @@
         <form class="admlog" action="/admin/login" method="post">
         <h1 class="dept">Admin login</h1>
             <input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
-            <input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+            <input placeholder="Password" name="pass" type="password" required>
             
             <!-- reCAPTCHA -->
             <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>

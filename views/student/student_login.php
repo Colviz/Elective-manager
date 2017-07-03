@@ -61,8 +61,8 @@
 
 <form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
-<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required="">
-<input placeholder="Password" name="pass" type="password" required="">
+<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+<input placeholder="Password" name="pass" type="password" required>
 
 <button class="login" type="submit" name="stulog" value="stulog">Login</button><br><br>
 <a href="/student/forget" style="text-decoration: none" target="_blank">Forgot Password?</a><br><br>

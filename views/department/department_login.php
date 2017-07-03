@@ -66,7 +66,7 @@
 <form class="admlog" action="/department/login" method="post">
 <h1 class="dept">Department login</h1>
 <input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
-<input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+<input placeholder="Password" name="pass" type="password" required>
 <center>
 <select name="user" required>
       <option selected="true" disabled="disabled">You are a ....?</option>

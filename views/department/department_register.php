@@ -63,7 +63,7 @@
     <form class="admlog" action="/department/profile/register" method="post">
             <h1 class="dept">Create - Department user</h1>
 		<input placeholder="Username" name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
-		<input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+		<input placeholder="Password" name="pass" type="password" required>
 		<input placeholder="Email" name="email" type="email" required>
 		<input placeholder="Mobile no." name="mobileno" pattern="[0-9]{10,10}" type="text" required>
 		<center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
