@@ -1,12 +1,3 @@
-//JS used to copy material to keyboard
-function copyToClipboard(element) {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val($(element).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-}
-
 //js used to prioritize electives
 $(".go").change(function(){
     var selVal=[];

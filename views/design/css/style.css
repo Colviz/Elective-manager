@@ -2,19 +2,18 @@ body  {
   background-color: rgb(245,245,245);
 }
 .mdl-layout__content  {
-  padding-top: 5%;
   width: 100%;
 }
 .page-content {
   padding-top: 5%;
   padding-left: 5%;
   padding-right: 5%;
-  padding-bottom: 20%;
-  min-height: 550px;
+  padding-bottom: 5%;
 }
 .snippet  {
   margin: auto;
   display: block;
+  padding-bottom: 15px;
 }
 .side-separator {
   height: 1px;
@@ -39,8 +38,8 @@ body  {
 }
 .demo-card-wide1 {
   width: auto;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding-left: 2%;
+  padding-bottom: 2%;
 }
 
 h1{
@@ -70,8 +69,7 @@ form h1 {
   padding: 20px;
 }
 
-a[target="_blank"]
-{
+a[target="_blank"]  {
   margin-left: 25px;
   color:#0e6252;
 }
@@ -163,8 +161,11 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
           transform: translateY(-20px);
   visibility: visible !important;
 }
-.go { 
-}
+.go { }
+
+
+/** responsiveness **/
+
 @media screen and (max-width: 767px) {  
   .table-responsive {
         width: 100%;
