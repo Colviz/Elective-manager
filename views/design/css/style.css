@@ -175,7 +175,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 
 /** responsiveness **/
 
-@media screen and (max-width: 767px) {  
+@media screen and (max-width: 1280px) {  
   .table-responsive {
         width: 100%;
         overflow-y: hidden;

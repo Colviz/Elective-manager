@@ -3,7 +3,7 @@
 
 ?>
 </main>  
-<footer class="mdl-mini-footer">
+<footer class="mdl-mini-footer mdl-layout--large-screen-only">
   <div class="mdl-mini-footer__left-section">
     <div class="mdl-logo"><button style="color: white;" class="mdl-button mdl-js-button mdl-js-ripple-effect">&copy; : National Institute of technology, Hamirpur</button></div>
   </div>

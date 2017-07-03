@@ -423,7 +423,7 @@ class Database
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = 'SELECT count(username) AS total FROM subjects_published where username = ?';
+        $sql = 'SELECT count(username) AS total FROM subjects_published where username = ? AND active = 1';
         $q = $pdo->prepare($sql);
         $q->execute(array($login_session));
         $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -456,10 +456,9 @@ class Database
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where username = ?";
+        $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where username = ? AND active = 1";
         $q = $pdo->prepare($sql);
         $q->execute(array($login_session));
-        //$data = $q->fetch(PDO::FETCH_ASSOC);
         while($data = $q->fetch(PDO::FETCH_ASSOC)) {
             echo '<tr><td class="mdl-data-table__cell--non-numeric">';
             $code = $data['subj_code'];
@@ -475,13 +474,53 @@ class Database
             echo "</td><td>";
             echo $data['total_seats'];
             echo "</td><td>";
+            //updating the elective
             echo '<form class="update" action="" method="post">';
-            echo '<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
             echo $code;
             echo '" name="update">Update</button></form>';
+            echo "</td><td>";
+            //deactivating the elective
+            echo '<form class="update" action="" method="post">';
+            echo '<button class="mdl-button mdl-button--red mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo $code;
+            echo '" name="delete">Delete</button></form>';
             echo "</td></tr>";
         }
         Database::disconnect();
+    }
+
+    //user deleted electives
+    public static function userdeletedelectives($user)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where username = ? AND active = 0";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user));
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            echo '<tr><td class="mdl-data-table__cell--non-numeric">';
+            $code = $data['subj_code'];
+            echo $data['subj_code'];
+            echo "</td><td>";
+            echo $data['subject_name'];            
+            echo "</td><td>";
+            echo $data['semester'];
+            echo "</td><td>";
+            echo $data['link'];
+            echo "</td><td>";
+            echo $data['info'];
+            echo "</td><td>";
+            echo $data['total_seats'];
+            echo "</td><td>";
+            //republish the elective
+            echo '<form class="update" action="" method="post">';
+            echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo $code;
+            echo '" name="republish">Republish</button></form>';
+            echo "</td></tr>";
+        }
+    Database::disconnect();
     }
 
     //fetching the elective details
@@ -576,6 +615,48 @@ class Database
         return 1;
     }
 
+    //deactivating the elective
+    public static function deactivateelective($code) {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "UPDATE `subjects_published` SET `active` = '0' WHERE `subj_code` = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        Database::disconnect();
+
+        return 1;
+    }
+
+    //republishing elective
+    public static function republishelective($code)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "UPDATE `subjects_published` SET `active` = '1' WHERE `subj_code` = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        Database::disconnect();
+
+        return 1;
+    }
+
+    //count of deactivated electives
+    public static function deletedelectivescount($user)    {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(*) AS total FROM subjects_published WHERE username = ? AND active = 0";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($user));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        echo $data['total'];
+        Database::disconnect();
+
+        return $count;
+    }
+
     //applied for electives
     public static function appliedforelectives($user)    {
 
@@ -616,12 +697,12 @@ class Database
         return $count;
     }
 
-    //counting no. of published electives for admin
+    //counting no. of published electives for admin and students
     public static function publishedelectives() {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT count(*) AS total FROM subjects_published";
+        $sql = "SELECT count(*) AS total FROM subjects_published WHERE active = 1";
         $q = $pdo->prepare($sql);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);

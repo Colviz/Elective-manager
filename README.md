@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **30/51 - 58%**
+## Project Completed - **32/51 - 58%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
@@ -26,7 +26,7 @@ Calculated from Features to Implement completion percentage.
 - [x] Avoid code redundancy.
 - [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
 - [x] Use google API for sending all kinds of mails - used mailgun (opensource).
-- [ ] Make a report bugs page, it's link should be on the footer, while reporting a bug if the session is set then also send the name of session user in the report.
+- [x] Make a report bugs page, it's link should be on the footer, while reporting a bug if the session is set then also send the name of session user in the report.
 - [ ] Make an interactive 404 error page, can also display the names of developers on the page.
 - [x] Footer should have a credits link also.
 - [ ] Add page hits counter
@@ -45,7 +45,7 @@ Calculated from Features to Implement completion percentage.
 - [x] If session already set, then login directly on register and login pages.
 - [x] Redirect to login page after successful registration.
 - [ ] Admin can delete any user (Student/Department)
-- [ ] Add request handlers for fake students registrations/resetting of account (can use registration no. of JEE Mains, feedback verification password).
+- [x] Add request handlers for fake students registrations/resetting of account (can use registration no. of JEE Mains, feedback verification password).
 
 ### **Department Interface**
 - [x] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).

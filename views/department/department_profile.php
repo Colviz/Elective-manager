@@ -27,6 +27,8 @@
       <th>Link</th>
       <th>Info</th>
       <th>Total seats</th>
+      <th>Update</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -34,9 +36,74 @@
   </tbody>
 </table>
 </div>
+<br>NOTE - Elective can't be deleted once the students has started to apply for it.
 </div>
 
+<?php
+      //deactivating the elective
+        if(isset($_POST['delete']))  {
+
+          $dlt = Database::deactivateelective($_POST['delete']);
+
+          if($dlt == 1) {
+            echo "<center><b>Elective deleted <a href=''> Click here</a>.</b></center>";
+          }
+          else {
+            echo "<center><b>Failed to delete elective.</b></center>";
+          }
+        }
+?>
+
+<!-- Delete electives -->
+<div class="mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__supporting-text">
+    <h4>
+      Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session);  
+
+        if($count != 0)  {
+        ?>
+      </a>
+    </h4>
+  </div>
+    <div class="table-responsive">
+    <table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Subject code</th>
+      <th>Subject name</th>
+      <th>Semester</th>
+      <th>Link</th>
+      <th>Info</th>
+      <th>Total seats</th>
+      <th>Republish</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php  Database::userdeletedelectives($login_session);  ?>
+  </tbody>
+</table>
+</div>
+<br>NOTE - Elective details can be updated once its republished.
+<?php
+}
+?>
+</div>
+
+
   <?php
+        //republishing the deleted elective
+        if(isset($_POST['republish']))  {
+
+          $rep = Database::republishelective($_POST['republish']);
+
+          if($rep == 1) {
+            echo "<center><b>Elective republished <a href=''> Click here</a>.</b></center>";
+          }
+          else {
+            echo "<center><b>Failed to republish elective.</b></center>";
+          }
+        }
+        //updating the elective
         if(isset($_POST['update']))  {
             //updating code here
           ?>
