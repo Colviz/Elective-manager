@@ -14,7 +14,11 @@
 <div class="mdl-cell mdl-cell--12-col">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives - <a><?php  Database::publishedelectivescount($login_session);  ?></a>
+      Published Electives - <a><?php  $eleccount = Database::publishedelectivescount($login_session);  
+                                      echo "</a>";
+      if($eleccount != 0)  {
+      
+      ?>
     </h4>
   </div>
     <div class="table-responsive">
@@ -35,8 +39,15 @@
       <?php  Database::userpublishedelectives($login_session);  ?>
   </tbody>
 </table>
-</div>
 <br>NOTE - Elective can't be deleted once the students has started to apply for it.
+<hr>
+<?php
+}
+else  {
+  echo "<center><b>No Elective published.</b></center>";
+}
+?>
+</div>
 </div>
 
 <?php
@@ -46,7 +57,7 @@
           $dlt = Database::deactivateelective($_POST['delete']);
 
           if($dlt == 1) {
-            echo "<center><b>Elective deleted <a href=''> Click here</a>.</b></center>";
+            echo "<center><b>Elective deleted.</b></center>";
           }
           else {
             echo "<center><b>Failed to delete elective.</b></center>";
@@ -59,10 +70,10 @@
   <div class="mdl-card__supporting-text">
     <h4>
       Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session);  
+                                    echo "</a>";
 
         if($count != 0)  {
         ?>
-      </a>
     </h4>
   </div>
     <div class="table-responsive">
@@ -82,11 +93,12 @@
       <?php  Database::userdeletedelectives($login_session);  ?>
   </tbody>
 </table>
-</div>
 <br>NOTE - Elective details can be updated once its republished.
+<hr>
 <?php
 }
 ?>
+</div>
 </div>
 
 

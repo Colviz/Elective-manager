@@ -18,6 +18,7 @@
 </div>
 </div>
 <script src="../../views/design/js/material.min.js"></script>
+<script src="../../views/design/js/jquery.min.js"></script>
 <script src="../../views/design/js/style.js"></script>
   </body>
 </html>

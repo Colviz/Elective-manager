@@ -12,6 +12,8 @@
           if(!empty($_POST['subpri']))  {
 
               $count = $_SESSION['tempcount'];
+              //fetching the student cgpi
+              $cgpi = Database::studentcgpi($_SESSION['login_user']);
               //printing the cached values
               for($i = 0; $i < $count; $i++) {
                 
@@ -20,7 +22,7 @@
                 echo "<br>";
 
                 //insert these values in database
-                $ret = database::insertelectivepriorities($_SESSION['login_user'],$i,$_POST[$i]);
+                $ret = Database::insertelectivepriorities($_SESSION['login_user'],$cgpi,$i,$_POST[$i]);
               }
               if($ret ==1) {
                   echo "<br>Priorities added to database.<br>";
@@ -33,4 +35,3 @@
 
 
     </div>
-  </div>

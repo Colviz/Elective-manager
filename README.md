@@ -4,7 +4,7 @@
 
 run as `php -S localhost:3000`
 
-## Project Completed - **32/51 - 58%**
+## Project Completed - **32/51 - 63%**
 Calculated from Features to Implement completion percentage.
 
 ## Languages and Packages used -
