@@ -10,7 +10,6 @@
       <a class="mdl-navigation__link" href="/student">Student Interface</a>
     </nav>
   </div>
-  </div>
      
   <main class="mdl-layout__content">
     <div class="page-content">

@@ -1,10 +1,6 @@
 <?php
     include_once('views/student/student_dashboard.php');
 ?>
-    <script src="../../views/design/js/material.min.js"></script>
-    
-    <script src="../../views/design/js/jquery.min.js"></script>
-
   <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
@@ -38,10 +34,3 @@
 
     </div>
   </div>
-  </main>
-</div>
-
-<script src="../../views/design/js/style.js"></script>
-
-  </body>
-</html>

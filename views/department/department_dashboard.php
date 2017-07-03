@@ -59,4 +59,3 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/logout">Logout</a>
     </nav>
   </div>
-  </div>

@@ -165,13 +165,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 }
 .go { 
 }
-@media screen and (max-width: 767px) {
-  .mdl-layout__content  {
-    padding-top: 20%;
-  }  
-  .mdl-mini-footer  {
-    width: 100%;
-  }
+@media screen and (max-width: 767px) {  
   .table-responsive {
         width: 100%;
         overflow-y: hidden;

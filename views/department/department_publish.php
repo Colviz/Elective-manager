@@ -104,10 +104,3 @@
 
     </div>
   </div>
-  </main>
-</div>
-
-    <script src="../../views/design/js/material.min.js"></script>
-    <script src="../../views/design/js/style.js"></script>
-  </body>
-</html>
