@@ -79,7 +79,7 @@
 <form class="admlog" action="/activate" method="post">
 <h1 class="dept">Account activation</h1>
 <input placeholder="Username/Roll No." name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
-<input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+<input placeholder="Password" name="pass" type="password" required>
 <input placeholder="Email" name="email" type="email" required>
 <input placeholder="Activation code" name="actcode" pattern="[A-Za-z0-9]{31,32}" type="text" required>
 <center>

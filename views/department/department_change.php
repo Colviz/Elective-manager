@@ -36,7 +36,7 @@
 <div class="mdl-cell mdl-cell--6-col">
     <form class="admlog" action="/department/change" method="post">
     <h1 class="dept"><?php echo $_SESSION['login_user']; ?></a> - Change Password</h1>
-            <input placeholder="Password" name="newpass" pattern="[A-Za-z0-9]+" type="password" required>
+            <input placeholder="Password" name="newpass" type="password" required>
             
             <!-- Raised button with ripple -->
             <button class="login" name="deptch" value="deptch" type="submit">Change Password</button>

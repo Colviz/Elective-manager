@@ -161,6 +161,15 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
           transform: translateY(-20px);
   visibility: visible !important;
 }
+.mdl-button--green  {
+  color: green;
+}
+.mdl-button--red  {
+  color: red;
+}
+.mdl-button--blue  {
+  color: blue;
+}
 .go { }
 
 
