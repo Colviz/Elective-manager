@@ -1,5 +1,6 @@
 <?php
     include_once('views/includes/includes_header.php');
+    include_once('dbconnect.php');
 ?>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
@@ -15,9 +16,6 @@
     <!-- Your content goes here -->
     <div class="mdl-grid">
 <?php
-      //Admin password recovery
-      include_once('dbconnect.php');
-
         if ( !empty($_POST)) {
       
         //collecting values
@@ -31,19 +29,9 @@
         //checking the return value
         if($check == 1)  {
 
-            //generating the new password
-          function generateRandomString($length = 10) {
-          $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-          $charactersLength = strlen($characters);
-          $randomString = '';
-          for ($i = 0; $i < $length; $i++) {
-              $randomString .= $characters[rand(0, $charactersLength - 1)];
-          }
-          return $randomString;
-          }
-
+          //generating the new password
           //calling the new password generating function
-          $newpass = generateRandomString(); //send this to user via email
+          $newpass = Database::generateRandomString(); //send this to user via email
           $newpassdb = md5($newpass); //insert this encrypted value in database
 
           //Replacing the existing password with new password
