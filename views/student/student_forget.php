@@ -28,7 +28,7 @@
     
         //Values authentication
         $check = Database::studentrecovery($username,$mobileno,$email);
-        echo $check;
+      
         //checking the return value
         if($check == 1)  {
 
