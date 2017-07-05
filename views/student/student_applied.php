@@ -6,6 +6,7 @@
     <!-- Your content goes here -->
 
 <div class="mdl-cell mdl-cell--6-col">
+<center>
 <b>Your priorities for electives are as follows -</b><br>
 <?php
 
@@ -28,6 +29,7 @@
                   echo "<br>Priorities added to database.<br>";
                 }
       ?>
+    </center>
     </div>
       <?php
       }

@@ -21,10 +21,10 @@
             $publish = Database::publishelective($_SESSION['login_user'],$type,$subject,$seats,$link,$semester,$info);
 
             if($publish == 1)  {
-              echo "Elective successfully published.<br>";
+              echo "<center><b>Elective successfully published.</b></center><br>";
             }
             else  {
-              echo "Elective publishing failed.<br>";
+              echo "<center><b>Elective publishing failed.</b></center><br>";
             }
           }
 

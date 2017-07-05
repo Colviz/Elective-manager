@@ -47,6 +47,7 @@
       <th class="mdl-data-table__cell--non-numeric">Department</th>
       <th>Subject code</th>
       <th>Subject name</th>
+      <th>Subject Type</th>
       <th>Semester</th>
       <th>Total seats</th>
     </tr>

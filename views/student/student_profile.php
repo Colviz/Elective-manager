@@ -5,12 +5,14 @@
   <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
+    <hr><center>
 <form class="update" action="" method="post">
 <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" name="pubelec" value="pubelec" type="submit"> Published Electives </button> 
 </form><a style="padding-left: 10px;"></a>
 <form class="update" action="" method="post">
 <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" name="fillprior" value="fillprior" type="submit"> Apply for Elective </button>
 </form>
+</center>
 <hr>
 <div class="mdl-grid">
 <?php

@@ -879,7 +879,7 @@ class Database
     public static function mailthedetails($to,$subject,$message) {
         
         //sending the mail through 3rd party API - mailgun.com
-        exec("curl -s --user 'api:key-[YOUR-API-KEY-HERE]' \    https://api.mailgun.net/v3/sandboxb6377426d4624727b78a197408029a96.mailgun.org/messages \  -F headers='MIME-Version: 1.0\r\n' -F headers='Content-Type: text/html; charset=ISO-8859-1\r\n'  -F from='nith.ac.in <do-not-reply@nith.ac.in>' \    -F to='$to' \    -F subject='$subject' \    -F text='$message'");
+        exec("curl -s --user 'api:key-[YOUR-API-KEY-HERE]' \    https://api.mailgun.net/v3/sandboxb6377426d4624727b78a197408029a96.mailgun.org/messages \  -F headers='MIME-Version: 1.0\r\n' -F headers='Content-Type: text/html; charset=ISO-8859-1\r\n'  -F from='nith.ac.in <postmaster@sandboxb6377426d4624727b78a197408029a96.mailgun.org>' \    -F to='$to' \    -F subject='$subject' \    -F text='$message'");
 
         return 1;
     }

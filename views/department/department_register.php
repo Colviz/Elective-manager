@@ -32,7 +32,7 @@
         if ($ret == 1)  {
           
           //if user created successfully
-          echo " - Department user created successfully<br>";
+          echo "<center>Department user created successfully.</center><br>";
           
           //writing the details to variables
           $to = $email;
@@ -42,14 +42,14 @@
           $mailit = Database::mailthedetails($to,$subject,$message);
 
           if($mailit == 1)	{
-          		echo "Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.<br>";
+          		echo "<center>Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.</center><br>";
           }
           else 	{
-          	echo "Account confirmation mail sending failed<br>";
+          	echo "<center>Account confirmation mail sending failed.</center><br>";
           }
         }
         else 	{
-        	echo "Department user creation failed<br>";
+        	echo "<center>Department user creation failed.</center><br>";
         }
       }
       else  {
