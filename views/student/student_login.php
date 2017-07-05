@@ -10,7 +10,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
     <div class="mdl-grid">
@@ -46,11 +46,13 @@
         else  {
         
 ?>
-    <!-- Registration unsuccessful -->
+<!-- Registration unsuccessful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
     <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
 </span>
+</div>
 <?php
     }
   }
@@ -59,12 +61,12 @@
 
 <form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
-<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required="">
-<input placeholder="Password" name="pass" type="password" required="">
+<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+<input placeholder="Password" name="pass" type="password" required>
 
-<button class="login" type="submit" name="stulog" value="stulog">Login</button>
+<button class="login" type="submit" name="stulog" value="stulog">Login</button><br><br>
 <a href="/student/forget" style="text-decoration: none" target="_blank">Forgot Password?</a><br><br>
-<a href="/student/register"><button style="width: 300px; float:left;" class="login">Not registered? Register here</button></a>
+<a href="/student/register" style="text-decoration: none" target="_blank">Not registered? Register here.</a>
 </form>
 
 

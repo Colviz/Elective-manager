@@ -108,6 +108,10 @@ switch ($request_uri[0]) {
         //Student Forget
     case '/student/forget':
         include_once('views/student/student_forget.php');
+
+        //student applied
+    case '/student/profile/applied':
+        include_once('views/student/student_applied.php');
         break;
 
         //student logout

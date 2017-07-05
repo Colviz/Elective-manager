@@ -1,8 +1,7 @@
 <?php
     include_once('views/student/student_dashboard.php');
 ?>
-
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 
@@ -11,6 +10,7 @@
 
         if ( !empty($_POST['elective'])) {
 
+          $elec = $_POST['type'];
           $elective = $_POST['type'];
           
           switch ($elective) {
@@ -27,41 +27,39 @@
             break;            
           }
 
+            //fetching students department
+            $department = Database::studentdepartment($_SESSION['login_user']);
+
+            //count the no. of electives
+            $count = Database::studentelectivescount($elec,$department);
+            $_SESSION['tempcount'] = $count;
+            if ($count == 0 || $count == '') {
+              echo "No $elective published at this time<br>Try after sometime.";
+            }
+            else  {
       ?>
     <div class="mdl-cell mdl-cell--6-col">
-    <form class="admlog" action="/student/profile/apply" method="post">
-    <h1 class="dept">Apply for <?php echo $elective; ?></h1>
-    
+    <form class="admlog" action="/student/profile/applied" method="post">
+    <h1 class="dept">Prioritize <?php echo $elective; ?></h1>
+
     <center>
-    <select name="subj" required>
-      <option selected="true" disabled="disabled">Select  the course....</option>
       <?php 
-              //fetching subjects of same department from subjects master
-              //Database::departmentelectivesubjects($_SESSION['login_user'],$_POST['type']);
+              for ($i=0; $i < $count; $i++) { 
+                
+              echo '<select name="'.$i.'" class="go" required>';
+              echo '<option selected="true" disabled="disabled">Select  the course....</option>';
+              //fetching published electives
+              Database::publishedelectivespriority($elec,$department);
+              echo '</select>';
+              }
       ?>
-    </select></center> <br><br>
-    <input placeholder="Total Seats" name="seats" type="number" required>
-    <input placeholder="Syllabus link" name="link" type="link" required>
-    <input placeholder="Semester" name="sem" type="number" required>
-    <center>
-    <textarea placeholder="Additional info : eg. Professors name who is taking the course, Prerequisites, etc." name="info" cols="40" rows="5" pattern="{1,1000}" required></textarea>
-    <br>
-    <code style="color: red;">Elective once published can't be unpublished.</code><code style="color: blue;"> Although can be updated.</code></center><br>
-    <button name="pubelec" value="pubelec" class="login" type="submit">Publish Elective</button>
+    <br><br><button name="subpri" value="subpri" class="login" type="submit">Submit priorities</button>
         </form>
 </div>
 
       <?php
       }
+    }
 ?>
 
-
-    </div>
-  </div>
-  </main>
 </div>
-
-    <script src="../../views/design/js/material.min.js"></script>
-    <script src="../../views/design/js/style.js"></script>
-  </body>
-</html>

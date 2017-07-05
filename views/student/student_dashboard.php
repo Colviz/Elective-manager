@@ -21,7 +21,7 @@
     </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
@@ -29,7 +29,7 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
-      <nav class="mdl-navigation">
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a href="/student/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> -
         <a href="/student/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
       </nav>
@@ -42,5 +42,5 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/profile">Profile</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/logout">Logout</a>
-      </nav>
+    </nav>
   </div>

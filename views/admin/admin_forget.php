@@ -11,7 +11,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
     <div class="mdl-grid">
@@ -71,11 +71,13 @@
                     else  {
                     
             ?>
-                <!-- Registration successful -->
-            <span class="mdl-chip mdl-chip--contact">
-                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-                <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
-            </span>
+<!-- Registration successful -->
+<div class="snippet">
+<span class="mdl-chip mdl-chip--contact">
+  <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+  <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
+</span>
+</div>
             <?php
                 }
   }

@@ -4821,6 +4821,8 @@ input.mdl-button[type="submit"] {
   border-collapse: collapse;
   white-space: nowrap;
   font-size: 13px;
+  width: auto;
+  overflow: auto;
   background-color: rgb(255,255,255); }
   .mdl-data-table thead {
     padding-bottom: 3px; }

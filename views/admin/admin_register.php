@@ -11,7 +11,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
     <div class="mdl-grid">
@@ -45,11 +45,13 @@
 	
     
 ?>
-    <!-- Registration successful -->
+<!-- Registration successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
     <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
 </span>
+</div>
 <?php 
 
     header("refresh:5;url=/admin/login");
@@ -71,7 +73,7 @@
     				<label class="mdl-textfield__label" for="uname">Username</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    				<input class="mdl-textfield__input" type="password" name="pass" pattern="[A-Za-z0-9]+" id="pass" required>
+    				<input class="mdl-textfield__input" type="password" name="pass" id="pass" required>
     				<label class="mdl-textfield__label" for="pass">Password</label>
   					</div>
   					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

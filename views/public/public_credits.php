@@ -10,7 +10,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 	 
@@ -20,17 +20,23 @@
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border"></div>
 			  <p>
-			  	The project prototype was developed by<a href="http://exe.nith.ac.in/" target="_blank" style="text-decoration: none;"><button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect"><b> Team .EXE</b></button></a> during NIMBUS 2017, Under the guidance of <a href="#"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Dr. Naveen Chauhan</button></a> (Faculty coordinator Team .EXE) & the coordination of <a href="#"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Rishabh Chaudhary</button></a> & <a href="#"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Mayank Kashyap</button></a>.<br>
-			  	This project was made under the guidance of.....
+			  	The project prototype was developed by<a href="http://exe.nith.ac.in/" style="text-decoration: none;"><b> Team .EXE</b></a> during NIMBUS 2017, Under the guidance of <a href="#" style="text-decoration: none;"><b> Dr. Naveen Chauhan</b></a> (Faculty coordinator, Team .EXE) & the coordination of <a href="https://github.com/Rishabh04-02" style="text-decoration: none;"> Rishabh Chaudhary</a> & <a href="https://github.com/MayankKashyap" style="text-decoration: none;"> Mayank Kashyap</a>.<br>
+			  	This project was developed for implementation under the guidance of <a href="#" style="text-decoration: none;"><b>Dr. Naveen Chauhan</b></a> and was developed by the following developers.
 			  </p>
 			  <div class="mdl-card__actions mdl-card--border"></div>
 			  <div style="text-align: left;">
 			  <b>Developers -</b>
-			  <a href="#"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> 14MI508 - <b>Rishabh Chaudhary</b></button></a>
-			  <a href="#"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> 14MI510 - <b>Abhishek Kumar</b></button></a>
-			  <a href="#"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"> 14MI541 - <b>Shubham Machal</b></button></a>
+			  <ul>
+			  <li><a style="text-decoration: none;" href="https://github.com/Rishabh04-02">14MI508 - <b>Rishabh Chaudhary</b></a></li>
+			  <li><a style="text-decoration: none;" href="https://github.com/Abhishek-sopho">14MI510 - <b>Abhishek Kumar</b></a></li>
+			  <li><a style="text-decoration: none;" href="https://github.com/Shubhammachal">14MI541 - <b>Shubham Machal</b></a></li>
+			  </ul>
+			  </div>
+			  <div class="mdl-card__actions mdl-card--border"></div>
+			  <div style="text-align: left;">
+			  More information available here - <a href="https://github.com/Rishabh04-02/Elective-manager-new/graphs/contributors" style="text-decoration: none;">GitHub : Elective-manager-new</a>
 			  </div>
 		</div>
 
   	
-   </div> 
+   </div>

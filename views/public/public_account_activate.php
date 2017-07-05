@@ -11,7 +11,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
     <div class="mdl-grid">
@@ -48,19 +48,23 @@
         if($ret == NULL || $ret == 0) {       
 ?>
 <!-- Activation unsuccessful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
     <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username, Password, email OR Activation code</a> Account activation Failed <a href="/" style="text-decoration: none;">Try Login if already activated</a>.</span>
 </span>
+</div>
 <?php
       }
       else  {
         ?>
-        <!-- Activation successful -->
+<!-- Activation successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
     <span class="mdl-chip__text">Account activation <a style="color: blue; text-decoration: none;">Successful.</a> Go to <a href="/" style="text-decoration: none;"> Login</a> page.</span>
 </span>
+</div>
         <?php
       }
     }
@@ -75,7 +79,7 @@
 <form class="admlog" action="/activate" method="post">
 <h1 class="dept">Account activation</h1>
 <input placeholder="Username/Roll No." name="uname" pattern="[A-Za-z0-9]{1,15}" type="text" required>
-<input placeholder="Password" name="pass" pattern="[A-Za-z0-9]+" type="password" required>
+<input placeholder="Password" name="pass" type="password" required>
 <input placeholder="Email" name="email" type="email" required>
 <input placeholder="Activation code" name="actcode" pattern="[A-Za-z0-9]{31,32}" type="text" required>
 <center>
@@ -98,5 +102,3 @@
 
 </div>
 </div>
-<script src="views/design/js/material.min.js"></script>
-<script src="views/design/js/style.js"></script>

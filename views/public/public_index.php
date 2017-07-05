@@ -11,7 +11,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 	 <div class="mdl-grid">
@@ -21,8 +21,8 @@
 			    <h2 class="mdl-card__title-text">Admin Interface</h2>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border">
-			    <a href="/admin" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-			      Get Started
+			    <a href="/admin" class="mdl-button mdl-button--red mdl-js-button mdl-js-ripple-effect">
+			      Admin Login
 			    </a>
 			  </div>
 			</div>
@@ -33,8 +33,8 @@
 			    <h2 class="mdl-card__title-text">Department Interface</h2>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border">
-			    <a href="/department" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-			      Get Started
+			    <a href="/department" class="mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect">
+			      Department Login
 			    </a>
 			  </div>
 			</div>
@@ -45,8 +45,8 @@
 			    <h2 class="mdl-card__title-text">Student Interface</h2>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border">
-			    <a href="/student" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-			      Get Started
+			    <a href="/student" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+			      Student Login
 			    </a>
 			  </div>
 			</div>
@@ -57,7 +57,7 @@
 			    <h2 class="mdl-card__title-text">Account activation</h2>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border">
-			    <a href="/activate" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			    <a href="/activate" class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect">
 			      Activate account
 			    </a>
 			  </div>
@@ -66,4 +66,4 @@
 	</div>
 
 
-    </div> 
+    </div>

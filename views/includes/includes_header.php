@@ -24,6 +24,12 @@
       <span class="mdl-layout-title"><a href="/" style="text-decoration: none; color: black">Elective Manager</a></span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="/about">About</a>
+        <a class="mdl-navigation__link" href="/contact">Contact</a>
+      <a class="mdl-navigation__link" href="/activate">Activate account</a>
+      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">

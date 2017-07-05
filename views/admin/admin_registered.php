@@ -2,11 +2,11 @@
     include_once('views/admin/admin_dashboard.php');
 ?>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
 
-    <div class="demo-card-wide1 mdl-card mdl-shadow--2dp">
+    
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text">View Registered students</h2>
   </div>
@@ -26,7 +26,6 @@
     ?>
     <br><br>On clicking the button the registered students of the particular department will be shown.
   </div>
-</div>
 
 
 

@@ -20,7 +20,7 @@
     </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
@@ -28,8 +28,7 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
-      <nav class="mdl-navigation">
-      
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a href="/department/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> - 
         <a href="/department/profile/publish"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Publish Elective </button></a> - 
       
@@ -48,9 +47,14 @@
   </header>
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/about">About</a>
-      <a class="mdl-navigation__link" href="/contact">Contact</a>
-      <a class="mdl-navigation__link" href="/department">Department Interface</a>
-      <a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" href="/department/change">Change Password</a>
-      </nav>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile">Profile</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/change">Change Password</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/publish">Publish Elective</a>
+      <?php if($_SESSION['usertype'] == "superuser")  { ?>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/register">Register user</a>
+      <?php } ?>
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/logout">Logout</a>
+    </nav>
   </div>

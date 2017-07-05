@@ -2,7 +2,7 @@
     include_once('views/includes/includes_header.php');
 ?>
     <!-- Below scripts added for datepicker -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../../views/design/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.css" />
     <!-- Datepicker scripts ends -->
@@ -16,7 +16,7 @@
     </nav>
   </div>
      
-  <main class="mdl-layout__content mdl-color--grey-100">
+  <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
     <div class="mdl-grid">
@@ -71,11 +71,13 @@
         }
       
 ?>
-    <!-- Registration successful -->
+<!-- Registration successful -->
+<div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
     <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/activate" style="text-decoration: none;">Activate your account here</a>.</span>
 </span>
+</div>
 <?php 
     header("refresh:3;url=/activate");
     }
@@ -91,7 +93,7 @@
          <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
          <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" id="pass" required>
          <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
-         <div style="text-align: center; color:#18aa8d;">Date Of Birth (dd/mm/yyyy)
+         <div style="text-align: center; color:#18aa8d;">Date Of Birth (yyyy-mm-dd)
          <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (yyyy-mm-dd)" type="date" class="date start" required></div>
          <input  class="mdl-textfield_input" type="text" name="regno" placeholder ="Registration No." required>
          <input  class="mdl-textfield_input" type="email" name="email" id="email" placeholder ="Email" required>
