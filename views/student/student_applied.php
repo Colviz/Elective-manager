@@ -7,7 +7,15 @@
 
 <div class="mdl-cell mdl-cell--6-col">
 <center>
-<b>Your priorities for electives are as follows -</b><br>
+<div class="table-responsive">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <b>Your priorities for electives are as follows</b>
+  <thead>
+    <tr>
+    <th>Priority</th>
+    <th>Subject code</th>
+    </tr>
+  </thead>
 <?php
 
           if(!empty($_POST['subpri']))  {
@@ -15,18 +23,24 @@
               $count = $_SESSION['tempcount'];
               //fetching the student cgpi
               $cgpi = Database::studentcgpi($_SESSION['login_user']);
+              
+              echo "<tbody>";
               //printing the cached values
               for($i = 0; $i < $count; $i++) {
                 
-                echo "Priority ".$i." - ";
+                echo '<tr><td>';
+                echo "Priority ".$i."";
+                echo '</td><td>';
                 echo $_POST[$i];
-                echo "<br>";
+                echo '</td></tr">';
 
                 //insert these values in database
                 $ret = Database::insertelectivepriorities($_SESSION['login_user'],$cgpi,$i,$_POST[$i]);
               }
+              echo "</tbody></table></div>";
+
               if($ret ==1) {
-                  echo "<br>Priorities added to database.<br>";
+                  echo "<br><b>Priorities added to database.</b><br>";
                 }
       ?>
     </center>

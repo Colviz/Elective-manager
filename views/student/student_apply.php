@@ -34,25 +34,39 @@
             $count = Database::studentelectivescount($elec,$department);
             $_SESSION['tempcount'] = $count;
             if ($count == 0 || $count == '') {
-              echo "No $elective published at this time<br>Try after sometime.";
+              echo "<center><b>No $elective published at this time<br>Try after sometime.<b></center>";
             }
             else  {
       ?>
     <div class="mdl-cell mdl-cell--6-col">
-    <form class="admlog" action="/student/profile/applied" method="post">
+    <form action="/student/profile/applied" method="post">
     <h1 class="dept">Prioritize <?php echo $elective; ?></h1>
-
-    <center>
+<div class="table-responsive">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+    <th style="text-align: left; font-size: 1.1em;">Priority | Subject code - Subject name - Seats</th>
+    </tr>
+  </thead>
       <?php 
+              echo "<tbody>";
+              echo '<tr><td>';
               for ($i=0; $i < $count; $i++) { 
-                
+              
+              echo "<b>Priority <a>$i</a> </b>- ";
+              
               echo '<select name="'.$i.'" class="go" required>';
-              echo '<option selected="true" disabled="disabled">Select  the course....</option>';
+              echo '<option selected="true" disabled="disabled">Select the course....</option>';
               //fetching published electives
               Database::publishedelectivespriority($elec,$department);
-              echo '</select>';
+              echo '</select><br><br>';
+              
               }
+              echo '</td></tr">';
+              echo "</tbody>";
       ?>
+</table>
+</div>
     <br><br><button name="subpri" value="subpri" class="login" type="submit">Submit priorities</button>
         </form>
 </div>
