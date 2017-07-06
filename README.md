@@ -32,6 +32,7 @@ Calculated from Features to Implement completion percentage.
 - [ ] Add page hits counter
 - [x] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
 - [ ] Store logs for every activity.
+- [ ] Add instructions page.
 
 ### **Admin Interface**
 - [ ] Gets the final list of students selected for each elective.
