@@ -119,11 +119,19 @@ else  {
         if(isset($_POST['update']))  {
             //updating code here
           ?>
-          <div class="mdl-cell mdl-cell--6-col"><br>
+          <div id="elecupdate" class="mdl-cell mdl-cell--6-col"><br>
   <?php
         //fetching the elective details
         $ret = Database::fetchelective($_POST['update']);
+?>
+<script type="text/javascript">
+window.onload = function() {
 
+   document.getElementById('elecupdate').getElementsByTagName('input')[1].focus();
+
+}
+</script>
+<?php
         //catching the return variables
         $ret['0']; //seats
         $ret['1']; //link

@@ -388,7 +388,6 @@ class Database
         }
     }
 
-
     // Student password recovery
     public static function studentrecovery($username,$mobileno,$email) {
         $pdo = Database::connect();
