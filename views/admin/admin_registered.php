@@ -25,14 +25,4 @@
         }
     ?>
     <br><br>On clicking the button the registered students of the particular department will be shown.
-  </div>
-
-
-
-  </div>
-  </main>
-</div>
-
-    <script src="../../views/design/js/material.min.js"></script>
-  </body>
-</html>
+  </div> 

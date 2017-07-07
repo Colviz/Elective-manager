@@ -28,7 +28,7 @@
                 if ($pass == 1)  {
                   
                   //if password updated successfully
-                  echo "Password updated successfully<br>You're being logged out in 5 seconds<br>";
+                  echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";
                   header("refresh:5;url=/admin/logout");
                 }
                 else  {
@@ -59,17 +59,7 @@
             <a href="/admin/forget" style="text-decoration: none" target="_blank">Recover Account?</a>
         </form>
 </div>
+</div>
 <?php
       }
-?>
-
-
-		</div>
-  </div>
-  </main>
-</div>
-
-    <script src="../views/design/js/material.min.js"></script>
-    <script src="../views/design/js/style.js"></script>
-  </body>
-</html>
+?> 

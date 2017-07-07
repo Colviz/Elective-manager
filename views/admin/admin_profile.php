@@ -8,7 +8,6 @@
 
 <!-- Wide card with share menu button -->
 
-<center>
 <div class="mdl-grid">
 
 <div class="mdl-cell mdl-cell--12-col">
@@ -18,7 +17,7 @@
     </h4>
   </div>
   <div class="table-responsive">
-    <table class="mdl-data-table mdl-js-data-table">
+  <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Department</th>
@@ -46,8 +45,8 @@
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Department</th>
       <th>Subject code</th>
-      <th>Subject name</th>
-      <th>Subject Type</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject Type</th>
       <th>Semester</th>
       <th>Total seats</th>
     </tr>
@@ -59,11 +58,5 @@
 </div>
 </div>
 
-
-
 </div>
-</center>
 </div>
-</main>
-</body>
-</html>

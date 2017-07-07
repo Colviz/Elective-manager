@@ -115,6 +115,11 @@ switch ($request_uri[0]) {
         include_once('views/student/student_profile.php');
         break;
 
+        //student password change
+    case '/student/change':
+        include_once('views/student/student_change.php');
+        break;
+
         //student prioritize electives
     case '/student/profile/apply':
         include_once('views/student/student_apply.php');

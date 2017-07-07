@@ -47,18 +47,17 @@
           $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
 
           //sending the email
-          //mail($email, $subject, $message);
-          echo "<p>";
-          echo "Account recovery email sent to $email. <br>";
-          echo "Follow the instructions to reset the password. <br>";
-          echo "</p>";
+          $mailit = Database::mailthedetails($email,$subject,$message);
 
-          //temporarily displaying the contents of the email
-          echo "<p>";
-          echo "<b>Below are the contents of the email</b> - Displaying here temporarily<br>";
-          echo "<b>Subject</b> - $subject<br>";
-          echo "<b>Message</b> - $message<br>";
-          echo "</p>";
+                if($mailit == 1)  {
+                  echo "<p>";
+                  echo "Account recovery email sent to $email. <br>";
+                  echo "Follow the instructions to reset the password. <br>";
+                  echo "</p>";
+                  } 
+                  else  {
+                        echo "Account Recovery mail sending failed<br>";
+                  }
           }
         }
         else  {
