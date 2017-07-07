@@ -14,7 +14,7 @@
 <div class="mdl-cell mdl-cell--12-col">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives - <a><?php  $eleccount = Database::publishedelectivescount($login_session);  
+      Published Electives - <a><?php  $eleccount = Database::publishedelectivescount($login_session,$user_type);  
                                       echo "</a>";
       if($eleccount != 0)  {
       
@@ -36,7 +36,7 @@
     </tr>
   </thead>
   <tbody>
-      <?php  Database::userpublishedelectives($login_session);  ?>
+      <?php  Database::userpublishedelectives($login_session,$user_type);  ?>
   </tbody>
 </table>
 <br>NOTE - Elective can't be deleted once the students has started to apply for it.
@@ -69,7 +69,7 @@ else  {
 <div class="mdl-cell mdl-cell--12-col">
   <div class="mdl-card__supporting-text">
     <h4>
-      Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session);  
+      Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session,$user_type);  
                                     echo "</a>";
 
         if($count != 0)  {
@@ -90,7 +90,7 @@ else  {
     </tr>
   </thead>
   <tbody>
-      <?php  Database::userdeletedelectives($login_session);  ?>
+      <?php  Database::userdeletedelectives($login_session,$user_type);  ?>
   </tbody>
 </table>
 <br>NOTE - Elective details can be updated once its republished.

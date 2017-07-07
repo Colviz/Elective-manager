@@ -17,7 +17,6 @@
 
       $login_session = $user_check;
       $_SESSION['login_user'] = $user_check;
-
       $_SESSION['usertype'] = $user_type;
    }
    

@@ -1,5 +1,4 @@
 <?php
-		//include_once('views/includes/header.php');
     include_once('dbconnect.php');
     include_once('views/department/department_session.php');
 ?>
