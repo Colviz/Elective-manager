@@ -17,7 +17,7 @@
         $password = md5($pass);
         $email = $_POST['email'];
         $mobileno = $_POST['mobileno'];
-        $department = $_POST['department'];
+        $department = Database::departmentcode($login_session);
         //generating the token
         $token = Database::generateRandomString();
         $token = md5($token);
@@ -25,6 +25,7 @@
         //inserts data in users login database       
         $ret = Database::departmentregister($username,$password,$mobileno,$email,$department,$token);
 
+        echo "<center><br><br>";
         //getting the full name of department
         $department = Database::departmentsname($department);
         
@@ -32,7 +33,7 @@
         if ($ret == 1)  {
           
           //if user created successfully
-          echo "<center>Department user created successfully.</center><br>";
+          echo " - Department user created successfully.</center><br>";
           
           //writing the details to variables
           $to = $email;
@@ -66,25 +67,9 @@
 		<input placeholder="Password" name="pass" type="password" required>
 		<input placeholder="Email" name="email" type="email" required>
 		<input placeholder="Mobile no." name="mobileno" pattern="[0-9]{10,10}" type="text" required>
-		<center><!-- This drop down feature here allows the superuser of one department to create normaluser of another, this feature can be vulnerable. This feature can be easily substituted with a secure one. -->
-		<select name="department" required>
-		  <option selected="true" disabled="disabled">Choose Your Department ....</option>
-		  <option value="csed">Computer Science & Engineering</option>
-		  <option value="ched">Chemical Engineering</option>
-		  <option value="civi">Civil Engineering</option>
-		  <option value="eced">Electronics and Communication Engineering</option>
-		  <option value="eeed">Electrical Engineering</option>
-		  <option value="med">Mechanical Engineering</option>
-		  <option value="msed">Materials Science and Engineering</option>
-		  <option value="arch">Architecture</option>
-		  <option value="phys">Physics</option>
-		  <option value="chem">Chemistry</option>
-		  <option value="math">Maths</option>
-		  <option value="huma">Management and Humanities</option>		  
-		</select></center> <br><br>
 
 		<button name="reguser" value="reguser" class="login" type="submit">Create User</button>
-        </form>
+    </form>
 </div>
 <?php
       }

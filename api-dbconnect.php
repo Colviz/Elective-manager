@@ -414,13 +414,13 @@ class Database
     }
 
     //student register
-    public static function studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token)    {
+    public static function studentregister($rollno,$name,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token)    {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO students (rollno,password,fathers_name,dob,reg_no,email,mobile_no,branch,activate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO students (rollno,name,password,fathers_name,dob,reg_no,email,mobile_no,branch,activate) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($rollno,$password,$fname,$dob,$regno,$email,$mobileno,$dept,$token));
+        $q->execute(array($rollno,$name,$password,$fname,$dob,$regno,$email,$mobileno,$dept,$token));
         Database::disconnect();
 
         return 1;
