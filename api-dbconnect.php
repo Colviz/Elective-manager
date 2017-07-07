@@ -583,6 +583,33 @@ class Database
         return $count;
     }
 
+    //deleting student account
+    public static function studentaccountdelete($rollno)   {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM students WHERE rollno = ? AND activate != 1";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($rollno));
+        Database::disconnect();
+        
+        return 1;
+    }
+
+    //checking if student account exists
+    public static function studentaccountcheck($roll)   {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(rollno) AS total FROM students where rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($roll));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count; 
+    }
 
     //Functions for fetching data from database
 

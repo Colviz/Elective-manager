@@ -9,6 +9,7 @@
       <a class="mdl-navigation__link" href="/department">Department Interface</a>
       <a class="mdl-navigation__link" href="/student">Student Interface</a>
       <a class="mdl-navigation__link" href="/activate">Activate account</a>
+      <a class="mdl-navigation__link" href="/faq">FAQ's</a>
     </nav>
   </div>
      

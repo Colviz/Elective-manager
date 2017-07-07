@@ -94,7 +94,8 @@
 
 <button class="login" name="actuser" value="actuser" type="submit">Activate Account</button><br><br>
 <a href="/department/forget" style="text-decoration: none" target="_blank">Department - Forgot Password?</a><br><br>
-<a href="/student/forget" style="text-decoration: none" target="_blank">Student - Forgot Password?</a>
+<a href="/student/forget" style="text-decoration: none" target="_blank">Student - Forgot Password?</a><br><br>
+<a href="/student/delete" style="text-decoration: none" target="_blank">Student, Having trouble activating account?</a>
 </form>
 
 

@@ -1,5 +1,5 @@
 <?php
-	//this is the footer
+	
 
 ?>
 </main>  

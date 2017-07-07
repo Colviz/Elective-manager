@@ -35,6 +35,11 @@ switch ($request_uri[0]) {
         include_once('views/public/public_account_activate.php');
         break;
 
+    //frequently asked questions
+    case '/faq':
+        include_once('views/public/public_faq.php');
+        break;
+
      //Interfaces   
 
     // Admin interface
@@ -88,6 +93,11 @@ switch ($request_uri[0]) {
         //student list 
     case '/student/list':
         include_once('views/student/student_list.php');
+        break;
+
+        //student unregistered account deletion
+    case '/student/delete':
+        include_once('views/student/student_delete.php');
         break;
 
         //student login
