@@ -28,7 +28,7 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="/about">About</a>
         <a class="mdl-navigation__link" href="/contact">Contact</a>
-      <a class="mdl-navigation__link" href="/activate">Activate account</a>
+      <a class="mdl-navigation__link" href="/student/list">Students applied</a>
       </nav>
     </div>
   </header>

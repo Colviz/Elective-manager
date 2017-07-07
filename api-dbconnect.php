@@ -128,6 +128,21 @@ class Database
         return 1;
     }
 
+    //counting no. of admin's
+    public static function admincount() {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(username) AS total FROM users where usertype = 'admin' AND active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count;
+    }
+
 
     //Department Register, Login, Sessions, Password recovery , Change password
 
@@ -291,6 +306,22 @@ class Database
         Database::disconnect();
     }
 
+    //fetching the published subjects codes
+    public static function departmentpublishedelectives()   {
+
+        //fetching the subjects published
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT subj_code,subject_name FROM subjects_published WHERE active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            //<option value="csed">Computer Science & Engineering</option>
+            echo "<option value=".$data['subj_code'].">".$data['subj_code']." - ".$data['subject_name']."</option>"; 
+        }
+        Database::disconnect();
+    }
+
     //publishing the electives
     public static function publishelective($loginuser,$electivetype,$subject,$seats,$link,$semester,$info)   {
 
@@ -320,6 +351,36 @@ class Database
         Database::disconnect();
 
         return 1;
+    }
+
+    //counting no. of departments registered
+    public static function departmentcount() {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(username) AS total FROM users where usertype = 'superuser' AND active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count;
+    }
+
+    //counting no. of department users
+    public static function departmentuserscount() {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(username) AS total FROM users where usertype != 'admin' AND active = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count;
     }
 
 
@@ -460,6 +521,66 @@ class Database
         Database::disconnect();
 
         return $cgpi;
+    }
+
+    //fetching students name from rollno
+    public static function studentsname($rollno)    {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT name FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($rollno));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $name = $data['name'];
+        Database::disconnect();
+
+        return $name;
+    }
+
+    //fetching students branch from rollno
+    public static function studentsbranch($rollno)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT branch FROM students WHERE rollno = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($rollno));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $branch = $data['branch'];
+        Database::disconnect();
+
+        return $branch;
+    }
+
+    //counting no. of registered students
+    public static function studentscount() {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(rollno) AS total FROM students where activate = 1";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count;
+    }
+
+    //counting no. of students filling priorities
+    public static function studentsprioritycount() {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(rollno) AS total FROM priorities";
+        $q = $pdo->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+        
+        return $count;
     }
 
 
@@ -701,6 +822,49 @@ class Database
         return array($seats,$link,$info,$semester,$code,$name);
     }
 
+    //counting the users applied for an elective
+    public static function fetchstudentsappliedcount($code)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT count(*) AS total FROM priorities where subj_code = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        $count = $data['total'];
+        Database::disconnect();
+
+        return $count;
+    }
+
+    //fetching the users applied for an elective
+    public static function fetchstudentsapplied($code)  {
+
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT rollno,priority FROM `priorities` where subj_code = ? order by priority ASC";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($code));
+        while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+            echo '<tr><td class="mdl-data-table__cell--non-numeric">';
+            echo $data['rollno'];
+            echo '</td><td class="mdl-data-table__cell--non-numeric">';
+
+            //getting students name
+            $name = Database::studentsname($data['rollno']);
+            echo $name;
+            echo '</td><td class="mdl-data-table__cell--non-numeric">';
+
+            //getting students branch
+            $branch = Database::studentsbranch($data['rollno']);
+            $branch = Database::departmentsname($branch);
+            echo '</td><td>';
+            echo $data['priority'];            
+            echo "</td></tr>";
+        }
+        Database::disconnect();
+    }
+
     //counting the no. of electives to be displayed
     public static function studentelectivescount($type,$department)  {
 
@@ -873,8 +1037,12 @@ class Database
             echo "</td><td>";
             $applied = Database::studentsappliesforelective($data['subj_code']);
             echo $applied;
+            echo '<form class="update" action="/student/list" method="post">';
+            echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo $code;
+            echo '" name="code">View list</button></form>';
             echo "</td><td>";
-            //deactivating the elective
+            //deleting the priority
             echo '<form class="update" action="" method="post">';
             echo '<button class="mdl-button mdl-button--red mdl-js-button mdl-js-ripple-effect" type="submit" value="';
             echo $code;

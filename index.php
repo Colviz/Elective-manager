@@ -85,6 +85,11 @@ switch ($request_uri[0]) {
         include_once('views/student/student_index.php');
         break;
 
+        //student list 
+    case '/student/list':
+        include_once('views/student/student_list.php');
+        break;
+
         //student login
     case '/student/login':
         include_once('views/student/student_login.php');

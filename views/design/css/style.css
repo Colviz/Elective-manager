@@ -54,6 +54,18 @@ h1{
   text-align: center;
 }
 
+h3{
+  height: auto;
+  width: 85%;
+  font-size: 25px;
+  background: #18aa8d;
+  color: white;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+  text-align: center;
+}
+
 form {
   box-sizing: border-box;
   width: 350px;
@@ -171,6 +183,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 }
 .go { }
 #elecupdate {  }
+#displaylist {  }
 
 
 /** responsiveness **/
