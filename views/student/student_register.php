@@ -33,12 +33,13 @@
                 if($captcha == 1) {
       
         //collecting values
-        $rollno= $_POST['rollno'];
+        $rollno = $_POST['rollno'];
+        $name = $_POST['sname'];
         $password = md5($_POST['pass']);
-        $fname=$_POST['fname'];
-        $regno=$_POST['regno'];
-        $dob=$_POST['dob'];
-        $dept=$_POST['dept'];
+        $fname = $_POST['fname'];
+        $regno = $_POST['regno'];
+        $dob = $_POST['dob'];
+        $dept = $_POST['dept'];
         $email = $_POST['email'];
         $mobileno = $_POST['no'];
 
@@ -46,7 +47,7 @@
         $token = md5($token);
 
         //inserts data in students database       
-        $ret = Database::studentregister($rollno,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
+        $ret = Database::studentregister($rollno,$name,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
   
          if ($ret == 1)  {
           
@@ -88,13 +89,14 @@
     else {
 ?>
 
-<form class="studreg" action="/student/register" method="post">
+<form id="trial" class="studreg" action="/student/register" method="post">
          <h1 class="studentreg">Student Registration</h1>
          <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+         <input  class="mdl-textfield_input" type="text" name="sname"  placeholder ="Your Name" required>
          <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" id="pass" required>
          <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
          <div style="text-align: center; color:#18aa8d;">Date Of Birth (yyyy-mm-dd)
-         <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (yyyy-mm-dd)" type="date" class="date start" required></div>
+         <input  class="mdl-textfield_input" name="dob" placeholder ="Date Of Birth (yyyy-mm-dd)" type="date" required></div>
          <input  class="mdl-textfield_input" type="text" name="regno" placeholder ="Registration No." required>
          <input  class="mdl-textfield_input" type="email" name="email" id="email" placeholder ="Email" required>
          <input  class="mdl-textfield_input" placeholder ="Moblie Number" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>        
@@ -119,14 +121,7 @@
         <button class="login" name="stureg" value="stureg" type="submit">
             Register
           </button>
-        </form>     
-        <script>
-                $('#jqueryExample .date').datepicker({
-                    'format': 'yyyy/m/d',
-                    'autoclose': true
-                });
-        </script>
-      
+        </form>           
 <?php
     }
 ?>
