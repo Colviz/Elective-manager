@@ -1,4 +1,4 @@
-<?php 	
+<?php   
 //This file is a mirror file of dbconnect.php
 //This file is not being used anywhere, but dbconnect.php is being used for database connectivity and contains all kinds of functions being used
 class Database
@@ -956,12 +956,27 @@ class Database
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO priorities (rollno,cgpi,subj_code,priority) VALUES (?, ?, ?, ?)";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($user,$cgpi,$subjcode,$priority));
-        Database::disconnect();
+        $new = "SELECT subj_code,priority FROM priorities WHERE rollno = ? AND subj_code = ?"; 
+        $n = $pdo->prepare($new);
+        $n->execute(array($user,$subjcode));
+        $data = $n->fetch(PDO::FETCH_ASSOC);
+        $count = $data['subj_code'];
+        $pre = $data['priority'];
+        
+        if($data > 0)
+        {
+            
+            Database::disconnect();
+        }
+        else {
+            
+            $sql = "INSERT INTO priorities (rollno,cgpi,subj_code,priority) VALUES (?, ?, ?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($user,$cgpi,$subjcode,$priority));
+            Database::disconnect();
 
-        return 1;
+            return 1;
+        }
     }
 
     //deactivating the elective
