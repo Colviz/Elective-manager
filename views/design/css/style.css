@@ -34,7 +34,7 @@ body  {
   color: #fff;
 }
 .demo-card-wide1 {
-  width: 90%;
+  width: auto;
   padding-top: 4%;
   padding-left: 2%;
   padding-right: 2%;

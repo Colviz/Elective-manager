@@ -21,7 +21,6 @@
       
       //automatic login if session is set
       session_start();
-      echo $_SESSION['login_user'];
       
       if(isset($_SESSION['login_user']))  {
 
