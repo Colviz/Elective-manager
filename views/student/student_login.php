@@ -30,6 +30,7 @@
       
         //collecting values
         $rollno = $_POST['rollno'];
+        $rollno = strtolower($rollno);
         $password = md5($_POST['pass']);
         
        //inserts data in user database       
@@ -61,7 +62,7 @@
 
 <form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
-<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,11}" type="text" required>
 <input placeholder="Password" name="pass" type="password" required>
 
 <button class="login" type="submit" name="stulog" value="stulog">Login</button><br><br>

@@ -30,10 +30,11 @@
         $captcha = Database::reCAPTCHAvalidate($captcha);
 
         //checking for the recaptcha value
-                if($captcha == 1) {
+        if($captcha == 1) {
       
         //collecting values
         $rollno = $_POST['rollno'];
+        $rollno = strtolower($rollno);
         $name = $_POST['sname'];
         $password = md5($_POST['pass']);
         $fname = $_POST['fname'];
@@ -52,7 +53,7 @@
          if ($ret == 1)  {
           
           //if user created successfully
-          echo " User created successfully<br>";
+          echo "User created successfully<br>";
           $to = $email;
           $subject = "Student account activation - nith.ac.in";
           $message = "Your Roll no. - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
@@ -91,7 +92,7 @@
 
 <form id="trial" class="studreg" action="/student/register" method="post">
          <h1 class="studentreg">Student Registration</h1>
-         <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+         <input class="mdl-textfield_input" placeholder="Roll Number" name="rollno" pattern="[A-Za-z0-9]{1,11}" type="text" required>
          <input  class="mdl-textfield_input" type="text" name="sname"  placeholder ="Your Name" required>
          <input class="mdl-textfield_input" type="password" placeholder ="password" name="pass" id="pass" required>
          <input  class="mdl-textfield_input" type="text" name="fname"  placeholder ="Father's Name" required>
