@@ -1058,7 +1058,7 @@ class Database
     }
 
     //applied for electives
-    public static function appliedforelectives($user)    {
+    public static function appliedforelectives($user,$count)    {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -1069,6 +1069,7 @@ class Database
             echo '<tr><td class="mdl-data-table__cell--non-numeric">';
             $code = $data['subj_code'];
             echo $data['subj_code'];
+            $pri = $data['priority'];
             $subname = Database::departmentsubjectname($data['subj_code']);
             echo '</td><td class="mdl-data-table__cell--non-numeric">';
             echo $subname;
@@ -1079,20 +1080,137 @@ class Database
             echo "</td><td>";
             $applied = Database::studentsappliesforelective($data['subj_code']);
             echo $applied;
-            echo '<form class="update" action="/student/list" method="post">';
-            echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
-            echo $code;
-            echo '" name="code">View list</button></form>';
             echo "</td><td>";
-            //deleting the priority
+
+            // updating the elective
+            if($count == ($pri + 1)){
+                echo '<form class="update" action="" method="post">';
+            echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo $pri;
+            echo '" name="up">&#8679</button>';
+            echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
+            echo $pri;
+            echo '" name="down">&#8681</button></form>';
+            echo "</td><td>";
+            }
+            
+            else if ($pri == 0){
+                echo '<form class="update" action="" method="post">';
+            echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
+            echo $pri;
+            echo '" name="up">&#8679</button>';
+            echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit"  value="';
+            echo $pri;
+            echo '" name="down">&#8681</button></form>';
+            echo "</td><td>";
+            } 
+            
+            else if ($count == 1){
+                echo '<form class="update" action="" method="post">';
+            echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
+            echo $pri;
+            echo '" name="up">&#8679</button>';
+            echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
+            echo $pri;
+            echo '" name="down">&#8681</button></form>';
+            echo "</td><td>";
+            }
+
+            else{
+                echo '<form class="update" action="" method="post">';
+                echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                echo $pri;
+                echo '" name="up">&#8679</button>';
+                echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                echo $pri;
+                echo '" name="down">&#8681</button></form>';
+                echo "</td><td>";
+            }
+            //deactivating the elective
             echo '<form class="update" action="" method="post">';
             echo '<button class="mdl-button mdl-button--red mdl-js-button mdl-js-ripple-effect" type="submit" value="';
             echo $code;
             echo '" name="delete">Delete</button></form>';
-            echo "</td></tr>";
-        }
+            echo "</td></td>";
+        }    
         Database::disconnect();
     }
+
+    //upgrade student priority
+    public static function upstudentpriority($pri,$user){
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pre = $pri - 1;
+        
+            
+        //fetching subject code of selected priority
+        $roll1 =  "SELECT subj_code FROM priorities WHERE priority = ? AND rollno = ?";
+        $query1 = $pdo->prepare($roll1);
+        $query1->execute(array($pri,$user));
+        $data1 = $query1->fetch(PDO::FETCH_ASSOC);   
+        $sub1 = $data1['subj_code'];
+        
+        // fetching subj.code of lower priority than selected priority
+        $roll2 =  "SELECT subj_code FROM priorities WHERE priority = ? AND rollno = ?";
+        $query2 = $pdo->prepare($roll2);
+        $query2->execute(array($pre,$user));
+        $data2 = $query2->fetch(PDO::FETCH_ASSOC);   
+        $sub2 = $data2['subj_code'];
+
+        // initializing a third variable to swap the values of priorities
+        $temp = $pri;
+        
+        // updating priorities
+        $sql1 = "UPDATE priorities SET priority = ? WHERE rollno = ? AND subj_code = ?";
+        $q1 = $pdo->prepare($sql1);
+        $q1->execute(array($pre,$user,$sub1));
+        $sql2 = "UPDATE priorities SET priority = ? WHERE rollno = ? AND subj_code = ?";
+        $q2 = $pdo->prepare($sql2);
+        $q2->execute(array($temp,$user,$sub2));
+
+        Database::disconnect();
+        return 1;
+    }
+
+    //downgrade student priority
+    public static function downstudentpriority($pri,$user) {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $next = $pri + 1;
+
+            
+        // fetching subject code of selected priority
+        $roll1 =  "SELECT subj_code FROM priorities WHERE priority = ? AND rollno = ?";
+        $query1 = $pdo->prepare($roll1);
+        $query1->execute(array($pri,$user));
+        $data1 = $query1->fetch(PDO::FETCH_ASSOC);   
+        $sub1 = $data1['subj_code'];
+        
+        
+        // fetching subj.code of lower priority than selected priority
+        $roll2 =  "SELECT subj_code FROM priorities WHERE priority = ? AND rollno = ?";
+        $query2 = $pdo->prepare($roll2);
+        $query2->execute(array($next,$user));
+        $data2 = $query2->fetch(PDO::FETCH_ASSOC);   
+        $sub2 = $data2['subj_code'];
+        
+
+        // initializing a third variable to swap the values of priorities
+        $temp = $pri;
+        
+        // updating priorities
+        $sql1 = "UPDATE priorities SET priority = ? WHERE rollno = ? AND subj_code = ?";
+        $q1 = $pdo->prepare($sql1);
+        $q1->execute(array($next,$user,$sub1));
+        $sql2 = "UPDATE priorities SET priority = ? WHERE rollno = ? AND subj_code = ?";
+        $q2 = $pdo->prepare($sql2);
+        $q2->execute(array($temp,$user,$sub2));
+
+        Database::disconnect();
+
+        return 1;
+    }
+
 
     //delete user priority
     public static function deletepriority($code,$user) {

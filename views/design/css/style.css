@@ -1,7 +1,7 @@
 body  {
   background-color: rgb(245,245,245);
 }
-.mdl-layout__content  {
+mdl-layout__content  {
   width: 100%;
 }
 .page-content {
@@ -177,6 +177,8 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 }
 .mdl-button--red  {
   color: red;
+}
+.new-button {
 }
 .mdl-button--blue  {
   color: blue;

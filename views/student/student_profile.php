@@ -64,6 +64,7 @@
 <?php
     }
 ?>
+
 <div class="mdl-grid">
 <div class="mdl-cell">
   <div class="mdl-card__supporting-text">
@@ -71,10 +72,32 @@
                                                  echo "</a>"; 
         if($count !=0 )  {
     ?>
-    </h4>
+    </h4> <?php if (isset($_POST['up']) || isset($_POST['down'])) {
+
+        //updating the user priority
+        if(isset($_POST['up'])) {
+          $upd = Database::upstudentpriority($_POST['up'],$_SESSION['login_user']);
+          if ($upd == 1) {
+          echo "<center><b>Elective priority updated</b></center>";
+          }
+          else  {
+          echo "<center><b>Failed to update Elective priority.</b></center>";
+          }  
+        }
+        else {
+          $dwd = Database::downstudentpriority($_POST['down'],$_SESSION['login_user']);
+          if ($dwd == 1) {
+          echo "<center><b>Elective priority updated</b></center>";
+          }
+          else  {
+          echo "<center><b>Failed to update Elective priority.</b></center>";
+          }
+        }
+        
+      } ?>
   </div>
   <div class="table-responsive">
-  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <table id="mytable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Subject code</th>
@@ -82,11 +105,12 @@
       <th>Priority</th>
       <th>CGPI</th>
       <th>Students applied</th>
+      <th>Update</th>
       <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-        <?php  Database::appliedforelectives($_SESSION['login_user']);   ?>
+        <?php  Database::appliedforelectives($_SESSION['login_user'],$count);   ?>
   </tbody>
 </table>
 <?php
@@ -107,6 +131,8 @@
           echo "<center><b>Failed to delete Elective priority.</b></center>";
         }
       }
+
+      
 ?>
 
 
