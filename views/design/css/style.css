@@ -184,7 +184,9 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 .go { }
 #elecupdate {  }
 #displaylist {  }
-
+#snackbar {
+  bottom : 8%;
+}
 
 /** responsiveness **/
 
@@ -230,5 +232,8 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
     .table-responsive > .table-bordered > tbody > tr:last-child > td,
     .table-responsive > .table-bordered > tfoot > tr:last-child > td {
         border-bottom: 0;
+    }
+    #snackbar {
+      bottom : 0;
     }
 }

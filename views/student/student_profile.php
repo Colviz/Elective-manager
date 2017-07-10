@@ -1,7 +1,33 @@
 <?php
     include_once('views/student/student_dashboard.php');
-?>
-     
+
+      //if elective is deleted
+      if (isset($_POST['delete'])) {
+        
+        //deleting the user priority
+        $dlt = Database::deletepriority($_POST['delete'],$_SESSION['login_user']);
+
+        if ($dlt == 1) {
+          ?>
+          <!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Elective priority deleted.'};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
+          <?php
+        }
+      }
+?>   
   <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
@@ -94,20 +120,6 @@
 ?>
 </div>
 </div>
-<?php
-      if (isset($_POST['delete'])) {
-        
-        //deleting the user priority
-        $dlt = Database::deletepriority($_POST['delete'],$_SESSION['login_user']);
-
-        if ($dlt == 1) {
-          echo "<center><b>Elective priority deleted <a href=''> Click here</a>.</b></center>";
-        }
-        else  {
-          echo "<center><b>Failed to delete Elective priority.</b></center>";
-        }
-      }
-?>
 
 
 </div>
