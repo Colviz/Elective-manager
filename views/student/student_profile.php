@@ -8,19 +8,83 @@
         if(isset($_POST['up'])) {
           $upd = Database::upstudentpriority($_POST['up'],$_SESSION['login_user']);
           if ($upd == 1) {
-          echo "<center><b>Elective priority updated</b></center>";
+          ?>
+          <!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Elective priority updated.',timeout: 4000};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
+          <?php
           }
           else  {
-          echo "<center><b>Failed to update Elective priority.</b></center>";
+          ?>
+          <!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Failed ro update elective priority',timeout: 4000};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
+          <?php
           }  
         }
         else {
           $dwd = Database::downstudentpriority($_POST['down'],$_SESSION['login_user']);
           if ($dwd == 1) {
-          echo "<center><b>Elective priority updated</b></center>";
+          ?>
+          <!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Elective priority updated.',timeout: 4000};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
+          <?php
           }
           else  {
-          echo "<center><b>Failed to update Elective priority.</b></center>";
+          ?>
+          <!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Failed ro update elective priority',timeout: 4000};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
+          <?php
           }
         }
       } 

@@ -1099,7 +1099,7 @@ class Database
             return $count;
         }
 
-        //applied for electives
+    //applied for electives
     public static function appliedforelectives($user,$count)    {
 
         $pdo = Database::connect();
@@ -1129,10 +1129,10 @@ class Database
                 echo '<form class="update" action="" method="post">';
             echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
             echo $pri;
-            echo '" name="up">&#8679</button>';
+            echo '" name="up">&#x25B2;</button>';
             echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
             echo $pri;
-            echo '" name="down">&#8681</button></form>';
+            echo '" name="down">&#x25BC;</button></form>';
             echo "</td><td>";
             }
             
@@ -1140,10 +1140,10 @@ class Database
                 echo '<form class="update" action="" method="post">';
             echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
             echo $pri;
-            echo '" name="up">&#8679</button>';
+            echo '" name="up">&#x25B2;</button>';
             echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit"  value="';
             echo $pri;
-            echo '" name="down">&#8681</button></form>';
+            echo '" name="down">&#x25BC;</button></form>';
             echo "</td><td>";
             } 
             
@@ -1151,10 +1151,10 @@ class Database
                 echo '<form class="update" action="" method="post">';
             echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
             echo $pri;
-            echo '" name="up">&#8679</button>';
+            echo '" name="up">&#x25B2;</button>';
             echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" disabled value="';
             echo $pri;
-            echo '" name="down">&#8681</button></form>';
+            echo '" name="down">&#x25BC;</button></form>';
             echo "</td><td>";
             }
 
@@ -1162,10 +1162,10 @@ class Database
                 echo '<form class="update" action="" method="post">';
                 echo '<button title = "Move priority Up" class="new-button mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
                 echo $pri;
-                echo '" name="up">&#8679</button>';
+                echo '" name="up">&#x25B2;</button>';
                 echo '<button title = "Move priority Down" class="new-button mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
                 echo $pri;
-                echo '" name="down">&#8681</button></form>';
+                echo '" name="down">&#x25BC;</button></form>';
                 echo "</td><td>";
             }
             //deactivating the elective
