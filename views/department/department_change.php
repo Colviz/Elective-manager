@@ -22,7 +22,31 @@
         if ($pass == 1)  {
           
           //if password updated successfully
-          echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";
+          ?>
+          <br><center>
+          <!-- success snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Password updated <a style="color: blue; text-decoration: none;">successfully. </a>Logging you out in <a style="text-decoration: none;">5 seconds</a>.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Password updated successfully. You are being logged out in 5 seconds.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+          <?php
           header("refresh:5;url=/department/logout");
           
         }

@@ -34,7 +34,32 @@
             $count = Database::studentelectivescount($elec,$department);
             $_SESSION['tempcount'] = $count;
             if ($count == 0 || $count == '') {
-              echo "<center><b>No $elective published at this time<br>Try after sometime.<b></center>";
+              //echo "<center><b>No $elective published at this time<br>Try after sometime.<b></center>";
+              ?>
+              <br><center>
+              <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+              <span class="mdl-chip__text">No <a style="text-decoration: none;"><?php echo $elective; ?></a> published at this time. Try after some time.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'No <?php echo $elective; ?> published at this time. Try after some time.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+              <?php
             }
             else  {
       ?>

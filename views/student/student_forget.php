@@ -16,7 +16,7 @@
     <!-- Your content goes here -->
     <div class="mdl-grid">
 <?php
-        if ( !empty($_POST)) {
+        if (isset($_POST['sturec'])) {
 
       
         //collecting values
@@ -51,24 +51,117 @@
           $mailit = Database::mailthedetails($email,$subject,$message);
 
                 if($mailit == 1)  {
-                  echo "<p>";
-                  echo "Account recovery email sent to $email. <br>";
-                  echo "Follow the instructions to reset the password. <br>";
-                  echo "</p>";
+                  //echo "Account recovery email sent to $email. <br>";
+                  ?>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+                      <span class="mdl-chip__text">Account recovery email sent to <a style="text-decoration: none;"><?php echo $email; ?></a>.</span>
+                  </span>
+                  </div>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+                      <span class="mdl-chip__text">Follow the instruction in email to reset the <a style="color: blue; text-decoration: none;">Password</a>.</span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Account recovery email sent to <?php echo $email; ?>.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Follow the instruction in email to reset the password.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
+                  <?php
                   } 
                   else  {
-                        echo "Account Recovery mail sending failed<br>";
+                        //echo "Account Recovery mail sending failed<br>";
+                    ?>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+                      <span class="mdl-chip__text">Account recovery email sending <a style="text-decoration: none;">failed</a>.</span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Account recovery email sending failed.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
+                  <?php
                   }
           }
         }
         else  {
         
 ?>
-    <!-- Registration successful -->
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-    <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
-</span>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+                    <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Incorrect input fields, password recovery failed.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
 <?php
     }
   }
@@ -77,25 +170,12 @@
       <div class="mdl-cell mdl-cell--6-col">
       
         <form class="admlog" action="/student/forget" method="post">
-        <h3>Student Password recovery</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
-            <label class="mdl-textfield__label" for="uname">Username/Roll No.</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="email" name="email" id="email" required>
-            <label class="mdl-textfield__label" for="email">Email</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
-            <label class="mdl-textfield__label" for="no">Mobile no.</label>
-            </div>
-            <!-- Raised button with ripple -->
-            <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
-            Submit
-          </button>
-          </div>
+        <h1 class="dept">Student Password recovery</h1>
+        <input placeholder="Roll No" name="uname" pattern="[A-Za-z0-9]{1,11}" type="text" required>
+        <input placeholder="Email" type="email" name="email" id="email" required>
+        <input placeholder="Mobile no." type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
+
+        <button class="login" type="submit" name="sturec" value="sturec">Recover Account</button><br><br>
         </form>
       </div>
       <?php

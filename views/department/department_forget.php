@@ -50,26 +50,115 @@
           $mailit = Database::mailthedetails($email,$subject,$message);
 
                 if($mailit == 1)  {
-                  echo "<p>";
-                  echo "Account recovery email sent to $email. <br>";
-                  echo "Follow the instructions to reset the password. <br>";
-                  echo "</p>";
+                  ?>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+                      <span class="mdl-chip__text">Account recovery email sent to <a style="text-decoration: none;"><?php echo $email; ?></a>.</span>
+                  </span>
+                  </div>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+                      <span class="mdl-chip__text">Follow the instruction in email to reset the <a style="color: blue; text-decoration: none;">Password</a>.</span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Account recovery email sent to <?php echo $email; ?>.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Follow the instruction in email to reset the password.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
+                  <?php
                   } 
                   else  {
-                        echo "Account Recovery mail sending failed<br>";
+                        ?>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+                      <span class="mdl-chip__text">Account recovery email sending <a style="text-decoration: none;">failed</a>.</span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Account recovery email sending failed.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
+                  <?php
                   }
           }
         }
         else  {
         
 ?>
-<!-- Recovery unsuccessful -->
-<div class="snippet">
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-    <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
-</span>
-</div>
+                  <div class="mdl-cell mdl-cell--12-col">
+                  <br><center>
+                  <!-- success/failure snippet -->
+                  <div class="snippet">
+                  <span class="mdl-chip mdl-chip--contact">
+                    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+                    <span class="mdl-chip__text">Incorrect Input fields <a style="color: blue; text-decoration: none;">Password Recovery Failed.</a></span>
+                  </span>
+                  </div></center>
+                  <!-- Snackbar starts -->
+                  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                  </div>
+
+                  <script>
+                  r(function(){
+                      var snackbarContainer = document.querySelector('#snackbar');
+                      var data = { message: 'Incorrect input fields, password recovery failed.'};
+                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                  });
+                  function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+                  </script>
+                  <!-- Snackbar ends -->
+                  </div>
 <?php
     }
   }

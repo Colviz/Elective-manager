@@ -30,6 +30,7 @@
       
         //collecting values
         $rollno = $_POST['rollno'];
+        $rollno = strtolower($rollno);
         $password = md5($_POST['pass']);
         
        //inserts data in user database       
@@ -46,13 +47,29 @@
         else  {
         
 ?>
-<!-- Registration unsuccessful -->
+<br>
+<!-- Login unsuccessful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Check if your account exists <a href="/student/delete" style="text-decoration: none;">Here</a>.</span>
+    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> <a href="/student/delete" style="text-decoration: none;">Check if your account exists</a>.</span>
 </span>
 </div>
+<!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Incorrect Username/Password. Check if your account exists.'};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
 <?php
     }
   }
@@ -61,7 +78,7 @@
 
 <form class="admlog" action="/student/login" method="post">
 <h1 class="dept">Student login</h1>
-<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,7}" type="text" required>
+<input placeholder="Roll No" name="rollno" pattern="[A-Za-z0-9]{1,11}" type="text" required>
 <input placeholder="Password" name="pass" type="password" required>
 
 <button class="login" type="submit" name="stulog" value="stulog">Login</button><br><br>

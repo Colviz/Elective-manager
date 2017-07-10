@@ -21,10 +21,60 @@
             $publish = Database::publishelective($_SESSION['login_user'],$type,$subject,$seats,$link,$semester,$info);
 
             if($publish == 1)  {
-              echo "<center><b>Elective successfully published.</b></center><br>";
+              ?>
+                <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Elective successfully added to <a style="color: blue; text-decoration: none;">Database</a>.</span>
+          </span>
+          </div>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Elective successfully added to database.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+          <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/department/profile">Go to your Profile</a></center>
+                <?php
             }
             else  {
-              echo "<center><b>Elective publishing failed.</b></center><br>";
+              ?>
+                <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+              <span class="mdl-chip__text">Elective publishing <a style="color: blue; text-decoration: none;">failed</a>.</span>
+          </span>
+          </div>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Elective publishing failed.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+          <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/department/profile">Go to your Profile</a></center>
+                <?php
             }
           }
 

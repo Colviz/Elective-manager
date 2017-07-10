@@ -34,7 +34,7 @@ mdl-layout__content  {
   color: #fff;
 }
 .demo-card-wide1 {
-  width: 90%;
+  width: auto;
   padding-top: 4%;
   padding-left: 2%;
   padding-right: 2%;
@@ -186,11 +186,13 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 .go { }
 #elecupdate {  }
 #displaylist {  }
-
+#snackbar {
+  bottom : 8%;
+}
 
 /** responsiveness **/
 
-@media screen and (max-width: 1280px) {  
+@media screen and (max-width: 1360px) {  
   .table-responsive {
         width: 100%;
         overflow-y: hidden;
@@ -232,5 +234,8 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
     .table-responsive > .table-bordered > tbody > tr:last-child > td,
     .table-responsive > .table-bordered > tfoot > tr:last-child > td {
         border-bottom: 0;
+    }
+    #snackbar {
+      bottom : 0;
     }
 }

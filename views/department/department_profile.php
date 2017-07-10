@@ -1,10 +1,173 @@
 <?php
     include_once('views/department/department_dashboard.php');
 ?>
-     
+ 
   <main class="mdl-layout__content">
     <div class="page-content">
     <!-- Your content goes here -->
+    <?php
+      //deactivating the elective
+        if(isset($_POST['delete']))  {
+
+          $dlt = Database::deactivateelective($_POST['delete']);
+
+          if($dlt == 1) {
+            ?>
+            <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Elective successfully <a style="color: blue; text-decoration: none;">Deleted</a>.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Elective successfully deleted.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+            <?php
+          }
+          else {
+            ?>
+            <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Failed to delete Elective.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Failed to delete elective.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+            <?php
+          }
+        }
+
+        //republishing the deleted elective
+        if(isset($_POST['republish']))  {
+
+          $rep = Database::republishelective($_POST['republish']);
+
+          if($rep == 1) {
+            ?>
+            <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Elective successfully <a style="color: blue; text-decoration: none;">Republished</a>.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Elective successfully republished.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+            <?php
+          }
+          else {
+            ?>
+            <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Failed to Republish elective.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Failed to republish elective.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+            <?php
+          }
+        }
+
+        //updating electives values
+        if(isset($_POST['upelec'])) {
+          //catching values
+                $_POST['seats'];
+                $_POST['link'];
+                $_POST['info'];
+                $_POST['sem'];
+                $_POST['upelec'];
+
+      //updating values in database
+      $ret = Database::updateelective($_POST['seats'],$_POST['link'],$_POST['info'],$_POST['sem'],$_POST['upelec']);
+                if($ret == 1)  {
+                  ?>
+                  <br><center>
+          <!-- success/failure snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Elective successfully <a style="color: blue; text-decoration: none;">Updated</a>.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Elective successfully updated.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+                  <?php
+                }
+        }
+?>    
 
 <!-- Wide card with share menu button -->
 
@@ -26,10 +189,11 @@
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Subject code</th>
-      <th>Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject type</th>
       <th>Semester</th>
-      <th>Link</th>
-      <th>Info</th>
+      <th class="mdl-data-table__cell--non-numeric">Link</th>
+      <th class="mdl-data-table__cell--non-numeric">Info</th>
       <th>Total seats</th>
       <th>Update</th>
       <th>Delete</th>
@@ -50,20 +214,6 @@ else  {
 </div>
 </div>
 
-<?php
-      //deactivating the elective
-        if(isset($_POST['delete']))  {
-
-          $dlt = Database::deactivateelective($_POST['delete']);
-
-          if($dlt == 1) {
-            echo "<center><b>Elective deleted.</b></center>";
-          }
-          else {
-            echo "<center><b>Failed to delete elective.</b></center>";
-          }
-        }
-?>
 
 <!-- Delete electives -->
 <div class="mdl-cell mdl-cell--12-col">
@@ -81,10 +231,11 @@ else  {
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Subject code</th>
-      <th>Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject type</th>
       <th>Semester</th>
-      <th>Link</th>
-      <th>Info</th>
+      <th class="mdl-data-table__cell--non-numeric">Link</th>
+      <th class="mdl-data-table__cell--non-numeric">Info</th>
       <th>Total seats</th>
       <th>Republish</th>
     </tr>
@@ -102,19 +253,7 @@ else  {
 </div>
 
 
-  <?php
-        //republishing the deleted elective
-        if(isset($_POST['republish']))  {
-
-          $rep = Database::republishelective($_POST['republish']);
-
-          if($rep == 1) {
-            echo "<center><b>Elective republished <a href=''> Click here</a>.</b></center>";
-          }
-          else {
-            echo "<center><b>Failed to republish elective.</b></center>";
-          }
-        }
+  <?php        
         //updating the elective
         if(isset($_POST['update']))  {
             //updating code here
@@ -154,37 +293,8 @@ window.onload = function() {
 </div>
 <?php
     }
-
-        //catching the values from the form above
-        if(isset($_POST['upelec']))  {
-          ?>
-          <div class="mdl-cell mdl-cell--6-col"><br>
-          <?php
-                //catching values
-                $_POST['seats'];
-                $_POST['link'];
-                $_POST['info'];
-                $_POST['sem'];
-                $_POST['upelec'];
-
-                //updating values in database
-                $ret = Database::updateelective($_POST['seats'],$_POST['link'],$_POST['info'],$_POST['sem'],$_POST['upelec']);
-                if($ret == 1)  {
-                    ?>
-<!-- Update successful -->
-<div class="snippet">
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">s</span>
-    <span class="mdl-chip__text">Elective Updation <a style="color: blue; text-decoration: none;">Successful.</a> <a href="/department/profile">Click here</a></span>
-</span>
-</div>
-<?php
-    }
 ?>
 </div>
-<?php            
-  }
-?>
 
   		
 

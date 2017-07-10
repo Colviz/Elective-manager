@@ -9,19 +9,18 @@
    
    //checking in database username
    if(!empty($user_check))  {
-   $stuses = Database::studentsession($user_check);
+      $stuses = Database::studentsession($user_check);
    }
 
    if($stuses == 1)  {
 
       $login_session = $user_check;
       $_SESSION['login_user'] = $user_check;
-      //echo "session set as $login_session<br>";
+      
    }
    
-   if(!isset($_SESSION['login_user'])|| $login_session=='')
+   if(!isset($_SESSION['login_user'])|| $login_session=='' || $stuses != 1)
    {
-      header("location:/student/login");
-      //echo "no login user set<br>";
+      header("location:/student/logout");
    }
 ?>

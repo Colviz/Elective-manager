@@ -42,6 +42,8 @@
         else {
 
           //student account activation          
+          //student roll no.'s are in lowecase
+          $username = strtolower($username);
           $ret = Database::studentactivation($username,$password,$email,$activation);
         }
 
