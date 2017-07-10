@@ -49,7 +49,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'User account created successfully.'};
+              var data = { message: 'User account created successfully.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -78,7 +78,7 @@
             <script>
             r(function(){
                 var snackbarContainer = document.querySelector('#snackbar');
-                var data = { message: 'Account confirmation mail sending failed.'};
+                var data = { message: 'Account confirmation mail sending failed.',timeout: 4000};
                 snackbarContainer.MaterialSnackbar.showSnackbar(data);
             });
             function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -98,7 +98,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'User account creation failed, Please try again.'};
+              var data = { message: 'User account creation failed, Please try again.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

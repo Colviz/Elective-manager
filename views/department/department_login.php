@@ -67,7 +67,7 @@
 <script>
 r(function(){
     var snackbarContainer = document.querySelector('#snackbar');
-    var data = { message: 'Incorrect Username/Password.'};
+    var data = { message: 'Incorrect Username/Password.',timeout: 4000};
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
 function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
