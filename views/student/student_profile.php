@@ -196,7 +196,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
       <th>Priority</th>
       <th>CGPI</th>
       <th>Students applied</th>
-      <th>Delete</th>
+      <th class="mdl-data-table__cell--non-numeric">Update</th>
+      <th class="mdl-data-table__cell--non-numeric">Delete</th>
     </tr>
   </thead>
   <tbody>

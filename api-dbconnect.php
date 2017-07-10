@@ -1122,6 +1122,10 @@ class Database
             echo "</td><td>";
             $applied = Database::studentsappliesforelective($data['subj_code']);
             echo $applied;
+            echo '<form class="update" action="/student/list" method="post">';
+            echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+            echo $code;
+            echo '" name="code">View list</button></form>';
             echo "</td><td>";
 
             // updating the elective
