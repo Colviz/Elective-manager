@@ -23,7 +23,6 @@
           echo "<center><b>Failed to update Elective priority.</b></center>";
           }
         }
-        
       } 
 
       //if elective is deleted
@@ -137,7 +136,7 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
     </tr>
   </thead>
   <tbody>
-        <?php  Database::appliedforelectives($_SESSION['login_user']);   ?>
+        <?php  Database::appliedforelectives($_SESSION['login_user'],$count);   ?>
   </tbody>
 </table>
 <?php
