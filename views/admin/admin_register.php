@@ -45,19 +45,60 @@
 	
     
 ?>
-<!-- Registration successful -->
-<div class="snippet">
-<span class="mdl-chip mdl-chip--contact">
-    <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
-    <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
-</span>
-</div>
+          <br><center>
+          <!-- success snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">Admin added <a style="color: blue; text-decoration: none;">successfully. </span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Admin account added successfully.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
 <?php 
 
     header("refresh:5;url=/admin/login");
   }
   else  {
-    echo "reCAPTCHA validation failed<br>";
+    //echo "reCAPTCHA validation failed<br>";
+    ?>
+          <br><center>
+          <!-- success snippet -->
+          <div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+              <span class="mdl-chip__text">reCAPTCHA validation <a style="color: blue; text-decoration: none;">Failed.</span>
+          </span>
+          </div></center>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'reCAPTCHA validation failed.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+    <?php
   }
 		}
 		else {

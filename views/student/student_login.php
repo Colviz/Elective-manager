@@ -47,6 +47,7 @@
         else  {
         
 ?>
+<br>
 <!-- Login unsuccessful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
