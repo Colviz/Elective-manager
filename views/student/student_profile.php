@@ -1,5 +1,30 @@
 <?php
     include_once('views/student/student_dashboard.php');
+    
+        // checks for requested updates 
+        if (isset($_POST['up']) || isset($_POST['down'])) {
+
+        //updating the user priority
+        if(isset($_POST['up'])) {
+          $upd = Database::upstudentpriority($_POST['up'],$_SESSION['login_user']);
+          if ($upd == 1) {
+          echo "<center><b>Elective priority updated</b></center>";
+          }
+          else  {
+          echo "<center><b>Failed to update Elective priority.</b></center>";
+          }  
+        }
+        else {
+          $dwd = Database::downstudentpriority($_POST['down'],$_SESSION['login_user']);
+          if ($dwd == 1) {
+          echo "<center><b>Elective priority updated</b></center>";
+          }
+          else  {
+          echo "<center><b>Failed to update Elective priority.</b></center>";
+          }
+        }
+        
+      } 
 
       //if elective is deleted
       if (isset($_POST['delete'])) {
