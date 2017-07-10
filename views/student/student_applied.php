@@ -59,7 +59,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Priorities successfully added to database.'};
+              var data = { message: 'Priorities successfully added to database.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -95,7 +95,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Failed to add priorities to database. Duplicate entry found. Delete existing priorities and try again.'};
+              var data = { message: 'Failed to add priorities to database. Duplicate entry found. Delete existing priorities and try again.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

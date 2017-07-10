@@ -50,7 +50,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: '<?php echo $roll; ?> - Your account exists.'};
+              var data = { message: '<?php echo $roll; ?> - Your account exists.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -65,7 +65,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Have you activated it? Before trying to login.'};
+              var data = { message: 'Have you activated it? Before trying to login.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -93,7 +93,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: '<?php echo $roll; ?> - your account does not exist.'};
+              var data = { message: '<?php echo $roll; ?> - your account does not exist.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -148,7 +148,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Account successfully deleted.'};
+              var data = { message: 'Account successfully deleted.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -183,7 +183,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Account deletion failed. Your account is activated proceed to login.'};
+              var data = { message: 'Account deletion failed. Your account is activated proceed to login.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

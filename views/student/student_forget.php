@@ -78,7 +78,7 @@
                   <script>
                   r(function(){
                       var snackbarContainer = document.querySelector('#snackbar');
-                      var data = { message: 'Account recovery email sent to <?php echo $email; ?>.'};
+                      var data = { message: 'Account recovery email sent to <?php echo $email; ?>.',timeout: 4000};
                       snackbarContainer.MaterialSnackbar.showSnackbar(data);
                   });
                   function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -93,7 +93,7 @@
                   <script>
                   r(function(){
                       var snackbarContainer = document.querySelector('#snackbar');
-                      var data = { message: 'Follow the instruction in email to reset the password.'};
+                      var data = { message: 'Follow the instruction in email to reset the password.',timeout: 4000};
                       snackbarContainer.MaterialSnackbar.showSnackbar(data);
                   });
                   function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -123,7 +123,7 @@
                   <script>
                   r(function(){
                       var snackbarContainer = document.querySelector('#snackbar');
-                      var data = { message: 'Account recovery email sending failed.'};
+                      var data = { message: 'Account recovery email sending failed.',timeout: 4000};
                       snackbarContainer.MaterialSnackbar.showSnackbar(data);
                   });
                   function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -155,7 +155,7 @@
                   <script>
                   r(function(){
                       var snackbarContainer = document.querySelector('#snackbar');
-                      var data = { message: 'Incorrect input fields, password recovery failed.'};
+                      var data = { message: 'Incorrect input fields, password recovery failed.',timeout: 4000};
                       snackbarContainer.MaterialSnackbar.showSnackbar(data);
                   });
                   function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

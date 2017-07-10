@@ -64,7 +64,7 @@
 <script>
 r(function(){
     var snackbarContainer = document.querySelector('#snackbar');
-    var data = { message: 'Incorrect Username/Password. Check if your account exists.'};
+    var data = { message: 'Incorrect Username/Password. Check if your account exists.',timeout: 4000};
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
 function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

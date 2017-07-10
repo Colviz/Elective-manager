@@ -53,7 +53,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'No <?php echo $elective; ?> published at this time. Try after some time.'};
+              var data = { message: 'No <?php echo $elective; ?> published at this time. Try after some time.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

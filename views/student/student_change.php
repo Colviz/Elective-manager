@@ -41,7 +41,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Password updated successfully. You are being logged out in 5 seconds.'};
+              var data = { message: 'Password updated successfully. You are being logged out in 5 seconds.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

@@ -63,7 +63,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Account created successfully.'};
+              var data = { message: 'Account created successfully.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -89,7 +89,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'Activate the account, using the activation link sent to your provided email id.'};
+              var data = { message: 'Activate the account, using the activation link sent to your provided email id.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -109,7 +109,7 @@
             <script>
             r(function(){
                 var snackbarContainer = document.querySelector('#snackbar');
-                var data = { message: 'Account confirmation mail sending failed.'};
+                var data = { message: 'Account confirmation mail sending failed.',timeout: 4000};
                 snackbarContainer.MaterialSnackbar.showSnackbar(data);
             });
             function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
@@ -130,7 +130,7 @@
           <script>
           r(function(){
               var snackbarContainer = document.querySelector('#snackbar');
-              var data = { message: 'User account creation failed, Please try again.'};
+              var data = { message: 'User account creation failed, Please try again.',timeout: 4000};
               snackbarContainer.MaterialSnackbar.showSnackbar(data);
           });
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

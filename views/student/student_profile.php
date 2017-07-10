@@ -42,7 +42,7 @@
 <script>
 r(function(){
     var snackbarContainer = document.querySelector('#snackbar');
-    var data = { message: 'Elective priority deleted.'};
+    var data = { message: 'Elective priority deleted.',timeout: 4000};
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
 });
 function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
