@@ -722,30 +722,32 @@ class Database
 
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where deptcode = ? AND active = 1";
+                $sql = "SELECT subj_code,subject_name,total_seats,subj_type,link,info,semester FROM `subjects_published` where deptcode = ? AND active = 1 ORDER by subj_type";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($code));
                 while($data = $q->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td class="mdl-data-table__cell--non-numeric">';
                     $code = $data['subj_code'];
                     echo $data['subj_code'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['subject_name'];            
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                    echo $data['subj_type'];            
+                    echo '</td><td>';
                     echo $data['semester'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['link'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['info'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     echo $data['total_seats'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     //updating the elective
                     echo '<form class="update" action="" method="post">';
                     echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
                     echo $code;
                     echo '" name="update">Update</button></form>';
-                    echo "</td><td>";
+                    echo '</td><td>';
                     //deactivating the elective
                     echo '<form class="update" action="" method="post">';
                     echo '<button class="mdl-button mdl-button--red mdl-js-button mdl-js-ripple-effect" type="submit" value="';
@@ -758,24 +760,26 @@ class Database
 
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where username = ? AND active = 1";
+                $sql = "SELECT subj_code,subject_name,total_seats,link,subj_type,info,semester FROM `subjects_published` where username = ? AND active = 1 ORDER by subj_type";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($login_session));
                 while($data = $q->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td class="mdl-data-table__cell--non-numeric">';
                     $code = $data['subj_code'];
                     echo $data['subj_code'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['subject_name'];            
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                    echo $data['subj_type'];            
+                    echo '</td><td>';
                     echo $data['semester'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['link'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['info'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     echo $data['total_seats'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     //updating the elective
                     echo '<form class="update" action="" method="post">';
                     echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
@@ -803,24 +807,26 @@ class Database
 
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where deptcode = ? AND active = 0";
+                $sql = "SELECT subj_code,subject_name,total_seats,link,subj_type,info,semester FROM `subjects_published` where deptcode = ? AND active = 0 ORDER by subj_type";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($code));
                 while($data = $q->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td class="mdl-data-table__cell--non-numeric">';
                     $code = $data['subj_code'];
                     echo $data['subj_code'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['subject_name'];            
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                    echo $data['subj_type'];            
+                    echo '</td><td>';
                     echo $data['semester'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['link'];
-                    echo "</td><td>";
+                    echo '</td><td class="mdl-data-table__cell--non-numeric">';
                     echo $data['info'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     echo $data['total_seats'];
-                    echo "</td><td>";
+                    echo '</td><td>';
                     //republish the elective
                     echo '<form class="update" action="" method="post">';
                     echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';
@@ -833,24 +839,26 @@ class Database
 
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT subj_code,subject_name,total_seats,link,info,semester FROM `subjects_published` where username = ? AND active = 0";
+                $sql = "SELECT subj_code,subject_name,total_seats,link,info,subj_type,semester FROM `subjects_published` where username = ? AND active = 0 ORDER by subj_type";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($login_session));
                 while($data = $q->fetch(PDO::FETCH_ASSOC)) {
                 echo '<tr><td class="mdl-data-table__cell--non-numeric">';
                 $code = $data['subj_code'];
                 echo $data['subj_code'];
-                echo "</td><td>";
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
                 echo $data['subject_name'];            
-                echo "</td><td>";
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                echo $data['subj_type'];            
+                echo '</td><td>';
                 echo $data['semester'];
-                echo "</td><td>";
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
                 echo $data['link'];
-                echo "</td><td>";
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
                 echo $data['info'];
-                echo "</td><td>";
+                echo '</td><td>';
                 echo $data['total_seats'];
-                echo "</td><td>";
+                echo '</td><td>';
                 //republish the elective
                 echo '<form class="update" action="" method="post">';
                 echo '<button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="';

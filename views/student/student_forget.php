@@ -137,7 +137,7 @@
         else  {
         
 ?>
-      <div class="mdl-cell mdl-cell--12-col">
+                  <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
                   <div class="snippet">

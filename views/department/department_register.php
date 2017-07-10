@@ -33,7 +33,29 @@
         if ($ret == 1)  {
           
           //if user created successfully
-          echo " - Department user created successfully.</center><br>";
+          ?>
+          <br><div class="snippet">
+          <span class="mdl-chip mdl-chip--contact">
+              <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+              <span class="mdl-chip__text">User account created <a style="color: blue; text-decoration: none;">Successfully</a>.</span>
+          </span>
+          </div>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'User account created successfully.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+          <?php
           
           //writing the details to variables
           $to = $email;
@@ -46,11 +68,43 @@
           		echo "<center>Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.</center><br>";
           }
           else 	{
-          	echo "<center>Account confirmation mail sending failed.</center><br>";
+          	?>
+            <!-- Snackbar starts -->
+            <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+
+            <script>
+            r(function(){
+                var snackbarContainer = document.querySelector('#snackbar');
+                var data = { message: 'Account confirmation mail sending failed.'};
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            });
+            function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+            </script>
+            <!-- Snackbar ends -->
+            <?php
           }
         }
         else 	{
-        	echo "<center>Department user creation failed.</center><br>";
+        	?>
+          <!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'User account creation failed, Please try again.'};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+          <!-- Snackbar ends -->
+          <?php
         }
       }
       else  {

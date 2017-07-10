@@ -50,13 +50,29 @@
         else  {
         
 ?>
-<!-- Registration unsuccessful -->
+<br>
+<!-- Login unsuccessful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
-    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a> Login Failed <a href="/admin/login" style="text-decoration: none;">Login here</a>.</span>
+    <span class="mdl-chip__text">Incorrect <a style="color: blue; text-decoration: none;">Username or Password</a>.</span>
 </span>
 </div>
+<!-- Snackbar starts -->
+<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+
+<script>
+r(function(){
+    var snackbarContainer = document.querySelector('#snackbar');
+    var data = { message: 'Incorrect Username/Password.'};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+});
+function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+<!-- Snackbar ends -->
 <?php
     }
   }
