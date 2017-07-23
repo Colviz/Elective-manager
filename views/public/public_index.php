@@ -19,7 +19,7 @@
 
 	 <div class="mdl-grid">
 	 
-  		<div class="mdl-cell mdl-cell--4-col">
+  		<div class="mdl-cell mdl-cell--3-col">
 			<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 			  <div class="mdl-card__title">
 			    <h2 class="mdl-card__title-text">Admin Interface</h2>
@@ -31,7 +31,7 @@
 			  </div>
 			</div>
   		</div>
-  		<div class="mdl-cell mdl-cell--4-col">
+  		<div class="mdl-cell mdl-cell--3-col">
   						<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 			  <div class="mdl-card__title">
 			    <h2 class="mdl-card__title-text">Department Interface</h2>
@@ -43,7 +43,7 @@
 			  </div>
 			</div>
   		</div>
-  		<div class="mdl-cell mdl-cell--4-col">
+  		<div class="mdl-cell mdl-cell--3-col">
   						<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 			  <div class="mdl-card__title">
 			    <h2 class="mdl-card__title-text">Student Interface</h2>
@@ -55,7 +55,7 @@
 			  </div>
 			</div>
   		</div>
-  		<div class="mdl-cell mdl-cell--4-col">
+  		<div class="mdl-cell mdl-cell--3-col">
   			<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 			  <div class="mdl-card__title">
 			    <h2 class="mdl-card__title-text">Account activation</h2>
@@ -67,7 +67,7 @@
 			  </div>
 			</div>
   		</div>
-  <div class="mdl-cell mdl-cell--8-col">
+  <div class="mdl-cell mdl-cell--6-col">
 	<div class="table-responsive">
     <table class="mdl-data-table mdl-js-data-table">
   		<thead>

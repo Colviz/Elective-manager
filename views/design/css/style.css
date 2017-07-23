@@ -27,7 +27,7 @@ mdl-layout__content  {
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;
-  height: 176px;
+  height: 190px;
   background: url('../../../images/books.jpg') center / cover;
 }
 .demo-card-wide > .mdl-card__menu {
