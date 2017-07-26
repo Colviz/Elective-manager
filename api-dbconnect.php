@@ -645,6 +645,51 @@ class Database
 
         //Functions for fetching data from database
 
+        //fetching the no. of notifications for users (admin,superuser,dept users,student)
+        public static function notificationcount($user,$usertype)  {
+            
+            if($user == "admin" || $usertype == 0)  {
+                //for admin and students
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT count(destination) AS total FROM notifications where destination = ? AND marked = 0";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user));
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $count = $data['total'];
+            }
+            else    {
+                //notifications for departmental users
+                if($usertype == "superuser")    {
+                    //getting the department of superuser
+                    $department = Database::departmentcode($login_session);
+
+                    //getting notifications count for superuser
+                    $pdo = Database::connect();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0";
+                    $q = $pdo->prepare($sql);
+                    $q->execute(array($department));
+                    $data = $q->fetch(PDO::FETCH_ASSOC);
+                    $count = $data['total'];
+                }
+                else    {
+                    //getting notifications count for deptuser
+                    $pdo = Database::connect();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "SELECT count(destination) AS total FROM notifications where destination = ? AND marked != 1";
+                    $q = $pdo->prepare($sql);
+                    $q->execute(array($user));
+                    $data = $q->fetch(PDO::FETCH_ASSOC);
+                    $count = $data['total'];
+                }
+            }
+
+            Database::disconnect();
+            
+            return $count;   
+        }
+
         //counting no. of registered departments (normalusers)
         public static function registereddepartments()  {
 

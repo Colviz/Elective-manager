@@ -1,7 +1,7 @@
 body  {
   background-color: rgb(245,245,245);
 }
-mdl-layout__content  {
+.mdl-layout__content  {
   width: 100%;
 }
 .page-content {
@@ -189,6 +189,19 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 #snackbar {
   bottom : 8%;
 }
+.notification {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.notifibutton {
+  float: right;
+}
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.orange { color: #FB8C00; }
 
 /** responsiveness **/
 

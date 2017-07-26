@@ -52,6 +52,10 @@ $routes = [
         //admin password recovery
         include_once('views/admin/admin_forget.php');
     },
+    'admin/notifications' => function()    {
+        //admin password recovery
+        include_once('views/admin/admin_notifications.php');
+    },
     'admin/profile/registered' => function()    {
         //admin view registered students
         include_once('views/admin/admin_registered.php');

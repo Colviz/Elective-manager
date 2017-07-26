@@ -1,21 +1,6 @@
 <?php
-		//include_once('views/includes/header.php');
     include_once('dbconnect.php');
     include_once('views/admin/admin_session.php');
-
-    //getting the URI
-    $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
-
-    switch ($request_uri[0]) {
-
-        case '/admin/profile':
-        $i = "profile";
-        break;
-
-        case '/admin/profile/registered':
-        $i = "registered";
-        break;
-    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,19 +31,23 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-      <?php 
-              if($i != "profile")  {
-      ?>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/admin/profile">Profile</a>
-      <?php
-            }
-
-            else if($i != "registered") {
-      ?>
+      <!-- Displaying notification here -->
+      <a href="/admin/notifications" class="notification"><sup>
+      <?php  
+              $user = "admin";
+              $usertype = 0;
+           $noti = Database::notificationcount($user,$usertype);  ?></sup>
+      <?php if($noti == 0) {?>
+            <i class="material-icons md-inactive md-dark">notifications</i>
+      <?php   }
+      else  {
+        ?>
+            <div class="material-icons mdl-badge mdl-badge--overlap orange" data-badge="<?php echo $noti; ?>">notifications_active</div>
+        <?php
+        }  ?></a>
+        <!-- Displaying notification ends -->
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="/admin/profile">Profile</a>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/admin/profile/registered">Registered Students</a>
-      <?php
-            }
-      ?>
         <a href="/admin/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
       </nav>
     </div>
@@ -68,6 +57,20 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile">Profile</a>
+      <!-- Displaying notification here -->
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/notifications" class="notification"><sup>
+      <?php  
+            Database::notificationcount($user,$usertype);  ?>
+      <?php if($noti == 0) {?>
+            No Notifications <i class="material-icons md-inactive md-dark">notifications</i>
+      <?php   }
+      else  {
+        ?>
+            New Notifications <span class="mdl-badge" data-badge="<?php echo $noti; ?>"><i class="material-icons orange">notifications_active</i></span>
+        <?php
+        }  ?></a>
+        <!-- Displaying notification ends -->
+
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile/registered">Registered Students</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/logout">Logout</a>

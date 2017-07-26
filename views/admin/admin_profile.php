@@ -44,11 +44,13 @@
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Department</th>
-      <th>Subject code</th>
-      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
+      <th>Subject Code</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject Name</th>
       <th class="mdl-data-table__cell--non-numeric">Subject Type</th>
+      <th class="mdl-data-table__cell--non-numeric">Syllabus Link</th>
+      <th class="mdl-data-table__cell--non-numeric">Info</th>
       <th>Semester</th>
-      <th>Total seats</th>
+      <th>Total Seats</th>
     </tr>
   </thead>
   <tbody>
