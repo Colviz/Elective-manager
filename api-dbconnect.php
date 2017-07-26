@@ -1303,7 +1303,7 @@ class Database
 
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT deptcode,subj_code,subject_name,subj_type,total_seats,semester  FROM `subjects_published` WHERE active = 1 order by subj_code ASC";
+            $sql = "SELECT deptcode,subj_code,subject_name,subj_type,link,info,total_seats,semester  FROM `subjects_published` WHERE active = 1 order by subj_code ASC";
             $q = $pdo->prepare($sql);
             $q->execute();
             //$data = $q->fetch(PDO::FETCH_ASSOC);
@@ -1316,7 +1316,11 @@ class Database
                 echo $data['subject_name'];            
                 echo "</td><td>";
                 echo $data['subj_type'];
-                echo "</td><td>";
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                echo $data['link'];
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                echo $data['info'];
+                echo '</td><td>';
                 echo $data['semester'];
                 echo "</td><td>";
                 echo $data['total_seats'];

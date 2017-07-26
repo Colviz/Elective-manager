@@ -1,5 +1,6 @@
 <?php
 
+//getting the request path
 function request_path()
 {
     $request_uri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
@@ -20,6 +21,7 @@ function request_path()
 //including the routes file
 include_once('routes.php');
 
+//checking the route availability
 $path = request_path();
 
 if (isset($routes[$path]) AND is_callable($routes[$path]))

@@ -188,13 +188,13 @@
     <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric">Subject code</th>
-      <th class="mdl-data-table__cell--non-numeric">Subject name</th>
-      <th class="mdl-data-table__cell--non-numeric">Subject type</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject Code</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject Name</th>
+      <th class="mdl-data-table__cell--non-numeric">Subject Type</th>
       <th>Semester</th>
-      <th class="mdl-data-table__cell--non-numeric">Link</th>
+      <th class="mdl-data-table__cell--non-numeric">Syllabus Link</th>
       <th class="mdl-data-table__cell--non-numeric">Info</th>
-      <th>Total seats</th>
+      <th>Total Seats</th>
       <th>Update</th>
       <th>Delete</th>
     </tr>
@@ -234,7 +234,7 @@ else  {
       <th class="mdl-data-table__cell--non-numeric">Subject name</th>
       <th class="mdl-data-table__cell--non-numeric">Subject type</th>
       <th>Semester</th>
-      <th class="mdl-data-table__cell--non-numeric">Link</th>
+      <th class="mdl-data-table__cell--non-numeric">Syllabus Link</th>
       <th class="mdl-data-table__cell--non-numeric">Info</th>
       <th>Total seats</th>
       <th>Republish</th>
