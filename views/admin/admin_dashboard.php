@@ -2,6 +2,52 @@
     include_once('dbconnect.php');
     include_once('views/admin/admin_session.php');
 
+    //catching the accdelete form values
+    if(isset($_POST['accdelete']))  {
+
+        $delete = Database::accountdeleteadmin($_POST['accdelete']);
+
+        if($delete == 1)  {
+?>
+<!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'The user account <?php echo $_POST['accdelete']; ?> is successfully deleted.',timeout: 4000};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+<!-- Snackbar ends -->
+          <?php
+                }
+                else  {
+                    ?>
+<!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Failed to delete user account <?php echo $_POST['accdelete']; ?>.',timeout: 4000};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+<!-- Snackbar ends -->
+<?php
+        }
+    }
+    
+
     //catching the markread form values
     if(isset($_POST['markread']))  {
 
@@ -81,7 +127,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title"><a href="/admin/profile" style="text-decoration: none; color: black">Welcome <?php echo $login_session; ?></a></span>
+      <span class="mdl-layout-title"><a href="/admin/profile" style="text-decoration: none; color: black">Welcome <?php echo $login_session; ?></a><a class="verified" title="Verified User"><i class="material-icons">verified_user</i></a></span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -93,7 +139,7 @@
               $usertype = 0;
            $noti = Database::notificationcount($user,$usertype);  ?></sup>
       <?php if($noti == 0) {?>
-            <i class="material-icons md-inactive md-dark">notifications</i>
+            <i class="material-icons md-inactive md-dark">notifications_none</i>
       <?php   }
       else  {
         ?>
@@ -117,7 +163,7 @@
       <?php  
             Database::notificationcount($user,$usertype);  ?>
       <?php if($noti == 0) {?>
-            No Notifications <i class="material-icons md-inactive md-dark">notifications</i>
+            No Notifications <i class="material-icons md-inactive md-dark">notifications_none</i>
       <?php   }
       else  {
         ?>

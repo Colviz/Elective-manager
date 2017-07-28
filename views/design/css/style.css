@@ -4,6 +4,12 @@ body  {
 .mdl-layout__content  {
   width: 100%;
 }
+.mdl-card__supporting-text  {
+  color: black;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-decoration: none;
+}
 .page-content {
   padding-bottom: 5%;
 }
@@ -195,6 +201,13 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
 }
 .notifibutton {
   float: right;
+}
+.verified {
+  color: grey;
+  padding-left: 3px;
+}
+.verified :hover  {
+  color: black;
 }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }

@@ -35,23 +35,25 @@
   <?php
 
         }
-        
+
         //fetching notifications from datbase
         $notificontent = Database::notificationcontent($user,$usertype);
 
         if($noti == 0)  {
+
+          //catching variables for viewing older notifications
+          if($_POST['viewread'])  {
+            $oldnotificontent = Database::oldnotificationcontent($user,$usertype); 
+          }
+          else  {
           ?>
           <!-- Form for viewing all notifications -->
           <form class="update" action="" method="post">
           <button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="viewread"><i class="material-icons">done_all</i> View older Notifications</button></form>
           <!-- Form for viewing all notifications ends -->
           <?php
-
-          //catching variables for viewing older notifications
-          if($_POST['viewread'])  {
-            $oldnotificontent = Database::oldnotificationcontent($user,$usertype); 
-          }
         }
+      }
   ?>
     
   
