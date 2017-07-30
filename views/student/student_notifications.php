@@ -1,5 +1,5 @@
 <?php
-    include_once('views/admin/admin_dashboard.php');
+    include_once('views/student/student_dashboard.php');
 ?>
      
   <main class="mdl-layout__content">
@@ -39,7 +39,6 @@
         //fetching notifications from datbase
         $notificontent = Database::notificationcontent($user,$usertype);
 
-        if($noti == 0)  {
 
           //catching variables for viewing older notifications
           if($_POST['viewread'])  {
@@ -55,7 +54,6 @@
           <!-- Form for viewing all notifications ends -->
           <?php
         }
-      }
   ?>
     
   

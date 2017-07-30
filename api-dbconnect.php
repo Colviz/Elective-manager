@@ -648,13 +648,24 @@ class Database
         //fetching the no. of notifications for users (admin,superuser,dept users,student)
         public static function notificationcount($user,$usertype)  {
             
-            if($user == "admin" || $usertype == 0)  {
-                //for admin and students
+            //for admin
+            if($user == "admin")  {
+                //for admin
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT count(destination) AS total FROM notifications where destination = ? AND marked = 0";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($user));
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $count = $data['total'];
+            }
+            else if ($usertype = "student")  {
+                //for admin
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT count(destination) AS total FROM notifications where destination = ? AND marked = 0 OR destination = ? AND marked = 0";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user,$usertype));
                 $data = $q->fetch(PDO::FETCH_ASSOC);
                 $count = $data['total'];
             }
@@ -694,8 +705,8 @@ class Database
         public static function notificationcontent($user,$usertype)   {
 
             //for admin
-            if($user == "admin")  {
-                //for admin and students
+            if($user == "admin" && $usertype == "admin")  {
+                //for admin
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 order by created DESC";
@@ -736,6 +747,61 @@ class Database
                         echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
                         //form ends
                     }
+                    else if($data['type'] == "acc_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a> ".$data['username']; 
+                        echo "</a>, from <a>".$data['content'];
+                        echo "</a>, on - ".$data['created']; 
+                        //form for marking as read
+                        echo '<form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['username'];
+                        echo '" name="accdelete"> Delete <a><i class="material-icons">account_circle</i>'.$data['username'].'</a> Account</button></form></div>';
+                        //form ends
+                    }
+                }
+            }
+
+            //for student
+            else if($usertype == "student")   {
+                //for student
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 OR destination = ? AND marked = 0 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user,$usertype));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "allotment")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo "You're allotted ";
+                        echo "<a>".$data['content'];
+                        echo "</a> of <a>";
+                        Database::departmentsname($data['origin']);
+                        echo " Department</a>, on - <a> ".$data['created']; 
+                        //form for marking as read
+                        echo '</a><form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['created'];
+                        echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
+                        //form ends
+                    }
+                    else if($data['type'] == "fill_priorities")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo Database::filtertype($data['type']);
+                        echo "<a> ".$data['content'];
+                        echo "</a>, Notification sent on - <a>";
+                        echo $data['created'];
+                        //form for filling priorities
+                        echo '</a><form class="update" action="/student/profile" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" name="fillprior" value="fillprior"><i class="material-icons">done</i> Fill Priorities</button></form></div>';
+                        //form ends
+                    }
                 }
             }
 
@@ -746,7 +812,7 @@ class Database
         public static function oldnotificationcontent($user,$usertype)   {
 
             //for admin
-            if($user == "admin")  {
+            if($user == "admin" && $usertype == "admin")  {
                 //for admin and students
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -778,6 +844,48 @@ class Database
                         echo "</a>, on - ".$data['created']; 
                         echo "</div>";
                     }
+                    else if($data['type'] == "acc_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a> ".$data['username']; 
+                        echo "</a>, from <a>".$data['content'];
+                        echo "</a>, on - ".$data['created']; 
+                        echo "</div>";                    
+                    }
+                }
+            }
+            //for student
+            else if($usertype == "student")   {
+                //for student
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 1 OR destination = ? AND marked = 1 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user,$usertype));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "allotment")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo "You're allotted ";
+                        echo "<a>".$data['content'];
+                        echo "</a> of <a>";
+                        Database::departmentsname($data['origin']);
+                        echo " Department</a>, on - <a> ".$data['created']; 
+                        echo "</div>";
+                        //form ends
+                    }
+                    else if($data['type'] == "fill_priorities")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo Database::filtertype($data['type']);
+                        echo "<a> ".$data['content'];
+                        echo "</a>, Notification sent on - <a>";
+                        echo $data['created'];
+                        echo "</div>";
+                    }
                 }
             }
 
@@ -800,11 +908,52 @@ class Database
         //marking all notifications as read
         public static function markallnotificationread($destination)    {
 
+            if($destination != "student" || $destination != "department")    {
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `destination` = ? AND type != 'acc_delete' ";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($destination));
+                Database::disconnect();
+
+                return 1;
+            }
+            else    {
+                return 0;
+            }            
+        }
+
+        //delete the requested user account
+        public static function accountdeleteadmin($username)  {
+
+            //deleting the user account
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `destination` = ? AND type != 'acc_delete' ";
+            $sql = "DELETE FROM `students` WHERE rollno = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($destination));
+            $q->execute(array($username));
+            Database::disconnect();
+
+            //marking the delete account notification as read
+            $notifiread = Database::markaccdeletenotificationread($username);
+
+            if($notifiread == 1)    {
+                return 1;    
+            }
+            else    {
+                return 0;
+            }
+            
+        }
+
+        //mark account delete notification as read
+        public static function markaccdeletenotificationread($username) {
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `type` = 'acc_delete' AND `username` = ?";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($username));
             Database::disconnect();
 
             return 1;            
@@ -828,7 +977,7 @@ class Database
                     break;
 
                 case 'acc_delete':
-                    $type = "Account Deleted on";
+                    $type = "Account Deletion Requested by";
                     break;
 
                 case 'pass_change':
@@ -841,6 +990,10 @@ class Database
 
                 case 'priorities':
                     $type = "Priorities Filled on";
+                    break;
+
+                case 'fill_priorities':
+                    $type = "Fill elective priorities before";
                     break;
             }
 

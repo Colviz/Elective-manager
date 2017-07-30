@@ -94,6 +94,10 @@ $routes = [
         //student password change
         include_once('views/student/student_change.php');
     },
+    'student/notifications' => function()    {
+        //admin password recovery
+        include_once('views/student/student_notifications.php');
+    },
     'student/profile/apply' => function()    {
         //student prioritize electives
         include_once('views/student/student_apply.php');
@@ -127,6 +131,10 @@ $routes = [
     'department/profile' => function()    {
         //department users profile
         include_once('views/department/department_profile.php');
+    },
+    'department/notifications' => function()    {
+        //admin password recovery
+        include_once('views/department/department_notifications.php');
     },
     'department/profile/register' => function()    {
         //department normaluser registration

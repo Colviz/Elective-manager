@@ -1,7 +1,27 @@
 <?php
     include_once('dbconnect.php');
     include_once('views/admin/admin_session.php');
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="../../images/book.png">
+    <title>Elective Manager</title>
 
+    <!-- Page styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../views/design/css/material.css">
+    <link rel="stylesheet" href="../../views/design/css/style.css">
+    <!-- Below script is for captcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    </head>
+
+<?php
     //catching the accdelete form values
     if(isset($_POST['accdelete']))  {
 
@@ -47,7 +67,6 @@
         }
     }
     
-
     //catching the markread form values
     if(isset($_POST['markread']))  {
 
@@ -103,24 +122,6 @@
                 }
               }
           ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" href="../../images/book.png">
-    <title>Elective Manager</title>
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../../views/design/css/material.css">
-    <link rel="stylesheet" href="../../views/design/css/style.css">
-    <!-- Below script is for captcha -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -171,7 +172,6 @@
         <?php
         }  ?></a>
         <!-- Displaying notification ends -->
-
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile/registered">Registered Students</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/logout">Logout</a>
