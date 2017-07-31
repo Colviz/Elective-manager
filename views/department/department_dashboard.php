@@ -29,6 +29,21 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <!-- Displaying notification here -->
+      <a href="/department/notifications" class="notification"><sup>
+      <?php  
+              $user = $login_session;
+              $usertype = $_SESSION['usertype'];
+           $noti = Database::notificationcount($user,$usertype);  ?></sup>
+      <?php if($noti == 0) {?>
+            <i class="material-icons md-inactive md-dark">notifications_none</i>
+      <?php   }
+      else  {
+        ?>
+            <div class="material-icons mdl-badge mdl-badge--overlap orange" data-badge="<?php echo $noti; ?>">notifications_active</div>
+        <?php
+        }  ?></a>
+        <!-- Displaying notification ends -->
         <a href="/department/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> - 
         <a href="/department/profile/publish"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Publish Elective </button></a> - 
       
@@ -50,6 +65,19 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile">Profile</a>
+      <!-- Displaying notification here -->
+      <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/notifications" class="notification"><sup>
+      <?php  
+            Database::notificationcount($user,$usertype);  ?>
+      <?php if($noti == 0) {?>
+            No Notifications <i class="material-icons md-inactive md-dark">notifications_none</i>
+      <?php   }
+      else  {
+        ?>
+            New Notifications <span class="mdl-badge" data-badge="<?php echo $noti; ?>"><i class="material-icons orange">notifications_active</i></span>
+        <?php
+        }  ?></a>
+        <!-- Displaying notification ends -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/publish">Publish Elective</a>
       <?php if($_SESSION['usertype'] == "superuser")  { ?>
