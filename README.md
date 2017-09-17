@@ -1,4 +1,4 @@
-## Elective Manager New
+## Elective Manager New [![Code Triagers Badge](https://www.codetriage.com/rishabh04-02/elective-manager-new/badges/users.svg)](https://www.codetriage.com/rishabh04-02/elective-manager-new)
 > This is the Elective Manager which will be used for Elective allotments (Open electives as well as Departmental electives). <br>
 > Develop it keeping in mind its **Flexibility**, **Stability** and **Security**.
 
