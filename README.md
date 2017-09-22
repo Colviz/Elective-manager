@@ -1,4 +1,12 @@
-## Elective Manager New [![Code Triagers Badge](https://www.codetriage.com/rishabh04-02/elective-manager-new/badges/users.svg)](https://www.codetriage.com/rishabh04-02/elective-manager-new)
+[welcom-badge]:  https://img.shields.io/badge/PRs%20&%20Issues-welcome-brightgreen.svg
+[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager-new/pulls
+[standard-readme-badge]:  https://img.shields.io/badge/readme%20style-standard-brightgreen.svg
+[standard-readme-link]:   https://github.com/RichardLitt/standard-readme
+
+## Elective Manager New 
+[![PRs & Issues Welcome][welcom-badge]][welcome-link]
+[![standard-readme compliant][standard-readme-badge]][standard-readme-link]
+[![Code Triagers Badge](https://www.codetriage.com/rishabh04-02/elective-manager-new/badges/users.svg)](https://www.codetriage.com/rishabh04-02/elective-manager-new)
 > This is the Elective Manager which will be used for Elective allotments (Open electives as well as Departmental electives). <br>
 > Develop it keeping in mind its **Flexibility**, **Stability** and **Security**.
 
