@@ -649,7 +649,7 @@ class Database
         public static function notificationcount($user,$usertype)  {
             
             //for admin
-            if($user == "admin")  {
+            if($usertype == 0 && $user == "admin")  {
                 //for admin
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -659,8 +659,8 @@ class Database
                 $data = $q->fetch(PDO::FETCH_ASSOC);
                 $count = $data['total'];
             }
-            else if ($usertype = "student")  {
-                //for admin
+            else if ($usertype == "student")  {
+                //for student
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT count(destination) AS total FROM notifications where destination = ? AND marked = 0 OR destination = ? AND marked = 0";
@@ -669,22 +669,24 @@ class Database
                 $data = $q->fetch(PDO::FETCH_ASSOC);
                 $count = $data['total'];
             }
-            else    {
-                //notifications for departmental users
-                if($usertype == "superuser")    {
+            
+            //notifications for departmental users
+            else if($usertype == "superuser")    {
                     //getting the department of superuser
-                    $department = Database::departmentcode($login_session);
+                    $department = Database::departmentcode($user);
 
                     //getting notifications count for superuser
                     $pdo = Database::connect();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $sql = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0";
-                    $q = $pdo->prepare($sql);
+                    // the below sql query has a bug and it needs updation
+                    $query = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0 AND NOT (destination = 'admin' || destination LIKE '1%')";
+                    
+                    $q = $pdo->prepare($query);
                     $q->execute(array($department));
                     $data = $q->fetch(PDO::FETCH_ASSOC);
                     $count = $data['total'];
                 }
-                else    {
+            else    {
                     //getting notifications count for deptuser
                     $pdo = Database::connect();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -694,7 +696,6 @@ class Database
                     $data = $q->fetch(PDO::FETCH_ASSOC);
                     $count = $data['total'];
                 }
-            }
 
             Database::disconnect();
             
