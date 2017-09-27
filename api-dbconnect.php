@@ -679,7 +679,7 @@ class Database
                     $pdo = Database::connect();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     // the below sql query has a bug and it needs updation
-                    $query = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0 AND NOT (destination = 'admin' || destination LIKE '1%')";
+                    $query = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0 AND NOT (destination = 'admin' || destination LIKE '1234%')";
                     
                     $q = $pdo->prepare($query);
                     $q->execute(array($department));
