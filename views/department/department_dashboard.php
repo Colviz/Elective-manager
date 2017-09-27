@@ -20,13 +20,26 @@
     </head>
 
 <?php
+
+    $user = $login_session;
+    $usertype = $_SESSION['usertype'];
+
+    if($usertype == "normaluser") {
+          $destination = $login_session;  
+      }
+      else  {
+          $str = "234";
+          $destination = Database::departmentcode($user).$str;
+      }
+
 //catching the markread form values
     if(isset($_POST['markread']))  {
-
-      $destination = $login_session;
+      
       //marking all notifications as read
       if($_POST['markread'] == "all")  {
 
+          //the mark all feature in department will only work if notificatin is received by user (not superuser)
+          $destination = $login_session; 
           $ret = Database::markallnotificationread($destination);
       }
       else  {
@@ -89,8 +102,6 @@
       <!-- Displaying notification here -->
       <a href="/department/notifications" class="notification"><sup>
       <?php  
-              $user = $login_session;
-              $usertype = $_SESSION['usertype'];
            $noti = Database::notificationcount($user,$usertype);  ?></sup>
       <?php if($noti == 0) {?>
             <i class="material-icons md-inactive md-dark">notifications_none</i>

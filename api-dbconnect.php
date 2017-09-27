@@ -811,7 +811,59 @@ class Database
                 //for department normaluser
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 order by created DESC";
+                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked != 1 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "login" || $data['type'] == "pass_change")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $data['origin']; 
+                        echo $data['username']; 
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['created']." , "; 
+                        echo "</a>from - <a>".$data['content'];
+                        //form for marking as read
+                        echo '</a><form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['created'];
+                        echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
+                        //form ends
+                    }
+                    else if($data['type'] == "elec_published" || $data['type'] == "elec_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['content'];
+                        echo "</a>, by ";
+                        //Database::departmentsname($data['origin']);
+                        echo " user - <a>"; 
+                        echo $data['username']; 
+                        echo "</a>, on - ".$data['created']; 
+                        //form for marking as read
+                        echo '<form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['created'];
+                        echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
+                        //form ends
+                    }
+                }
+            }
+
+            //for department superuser
+            else if($usertype == "superuser")   {
+                //for department normaluser
+
+                //getting the department code of user
+                $user = Database::departmentcode($user);
+
+                //database interaction
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //"SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0 AND NOT (destination = 'admin' || destination LIKE '1234%')";
+                $sql = "SELECT origin,username,type,content,created FROM notifications where origin = ? AND marked = 0 AND NOT ( destination LIKE '1234%') order by created DESC";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($user));
                 //fetching data
@@ -972,24 +1024,86 @@ class Database
                 }
             }
 
+            //for department superuser
+            else if($usertype == "superuser")   {
+                //for department normaluser
+
+                //getting the department code of user
+                $user = Database::departmentcode($user);
+
+                //database interaction
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT origin,username,type,content,created FROM notifications where origin = ? AND marked != 0 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "login" || $data['type'] == "pass_change")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $data['origin']; 
+                        echo $data['username']; 
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['created']." , "; 
+                        echo "</a>from - <a>".$data['content'];
+                        echo '</div>';
+                    }
+                    else if($data['type'] == "elec_published" || $data['type'] == "elec_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['content'];
+                        echo "</a>, by ";
+                        //Database::departmentsname($data['origin']);
+                        echo " user - <a>"; 
+                        echo $data['username']; 
+                        echo "</a>, on - ".$data['created']; 
+                        echo '</div>';
+                    }
+                }
+            }
+
             Database::disconnect();
         }
 
         //marking notification as read
         public static function marknotificationread($notifi,$destination)    {
 
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `created` = ? AND `destination` = ?";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($notifi,$destination));
-            Database::disconnect();
+            //check if the notification response is via superuser
+            $check = substr($destination,-3);
 
-            return 1;            
+            if ($check == "234") {
+                $destination = substr($destination, 0, -3);
+                
+                //database interaction
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "UPDATE `notifications` SET `marked` = '0.5' WHERE `created` = ? AND `origin` = ?";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($notifi,$destination));
+                Database::disconnect();
+
+                return 1;
+            }
+
+            else    {
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `created` = ? AND `destination` = ?";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($notifi,$destination));
+                Database::disconnect();
+
+                return 1;
+            }            
         }
 
         //marking all notifications as read
         public static function markallnotificationread($destination)    {
+
+            $check = substr($destination,-3);
 
             if($destination != "student" || $destination != "department")    {
                 $pdo = Database::connect();
