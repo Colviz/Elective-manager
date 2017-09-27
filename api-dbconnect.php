@@ -806,6 +806,52 @@ class Database
                 }
             }
 
+            //for department normaluser
+            else if($usertype == "normaluser")   {
+                //for department normaluser
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "login" || $data['type'] == "pass_change")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $data['origin']; 
+                        echo $data['username']; 
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['created']." , "; 
+                        echo "</a>from - <a>".$data['content'];
+                        //form for marking as read
+                        echo '</a><form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['created'];
+                        echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
+                        //form ends
+                    }
+                    else if($data['type'] == "elec_published" || $data['type'] == "elec_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['content'];
+                        echo "</a>, by ";
+                        //Database::departmentsname($data['origin']);
+                        echo " user - <a>"; 
+                        echo $data['username']; 
+                        echo "</a>, on - ".$data['created']; 
+                        //form for marking as read
+                        echo '<form class="update" action="" method="post">';
+                        echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
+                        echo $data['created'];
+                        echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
+                        //form ends
+                    }
+                }
+            }
+
             Database::disconnect();
         }
 
@@ -886,6 +932,42 @@ class Database
                         echo "</a>, Notification sent on - <a>";
                         echo $data['created'];
                         echo "</div>";
+                    }
+                }
+            }
+
+            //for department normaluser
+            else if($usertype == "normaluser")   {
+                //for department normaluser
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 1 order by created DESC";
+                $q = $pdo->prepare($sql);
+                $q->execute(array($user));
+                //fetching data
+                while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                    
+                    if($data['type'] == "login" || $data['type'] == "pass_change")  {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $data['origin']; 
+                        echo $data['username']; 
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['created']." , "; 
+                        echo "</a>from - <a>".$data['content'];
+                        echo '</div>';
+                    }
+                    else if($data['type'] == "elec_published" || $data['type'] == "elec_delete")   {
+                        //displaying the content
+                        echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                        echo $type = Database::filtertype($data['type']); 
+                        echo " - <a>".$data['content'];
+                        echo "</a>, by ";
+                        //Database::departmentsname($data['origin']);
+                        echo " user - <a>"; 
+                        echo $data['username']; 
+                        echo "</a>, on - ".$data['created']; 
+                        echo '</div>';
                     }
                 }
             }
@@ -974,7 +1056,7 @@ class Database
                     break;
 
                 case 'elec_delete':
-                    $type = "Elective Deleted on";
+                    $type = "Elective Deleted";
                     break;
 
                 case 'acc_delete':

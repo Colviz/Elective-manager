@@ -18,6 +18,63 @@
     <link rel="stylesheet" href="../../views/design/css/material.css">
     <link rel="stylesheet" href="../../views/design/css/style.css">
     </head>
+
+<?php
+//catching the markread form values
+    if(isset($_POST['markread']))  {
+
+      $destination = $login_session;
+      //marking all notifications as read
+      if($_POST['markread'] == "all")  {
+
+          $ret = Database::markallnotificationread($destination);
+      }
+      else  {
+          //function for marking a notification as read
+          //destination of these type of notifications is admin
+          $ret = Database::marknotificationread($_POST['markread'],$destination);
+      }
+
+        if($ret == 1) {
+?>
+<!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'The notification <?php echo $_POST['markread']; ?> is marked as read.',timeout: 4000};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+<!-- Snackbar ends -->
+          <?php
+                }
+                else  {
+                    ?>
+<!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Failed to mark notification <?php echo $_POST['markread']; ?> as read.',timeout: 4000};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+<!-- Snackbar ends -->
+          <?php
+                }
+              }
+          ?>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
