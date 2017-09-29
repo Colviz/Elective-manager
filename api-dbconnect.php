@@ -1068,6 +1068,11 @@ class Database
             Database::disconnect();
         }
 
+        /*
+            Found the solution to bug - 
+            For marking notification as read use $destination for notification ID instead for timestamp and update the code accordingly.
+        */
+
         //marking notification as read
         public static function marknotificationread($notifi,$destination)    {
 
