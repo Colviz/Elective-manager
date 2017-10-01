@@ -28,12 +28,14 @@
           $destination = $login_session;  
       }
       else  {
-          $str = "234";
+          $str = "abc";
           $destination = Database::departmentcode($user).$str;
       }
 
 //catching the markread form values
     if(isset($_POST['markread']))  {
+
+      $_POST['markread'] = $_POST['markread'].$str;
       
       //marking all notifications as read
       if($_POST['markread'] == "all")  {
@@ -45,7 +47,7 @@
       else  {
           //function for marking a notification as read
           //destination of these type of notifications is admin
-          $ret = Database::marknotificationread($_POST['markread'],$destination);
+          $ret = Database::marknotificationread($_POST['markread']);
       }
 
         if($ret == 1) {

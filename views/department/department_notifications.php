@@ -28,7 +28,7 @@
     All Notifications - Mark as read 
     <!-- Form for marking notifications as read -->
     <form class="update" action="" method="post">
-    <button class="notifibutton mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="markread"><i class="material-icons">done_all</i> Mark all as read</button></form>
+    <button class="notifibutton mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="markread" <?php if($usertype == "superuser") echo "disabled"; ?> ><i class="material-icons">done_all</i> Mark all as read</button></form>
     <!-- Form for marking notifications as read ends -->
   </div>
 
