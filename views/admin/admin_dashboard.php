@@ -74,12 +74,12 @@
       //marking all notifications as read
       if($_POST['markread'] == "all")  {
 
-          $ret = Database::markallnotificationread($destination);
+          $ret = Database::markallnotificationread($id);
       }
       else  {
           //function for marking a notification as read
           //destination of these type of notifications is admin
-          $ret = Database::marknotificationread($_POST['markread'],$destination);
+          $ret = Database::marknotificationread($_POST['markread'],$id);
       }
 
         if($ret == 1) {

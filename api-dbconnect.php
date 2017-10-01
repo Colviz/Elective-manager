@@ -670,7 +670,7 @@ class Database
                 $count = $data['total'];
             }
             
-            //notifications for departmental users
+            //notifications count for departmental users (superuser and normaluser)
             else if($usertype == "superuser")    {
                     //getting the department of superuser
                     $department = Database::departmentcode($user);
@@ -678,7 +678,6 @@ class Database
                     //getting notifications count for superuser
                     $pdo = Database::connect();
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    // the below sql query has a bug and it needs updation
                     $query = "SELECT count(destination) AS total FROM notifications where origin = ? AND marked = 0 AND NOT (destination = 'admin' || destination LIKE '1234%')";
                     
                     $q = $pdo->prepare($query);
@@ -702,15 +701,15 @@ class Database
             return $count;   
         }
 
-        //fetching the notifications for users
+        //fetching the notifications content for users (Admin, department and students)
         public static function notificationcontent($user,$usertype)   {
 
             //for admin
             if($user == "admin" && $usertype == "admin")  {
-                //for admin
+                
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 order by created DESC";
+                $sql = "SELECT id,origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 order by created DESC";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($user));
                 //fetching data
@@ -727,7 +726,7 @@ class Database
                         //form for marking as read
                         echo '</a><form class="update" action="" method="post">';
                         echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
-                        echo $data['created'];
+                        echo $data['id'];
                         echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
                         //form ends
                     }
@@ -744,7 +743,7 @@ class Database
                         //form for marking as read
                         echo '<form class="update" action="" method="post">';
                         echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
-                        echo $data['created'];
+                        echo $data['id'];
                         echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
                         //form ends
                     }
@@ -1074,7 +1073,7 @@ class Database
         */
 
         //marking notification as read
-        public static function marknotificationread($notifi,$destination)    {
+        public static function marknotificationread($id)    {
 
             //check if the notification response is via superuser
             $check = substr($destination,-3);
@@ -1085,9 +1084,9 @@ class Database
                 //database interaction
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE `notifications` SET `marked` = '0.5' WHERE `created` = ? AND `origin` = ?";
+                $sql = "UPDATE `notifications` SET `marked` = '0.5' WHERE `origin` = ?";
                 $q = $pdo->prepare($sql);
-                $q->execute(array($notifi,$destination));
+                $q->execute(array($destination));
                 Database::disconnect();
 
                 return 1;
@@ -1096,7 +1095,7 @@ class Database
             else    {
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `created` = ? AND `destination` = ?";
+                $sql = "UPDATE `notifications` SET `marked` = '1' WHERE `created` = ? AND `id` = ?";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($notifi,$destination));
                 Database::disconnect();
