@@ -769,7 +769,7 @@ class Database
                 //for student
                 $pdo = Database::connect();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "SELECT origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 OR destination = ? AND marked = 0 order by created DESC";
+                $sql = "SELECT id,origin,username,type,content,created FROM notifications where destination = ? AND marked = 0 OR destination = ? AND marked = 0 order by created DESC";
                 $q = $pdo->prepare($sql);
                 $q->execute(array($user,$usertype));
                 //fetching data
@@ -786,7 +786,7 @@ class Database
                         //form for marking as read
                         echo '</a><form class="update" action="" method="post">';
                         echo '<button class="notifibutton mdl-button mdl-button--blue mdl-js-button mdl-js-ripple-effect" type="submit" value="';
-                        echo $data['created'];
+                        echo $data['id'];
                         echo '" name="markread"><i class="material-icons">done</i> Mark as read</button></form></div>';
                         //form ends
                     }

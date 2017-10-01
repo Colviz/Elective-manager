@@ -33,8 +33,8 @@
       }
       else  {
           //function for marking a notification as read
-          //destination of these type of notifications is admin
-          $ret = Database::marknotificationread($_POST['markread'],$destination);
+          //destination of these type of notifications is the user/student
+          $ret = Database::marknotificationread($_POST['markread']);
       }
 
         if($ret == 1) {

@@ -39,7 +39,7 @@
         //fetching notifications from datbase
         $notificontent = Database::notificationcontent($user,$usertype);
 
-
+        
           //catching variables for viewing older notifications
           if($_POST['viewread'])  {
             echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
