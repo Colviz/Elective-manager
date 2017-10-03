@@ -1,11 +1,9 @@
-# Elective Manager
+# Elective Manager - [Demo](http://139.59.13.224:4000/)
 
 ## Introduction
-
 This project named Elective Manager, is an open source project. It will be used to allot the Elective subjects to undergradate as well as post-graduate students. These elective subjects are published by the departments and are allotted to students based on their priority of published subjects and CGPA. 
 
 ## Usage
-
 There are mainly three interfaces:
 1. Admin Login
 2. Department Login
@@ -25,33 +23,26 @@ Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blo
 
 ### Requirements
 
-PHP, MySql, Apache
+1. PHP
+2. MySql
+3. Apache
 
 ### Installation
-run as php -S localhost:3000
-
-
+> run as php -S localhost:4000
 
 ### Configuration
-
-You can run this project by clicking on [this link.](http://139.59.13.224:4000/)
-
-
+After installation you can run this project by visiting [localhost:4000](http://localhost:4000/)
 
 ## Found a bug?
 [Submit an issue](https://github.com/Rishabh04-02/Elective-manager-new/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
 
-
 ## Maintainers
 Elective Manager is built while interning at [NIT Hamirpur](http://nith.ac.in/nith/) by following Developers:
 
-+ [Rishabh Chaudhary](https://github.com/Rishabh04-02)
-- [Shubham Machal](https://github.com/shubhammachal)
+* [Rishabh Chaudhary](https://github.com/Rishabh04-02)
+* [Shubham Machal](https://github.com/shubhammachal)
 * [Abhishek Kumar](https://github.com/Abhishek-sopho)
 
-
 ## License
-
 For License click on the link below:
-
 [Apache-2.0](Elective-manager-new/LICENSE.md )
