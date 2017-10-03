@@ -37,7 +37,7 @@ After installation you can run this project by visiting [localhost:4000](http://
 [Submit an issue](https://github.com/Rishabh04-02/Elective-manager-new/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
 
 ## Maintainers
-Elective Manager is built while interning at [NIT Hamirpur](http://nith.ac.in/nith/) by following Developers:
+Elective Manager is built while interning at [National Institute of Technology, Hamirpur](http://nith.ac.in/nith/) by following Developers:
 
 * [Rishabh Chaudhary](https://github.com/Rishabh04-02)
 * [Shubham Machal](https://github.com/shubhammachal)
@@ -45,4 +45,4 @@ Elective Manager is built while interning at [NIT Hamirpur](http://nith.ac.in/ni
 
 ## License
 For License click on the link below:
-[Apache-2.0](Elective-manager-new/LICENSE.md )
+[Apache-2.0](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/LICENSE.md)
