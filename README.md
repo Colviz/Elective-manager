@@ -1,77 +1,71 @@
-[welcom-badge]:  https://img.shields.io/badge/PRs%20&%20Issues-welcome-brightgreen.svg
-[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager-new/pulls
-[standard-readme-badge]:  https://img.shields.io/badge/readme%20style-standard-brightgreen.svg
-[standard-readme-link]:   https://github.com/RichardLitt/standard-readme
+[welcom-badge]:  https://img.shields.io/badge/PRs%20&%20Issues-welcome-brightgreen.svg?style=flat-square
+[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager-new/pulls?style=flat-square
+[standard-readme-badge]:  https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
+[standard-readme-link]:   https://github.com/RichardLitt/standard-readme?style=flat-square
+[rishabh04-02-link]:	https://github.com/Rishabh04-02
+[rishabh04-02-img]:	https://avatars2.githubusercontent.com/u/12505795?v=4&s=460
+[shubhammachal-link]:	https://github.com/shubhammachal
+[shubhammachal-img]:	https://avatars2.githubusercontent.com/u/14860320?v=4&s=460
+[abhishek-link]:	https://github.com/Abhishek-sopho
+[abhishek-img]:	https://avatars3.githubusercontent.com/u/16971378?v=4&s=460
 
-## Elective Manager New 
+# Elective Manager 
 [![PRs & Issues Welcome][welcom-badge]][welcome-link]
 [![standard-readme compliant][standard-readme-badge]][standard-readme-link]
-[![Code Triagers Badge](https://www.codetriage.com/rishabh04-02/elective-manager-new/badges/users.svg)](https://www.codetriage.com/rishabh04-02/elective-manager-new)
-> This is the Elective Manager which will be used for Elective allotments (Open electives as well as Departmental electives). <br>
-> Develop it keeping in mind its **Flexibility**, **Stability** and **Security**.
 
-run as `php -S localhost:3000`
+## Demo
+Try project demo at [http://139.59.13.224:4000/](http://139.59.13.224:4000/)
 
-## Project Completed - **36/45 - 80%**
-Calculated from Features to Implement completion percentage.
+## Introduction
+This project named Elective Manager, is an open source project. It will be used to allot the Elective subjects to undergradate as well as post-graduate students. These elective subjects are published by the departments and are allotted to students based on their priority of published subjects and CGPA. 
 
-## Languages and Packages used -
-> PHP, Javascript, MySql, Google Material Design, PHP-API (self created)
+## Usage
+There are 3 interfaces:
+1. Admin Login
+2. Department Login
+3. Student Login
 
-## Features to Implement
+* Admin Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it). Admin is given the power to delete any user(student/department).
 
-### **General**
-- [x] Add captcha on every form.
-- [x] Should work for both Open elective as well as Departmental elective allotments.
-- [x] Should have a secure password recovery mechanism for all the interfaces.
-- [x] 3 login interfaces - **Admin**, **Student** and **Department**.
-- [x] Do routing.
-- [x] Use OOP and functions to get the work done.
-- [x] Use Javascript for field validations.
-- [x] Responsive Design.
-- [x] Open source this project and provide long term support.
-- [x] Prevent attacks eg. Sql Injections (Use PDO, prepare queries, mysqli_real_escape_string(), stripslashes()).
-- [x] Avoid code redundancy.
-- [x] All design etc. files common for all interfaces should be put together, reduces redundancy.
-- [x] Use google API for sending all kinds of mails - used mailgun (opensource).
-- [x] Make a report bugs page, it's link should be on the footer, while reporting a bug if the session is set then also send the name of session user in the report.
-- [x] Make an interactive 404 error page, can also display the names of developers on the page.
-- [x] Footer should have a credits link also.
-- [ ] Add page hits counter
-- [x] All the open forms (can be accessed without login, eg. bugs) should have a captcha.
-- [ ] Add instructions,faq page.
+* Department Admin will post electives. When posting electives, admin will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course and any additional information. The option to update elective details after posting is also given to the department admin. The department admin will get the final list of the students selected for each elective.
 
-### **Admin Interface**
-- [ ] Gets the final list of students selected for each elective.
-- [ ] Gets the notification when department deletes an elective/closes registration.
-- [x] Can see all the available departments.
-- [x] Can see all the departments with no. of published electives.
-- [x] Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it).
-- [x] If the tokens are already generated then admin can view both the tokens.
-- [x] Remove the temporary display of email contents and uncoment the mail() function.
-- [x] If session already set, then login directly on register and login pages.
-- [x] Redirect to login page after successful registration.
-- [ ] Admin can delete any user (Student/Department)
-- [x] Add request handlers for fake students registrations/resetting of account (can use registration no. of JEE Mains, feedback verification password).
+* After login, the students are provided with the option to priortize published electives. Each student can see his/her status in each elective. students can also change or recover their passwords if forgotten.
 
-### **Department Interface**
-- [x] 2 Admins (Super Admin (H.O.D.) and Elective poster (Professor)).
-- [ ] Department admin gets the final list of students selected for each elective.
-- [x] Elective poster have the ability to post multiple electives.
-- [x] Elective posting confirmation will go to Admin once approved by Super Admin.
-- [x] Elective when approved by Super Admin and published, will be open for registrations.
-- [x] Add UG/PG Elective, subject codes will be chosen from dropdown.
-- [x] Add option for no. of seats available for the elective.
-- [x] Can view the list of students selected and the students who've applied for the elective.
-- [x] When posting elective will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course, Any additional information, Auto close registration/not.
-- [x] Have the option to update elective details after posting (Keep in mind about auto close registration case).
-- [x] Timestamp will be added on every registration request,rejection, publishing elective, super admin confirmation, updating, etc.
-- [x] Department name, elective names, etc. will be available from CC.
+## Contributing
+Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/CONTRIBUTING.md)
 
-### **Student Interface**
-- [ ] Mail sending on successful allotment of seat, rejection.
-- [x] Login will be with the help of roll no.
-- [x] After logging in student will prioritize electives (Priority once set can't be updated - show prompt).
-- [x] After the student applies show his/her status in each elective (update dynamically).
-- [x] Timestamp while setting priorities will also be set.
-- [x] Allow students to change and recover passwords.
+## Installation
+
+### Requirements
+
+1. PHP
+2. MySql
+3. Apache
+
+### Running locally
+1. clone the project using the command<br>
+``git clone git@github.com:Rishabh04-02/Elective-manager-new.git
+``
+<br>OR <br>
+Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager-new/archive/master.zip)
+2. Then navigate to project directory and run the project as<br>
+``php -S localhost:4000
+``
+3. Now visit [http://localhost:4000](http://localhost:4000)
+
+### Configuration
+Configure the project by visiting [http://localhost:4000](http://localhost:4000/)
+
+
+## Found a bug?
+[Submit an issue](https://github.com/Rishabh04-02/Elective-manager-new/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
+
+## Maintainers
+Elective Manager is built while interning at [National Institute of Technology, Hamirpur](http://nith.ac.in/nith/) by the following Developers:
+
+| [Rishabh Chaudhary](https://github.com/Rishabh04-02) | [Shubham Machal](https://github.com/shubhammachal) | [Abhishek Kumar](https://github.com/Abhishek-sopho) |
+| :-------------------------------------:|:--------------------------------------------------:|:------------------------------------------------:|
+| ![rishabh04-02-img]    | ![shubhammachal-img] | ![abhishek-img] |
+
+## License
+This Project is licensed under License - [Apache-2.0](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/LICENSE.md)
