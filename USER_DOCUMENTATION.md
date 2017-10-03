@@ -28,14 +28,14 @@ Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blo
 3. Apache
 
 ### Running locally
-1. clone the project using the command below
-```git clone git@github.com:Rishabh04-02/Elective-manager-new.git
-```
+1. clone the project using the command
+``git clone git@github.com:Rishabh04-02/Elective-manager-new.git
+``
 OR <br>
 Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager-new/archive/master.zip)
 2. Then navigate to project directory and run the project as
-```php -S localhost:4000
-```
+``php -S localhost:4000
+``
 3. Now visit [http://localhost:4000](http://localhost:4000)
 
 ### Configuration
