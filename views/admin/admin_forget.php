@@ -205,7 +205,7 @@
       
         <form action="/admin/forget" method="post">
         <h1>Admin Password recovery</h1>
-            <input  type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
+            <input  type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="User Name" id="uname" required>
             <input  type="email" name="email" placeholder="Email" id="email" required>
             <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
             
