@@ -164,25 +164,19 @@
   }
       else {
 ?>
-      <div class="mdl-cell mdl-cell--6-col">
+     
       
-        <form class="admlog" action="/department/forget" method="post">
-        <h3>Department Password recovery</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Letters & Numerics" id="uname" required>
-            <label class="mdl-textfield__label" for="uname">Username</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="email" name="email" id="email" required>
-            <label class="mdl-textfield__label" for="email">Email</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="no" pattern="[0-9]{10,10}" id="no" required>
-            <label class="mdl-textfield__label" for="no">Mobile no.</label>
-            </div>
-            <!-- Raised button with ripple -->
-            <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+        <form  action="/department/forget" method="post">
+        <h1>Department Password recovery</h1>
+            <input  type="text" name="uname" pattern="[A-Za-z0-9]{1,15}" placeholder="Username" id="uname" required>
+            <input  type="email" name="email" placeholder="Email" id="email" required>
+            <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
+            
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+
+            
+            <button type="submit" class="login">
             Submit
           </button>
           </div>
@@ -191,7 +185,4 @@
       <?php
           }
       ?>
-
-
-    </div>
-  </div>
+      
