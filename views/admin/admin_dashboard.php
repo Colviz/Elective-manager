@@ -150,6 +150,7 @@
         <!-- Displaying notification ends -->
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="/admin/profile">Profile</a>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/admin/profile/registered">Registered Students</a>
+        <a class="mdl-button mdl-js-button mdl-button--red mdl-button--raised mdl-js-ripple-effect" href="/admin/security">Security</a>
         <a href="/admin/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
       </nav>
     </div>
@@ -159,6 +160,7 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/about">About</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/contact">Contact</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile">Profile</a>
+      <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--red" href="/admin/security">Security</a>
       <!-- Displaying notification here -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/notifications" class="notification"><sup>
       <?php  

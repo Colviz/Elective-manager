@@ -64,6 +64,10 @@ $routes = [
         //admin password change
         include_once('views/admin/admin_change.php');
     },
+    'admin/security' => function()    {
+        //admin security & backup settings
+        include_once('views/admin/admin_security.php');
+    },
     // Student interface
 
     'student' => function()    {
