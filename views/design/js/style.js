@@ -12,3 +12,10 @@ $(".go").change(function(){
 });
 
 $(".go").eq(0).trigger('change');
+
+//code to hide/unhide a div using a button
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#Hideit").toggle();
+    });
+});
