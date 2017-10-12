@@ -127,7 +127,7 @@
             <input placeholder="Password" name="newpass" type="password" required>
             
             <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+            <div class="g-recaptcha" data-sitekey=<?php echo $reCAPTCHAsiteKey ?> align="center"></div><br>
 
             <!-- Raised button with ripple -->
             <button class="login" name="admch" value="admch" type="submit">Change Password</button>

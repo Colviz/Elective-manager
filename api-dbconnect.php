@@ -1,6 +1,18 @@
 <?php   
-//This file is a mirror file of dbconnect.php
-//This file is not being used anywhere, but dbconnect.php is being used for database connectivity and contains all kinds of functions being used
+/**
+ * This file is a mirror file of dbconnect.php
+ * This file is not being used anywhere, but dbconnect.php is being used for database connectivity and 
+ * contains all kinds of functions being used
+ */
+
+/**
+ * Google reCAPTCHAvalidate data-sitekey
+ */
+$reCAPTCHAsiteKey = "YOUR_SITE_KEY_HERE";
+
+/**
+ * Class Database
+ */
 class Database
 {
     private static $dbName = 'database name here' ;

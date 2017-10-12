@@ -120,7 +120,7 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
             <input placeholder="Password" name="pass" type="password" required>
             
             <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+            <div class="g-recaptcha" data-sitekey=<?php echo $reCAPTCHAsiteKey ?> align="center"></div><br>
             <!-- Raised button with ripple -->
             <button class="login" name="admlog" value="admlog" type="submit">Login</button>
             <a href="/admin/forget" style="text-decoration: none" target="_blank">Forgot Password?</a>

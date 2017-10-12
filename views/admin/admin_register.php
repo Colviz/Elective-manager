@@ -1,6 +1,9 @@
 <?php
 		include_once('views/includes/includes_header.php');
-    //DATABASE CONNECTING API FILE IS NOT INCLUDED HERE
+  /**
+   * DATABASE CONNECTING API FILE IS NOT INCLUDED HERE
+   * Hence due to that the captcha on this page won't work
+   */
 ?>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>
@@ -127,7 +130,7 @@
   					</div>
 
             <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+            <div class="g-recaptcha" data-sitekey=<?php echo $reCAPTCHAsiteKey ?> align="center"></div><br>
 
   					<!-- Raised button with ripple -->
   					<div>

@@ -210,7 +210,7 @@
             <input  type="text" name="no" placeholder="Mobile Number" pattern="[0-9]{10,10}" id="no" required>
             
             <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6LeITyYUAAAAAMv47yYgyOkPpBI-tr__XTvc0LlQ" align="center"></div><br>
+            <div class="g-recaptcha" data-sitekey=<?php echo $reCAPTCHAsiteKey ?> align="center"></div><br>
 
             <!-- Raised button with ripple -->
             <button type="submit" name="admfor" value="admfor" class="login">
