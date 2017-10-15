@@ -1,71 +1,44 @@
-[welcom-badge]:  https://img.shields.io/badge/PRs%20&%20Issues-welcome-brightgreen.svg?style=flat-square
-[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager-new/pulls?style=flat-square
-[standard-readme-badge]:  https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
-[standard-readme-link]:   https://github.com/RichardLitt/standard-readme?style=flat-square
-[rishabh04-02-link]:	https://github.com/Rishabh04-02
-[rishabh04-02-img]:	https://avatars2.githubusercontent.com/u/12505795?v=4&s=460
-[shubhammachal-link]:	https://github.com/shubhammachal
-[shubhammachal-img]:	https://avatars2.githubusercontent.com/u/14860320?v=4&s=460
-[abhishek-link]:	https://github.com/Abhishek-sopho
-[abhishek-img]:	https://avatars3.githubusercontent.com/u/16971378?v=4&s=460
+# [Name](http://repolink.io)
+It should be linked to the Github domain
 
-# Elective Manager 
-[![PRs & Issues Welcome][welcom-badge]][welcome-link]
-[![standard-readme compliant][standard-readme-badge]][standard-readme-link]
-
-## Demo
-Try project demo at [http://139.59.13.224:4000/](http://139.59.13.224:4000/)
-
-## Introduction
-This project named Elective Manager, is an open source project. It will be used to allot the Elective subjects to undergradate as well as post-graduate students. These elective subjects are published by the departments and are allotted to students based on their priority of published subjects and CGPA. 
-
-## Usage
-There are 3 interfaces:
-1. Admin Login
-2. Department Login
-3. Student Login
-
-* Admin Will open registration for Departmental admins (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, admin will have a separate interface to generate the key (dynamic creation of it). Admin is given the power to delete any user(student/department).
-
-* Department Admin will post electives. When posting electives, admin will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course and any additional information. The option to update elective details after posting is also given to the department admin. The department admin will get the final list of the students selected for each elective.
-
-* After login, the students are provided with the option to priortize published electives. Each student can see his/her status in each elective. students can also change or recover their passwords if forgotten.
-
-## Contributing
-Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/CONTRIBUTING.md)
-
-## Installation
-
-### Requirements
-
-1. PHP
-2. MySql
-3. Apache
-
-### Running locally
-1. clone the project using the command<br>
-``git clone git@github.com:Rishabh04-02/Elective-manager-new.git
-``
-<br>OR <br>
-Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager-new/archive/master.zip)
-2. Then navigate to project directory and run the project as<br>
-``php -S localhost:4000
-``
-3. Now visit [http://localhost:4000](http://localhost:4000)
-
-### Configuration
-Configure the project by visiting [http://localhost:4000](http://localhost:4000/)
+<a href="http://respolink.io"><img src="https://assets-cdn.github.com/images/modules/open_graph/github-mark.png" alt="Name: A software" style="max-width:100%;" width="400" height="215"></a>
 
 
-## Found a bug?
-[Submit an issue](https://github.com/Rishabh04-02/Elective-manager-new/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
+## Synopsis
 
-## Maintainers
-Elective Manager is built while interning at [National Institute of Technology, Hamirpur](http://nith.ac.in/nith/) by the following Developers:
+At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions of repository
 
-| [Rishabh Chaudhary](https://github.com/Rishabh04-02) | [Shubham Machal](https://github.com/shubhammachal) | [Abhishek Kumar](https://github.com/Abhishek-sopho) |
-| :-------------------------------------:|:--------------------------------------------------:|:------------------------------------------------:|
-| ![rishabh04-02-img]    | ![shubhammachal-img] | ![abhishek-img] |
+## Motivation
 
-## License
-This Project is licensed under License - [Apache-2.0](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/LICENSE.md)
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+
+## Quick install
+
+Provide code examples and explanations of how to get the project.
+
+## Plugins and Extensions
+
+Provide additional plugins for the software
+
+## Platform Support
+OS system should be described. and the system configuration should also be mentioned in this
+
+## Tests
+
+Describe and show how to run the tests with code examples.
+
+## Related projects
+Projects that is linked with this repository or software should be mentioned
+
+| Project                                                                            | Description                                                        |
+|------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| [Project Name](https://github.com/) | Description.                        |
+
+
+## Contributors
+
+Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+
+## Copyright and license
+
+A short snippet describing the license (MIT, Apache, etc.)
