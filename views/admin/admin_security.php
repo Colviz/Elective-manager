@@ -56,8 +56,8 @@
    
       <div class="mdl-cell mdl-cell--12-col">
       
-          <h3>Use this when you are under any kind of attack eg. Sql injections, Scripts running on site, etc. This will codevent database connectivity of any kind.
-            When the attack has stopped, contact your database administrator to rename file "<code>backup_dbconnect.php</code>" to "<code>dbconnect.php</code>" in the project directory.</h3> 
+          <h4>Use this when you are under any kind of attack eg. Sql injections, Scripts running on site, etc. This will prevent database connectivity of any kind.
+            When the attack has stopped, contact your database administrator to rename file "<code>backup_dbconnect.php</code>" to "<code>dbconnect.php</code>" in the project directory.</h4> 
         <form class="update" action="" method="post">
           <button name="attack" class="mdl-button mdl-js-button mdl-button--red mdl-button--raised mdl-js-ripple-effect">I am Under attack</button></form>
         
