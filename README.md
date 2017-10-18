@@ -44,7 +44,7 @@ Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager/blob/ma
 
 ### Running locally
 1. clone the project using the command<br>
-``git clone git@github.com:Rishabh04-02/Elective-manager-new.git
+``git clone git@github.com:Rishabh04-02/Elective-manager.git
 ``
 <br>OR <br>
 Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager/archive/master.zip)
