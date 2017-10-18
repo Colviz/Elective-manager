@@ -159,6 +159,12 @@ $routes = [
     'department/logout' => function()    {
         //department logout
         include_once('views/public/public_logout.php');
+    },
+
+    //Other routes
+    'github' => function()    {
+        //department logout
+        include_once('views/public/public_github.php');
     }
 ];
 
