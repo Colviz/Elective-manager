@@ -1,5 +1,5 @@
 [welcom-badge]:  https://img.shields.io/badge/PRs%20&%20Issues-welcome-brightgreen.svg?style=flat-square
-[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager-new/pulls?style=flat-square
+[welcome-link]:  https://github.com/Rishabh04-02/Elective-manager/pulls?style=flat-square
 [standard-readme-badge]:  https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
 [standard-readme-link]:   https://github.com/RichardLitt/standard-readme?style=flat-square
 [rishabh04-02-link]:	https://github.com/Rishabh04-02
@@ -32,7 +32,7 @@ There are 3 interfaces:
 * After login, the students are provided with the option to priortize published electives. Each student can see his/her status in each elective. students can also change or recover their passwords if forgotten.
 
 ## Contributing
-Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/CONTRIBUTING.md)
+Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager/blob/master/CONTRIBUTING.md)
 
 ## Installation
 
@@ -47,7 +47,7 @@ Refer [CONTRIBUTING.md](https://github.com/Rishabh04-02/Elective-manager-new/blo
 ``git clone git@github.com:Rishabh04-02/Elective-manager-new.git
 ``
 <br>OR <br>
-Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager-new/archive/master.zip)
+Download it by clicking [here](https://github.com/Rishabh04-02/Elective-manager/archive/master.zip)
 2. Then navigate to project directory and run the project as<br>
 ``php -S localhost:4000
 ``
@@ -58,7 +58,7 @@ Configure the project by visiting [http://localhost:4000](http://localhost:4000/
 
 
 ## Found a bug?
-[Submit an issue](https://github.com/Rishabh04-02/Elective-manager-new/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
+[Submit an issue](https://github.com/Rishabh04-02/Elective-manager/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
 
 ## Maintainers
 Elective Manager is built while interning at [National Institute of Technology, Hamirpur](http://nith.ac.in/nith/) by the following Developers:
@@ -68,4 +68,4 @@ Elective Manager is built while interning at [National Institute of Technology, 
 | ![rishabh04-02-img]    | ![shubhammachal-img] | ![abhishek-img] |
 
 ## License
-This Project is licensed under License - [Apache-2.0](https://github.com/Rishabh04-02/Elective-manager-new/blob/master/LICENSE.md)
+This Project is licensed under License - [Apache-2.0](https://github.com/Rishabh04-02/Elective-manager/blob/master/LICENSE.md)

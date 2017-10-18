@@ -1,3 +1,3 @@
 <?php
-		header("location: https://github.com/Rishabh04-02/Elective-manager-new/issues");
+		header("location: https://github.com/Rishabh04-02/Elective-manager/issues");
 ?>
