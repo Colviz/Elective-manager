@@ -14,7 +14,7 @@
     <div class="page-content">
     <!-- Your content goes here -->
 	 <center>
-		<div class="demo-card-square mdl-card mdl-shadow--2dp" style="margin-top: 30px;width: 90%;">
+		<div class="demo-card-square mdl-card mdl-shadow--2dp" style="margin-top: 25px;width: 90%;">
 			<div class="sadface-wrapper" style="margin: 40px 0 10px 0;">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 49 49" style="enable-background:new 0 0 49 49;" xml:space="preserve" width="100px" height="100px">
 					<g>
