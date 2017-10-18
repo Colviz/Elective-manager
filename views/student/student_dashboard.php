@@ -130,3 +130,4 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/logout">Logout</a>
     </nav>
   </div>
+  
