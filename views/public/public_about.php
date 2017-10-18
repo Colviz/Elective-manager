@@ -34,7 +34,7 @@
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border"></div>
 			  <div style="text-align: left;">
-			  More information available here - <a href="https://github.com/Rishabh04-02/Elective-manager/graphs/contributors" style="text-decoration: none;">GitHub : Elective-manager-new</a>
+			  More information available here - <a href="https://github.com/Rishabh04-02/Elective-manager/graphs/contributors" style="text-decoration: none;">GitHub : Elective-manager</a>
 			  </div>
 		</div>
 		</center>
