@@ -25,7 +25,7 @@ There are 3 interfaces:
 2. Department Login
 3. Student Login
 
-* Admin Will open registration for Departmental Admin (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, Admin will have a separate interface to generate the key (dynamic creation of it). Admin is given the power to delete any user(student/department).
+* Admin will open registration for Departmental Admin (will use an authorization key for registration, it'll be a Hash). This key will be generated automatically, Admin will have a separate interface to generate the key (dynamic creation of it). Admin is given the power to delete any user(student/department).
 
 * Department Admin will post electives. When posting electives, Admin will post the following details - No. of seats, Elective code (as multiple electives), Name of professor taking the course and any additional information. The option to update elective details after posting is also given to the department Admin. The department Admin will get the final list of the students selected for each elective.
 
