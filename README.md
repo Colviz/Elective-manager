@@ -61,7 +61,7 @@ Configure the project by visiting [http://localhost:4000](http://localhost:4000/
 [Submit an issue](https://github.com/Rishabh04-02/Elective-manager/issues) to the Elective Manager Github. And, of course, feel free to submit pull requests with bug fixes or changes.
 
 ## Maintainers
-Elective Manager is built while interning at [National Institute of Technology, Hamirpur](http://nith.ac.in/nith/) by the following Developers:
+Elective Manager is built by the following Developers:
 
 | [Rishabh Chaudhary](https://github.com/Rishabh04-02) | [Shubham Machal](https://github.com/shubhammachal) | [Abhishek Kumar](https://github.com/Abhishek-sopho) |
 | :-------------------------------------:|:--------------------------------------------------:|:------------------------------------------------:|
