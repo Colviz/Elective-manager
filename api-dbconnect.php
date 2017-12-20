@@ -1999,4 +1999,32 @@ class Database
     }
 
 }
+
+/**
+ * SQL Procedure's "name" - "working"
+ *
+ * allot_final - Inserts the rollno. of student along with the subject code to final students_allotted database ie. final elective allotment
+ *
+ * allot_priority - Selects rollno. and subject code from priorities table where priority is minimum [rollno. is taken as input]
+ *
+ * allotments - Selects name and cgpi from students where rollno. is taken as input
+ *
+ * delete_specific_priority - Once a priority has been checked and is unavailable then it'll take rollno. and priority as input and will delete the specific priority and will again call allot_priority
+ * 
+ * delete_user_priorities - Deletes all priorities of user rollno. is given as input, this will be called once elective has been allotted to a student.
+ *
+ * max_cgpi - Selects the rollno. from student where student has max(cgpi) ie. the highest cgpi student
+ *
+ * max_cgpi_priorities - Selects the rollno. from priorities with max(cgpi), is similar to the above procedure
+ * 
+ * replicate_priorities_table - creates a table with name priorities_backup and moves all the content of priorities table to this table.
+ *
+ * seats_in_subject_allotted - Selects the no. of seats allotted to students in a particular subject.
+ *
+ * select_priority - Selects the subject code with minimum priority from priorities
+ * 
+ * total_seats_subject - Selects the no. of seats in a subject, subject code is taken as input
+ *
+ */
+
 ?>
