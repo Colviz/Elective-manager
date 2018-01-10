@@ -2024,7 +2024,6 @@ class Database
  * select_priority - Selects the subject code with minimum priority from priorities
  * 
  * total_seats_subject - Selects the no. of seats in a subject, subject code is taken as input
- *
  */
 
 ?>
