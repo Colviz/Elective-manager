@@ -1966,18 +1966,116 @@ class Database
         }
 
 
-    //other functions
+        //other functions
 
-    //generating the tokens (random strings)
-    public static function generateRandomString($length = 10) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        //priorities backup
+        public static function createbackup()   {
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "CALL replicate_priorities_table";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            Database::disconnect();
+
+            return 1;
         }
-        return $randomString;
-    }
+
+        //allotting electives
+        public static function startallotment() {
+            //selects the total no. of students in the table
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "CALL total_students_count";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $count = $data['countno'];
+
+            for ($i=0; $i < $count; $i++) { 
+                    
+                //max_cgpi - gives max cgpi of student
+                $pdo = Database::connect();
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $sql = "CALL max_cgpi";
+                $q = $pdo->prepare($sql); 
+                $q->execute();
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $rollno = $data['rollno'];
+                
+                //select the subject with minimum priority of student
+                $sql = "CALL select_priority(?)";
+                $q = $pdo->prepare($sql); 
+                $q->execute(array($rollno));
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $subject = $data['subj_code'];
+
+                //get total no. of seats in subject
+                $sql = "CALL total_seats_subject(?)";
+                $q = $pdo->prepare($sql); 
+                $q->execute(array($subject));
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $total_seats = $data['total_seats'];
+
+                //get the no. of alloted seats
+                $sql = "CALL seats_in_subject_allotted(?)";
+                $q = $pdo->prepare($sql); 
+                $q->execute(array($subject));
+                $data = $q->fetch(PDO::FETCH_ASSOC);
+                $alloted_seats = $data['total_seats'];
+                Database::disconnect();
+
+                //no. of available seats
+                $seats_available = $total_seats - $alloted_seats;
+
+                //if seat available then allot priority
+                if ($seats_available != 0) {
+                    //allot priority
+                    $pdo = Database::connect();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "CALL allot_priority(?)";
+                    $q = $pdo->prepare($sql); 
+                    $q->execute(array($rollno));
+                    $data = $q->fetch(PDO::FETCH_ASSOC);
+                    $subject = $data['subjcode'];
+
+                    //final allotment of subject 
+                    $sql = "CALL allot_final(?,?)";
+                    $q = $pdo->prepare($sql); 
+                    $q->execute(array($rollno,$subject));
+                    Database::disconnect();
+
+                    //delete all the other priorities
+                    $pdo = Database::connect();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "CALL delete_user_priorities(?)";
+                    $q = $pdo->prepare($sql); 
+                    $q->execute(array($rollno));
+                    Database::disconnect();
+
+                }   else    {//else delete priority
+                    $pdo = Database::connect();
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "CALL delete_specific_priority(?)";
+                    $q = $pdo->prepare($sql); 
+                    $q->execute($rollno);
+                    Database::disconnect();
+                }                
+            }
+
+
+            return 1;
+        }
+
+        //generating the tokens (random strings)
+        public static function generateRandomString($length = 10) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
 
     //mailing the required stuff for the app
     public static function mailthedetails($to,$subject,$message) {
