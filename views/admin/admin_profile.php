@@ -43,7 +43,7 @@
   <div class="table-responsive">
 <?php 
   //create backup
-  if (isset($_POST['backup']) && $_POST['backup'] == true) {
+  if (isset($_POST['backup'])) {
       $backup = Database::createbackup();
 
       if ($backup == 1) {
@@ -55,7 +55,7 @@
 
   //catching the allotment form result
   //  $allot = 0;
-  if (isset($_POST['allot']) && $_POST['allot'] == true) {
+  if (isset($_POST['allot'])) {
       $allot = Database::startallotment();
 
       if ($allot == 1) {
