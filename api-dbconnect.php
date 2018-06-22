@@ -2036,12 +2036,17 @@ class Database
                     $q = $pdo->prepare($sql); 
                     $q->execute(array($rollno));
                     $data = $q->fetch(PDO::FETCH_ASSOC);
-                    $subject = $data['subjcode'];
+                    $subject = $data['subj_code'];
 
                     //final allotment of subject 
                     $sql = "CALL allot_final(?,?)";
                     $q = $pdo->prepare($sql); 
                     $q->execute(array($rollno,$subject));
+
+                    //set allotment value = 1 in students.allotment
+                    $sql = "CALL student_alloted(?)";
+                    $q = $pdo->prepare($sql); 
+                    $q->execute(array($rollno));
                     Database::disconnect();
 
                     //delete all the other priorities
@@ -2059,9 +2064,8 @@ class Database
                     $q = $pdo->prepare($sql); 
                     $q->execute($rollno);
                     Database::disconnect();
-                }                
+                }
             }
-
 
             return 1;
         }
