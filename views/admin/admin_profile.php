@@ -67,6 +67,7 @@
 ?>
 <br><br>
   <button class="mdl-button mdl-js-button mdl-button--green mdl-button--raised mdl-js-ripple-effect">Ready for Allotment?</button>
+  <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="/admin/alloted">View Allotment Result</a>
   <!-- The hidden div -->
   <div id="Hideit" style="display: none;">
     <br><p>Once you are ready for allotment (All departments have registered and all students have filled their priorities), just start the allotment by clicking on the button below.</p>

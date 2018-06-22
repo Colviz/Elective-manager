@@ -68,6 +68,11 @@ $routes = [
         //admin security & backup settings
         include_once('views/admin/admin_security.php');
     },
+    'admin/alloted' => function()    {
+        //admin security & backup settings
+        include_once('views/admin/admin_alloted.php');
+    },
+
     // Student interface
 
     'student' => function()    {

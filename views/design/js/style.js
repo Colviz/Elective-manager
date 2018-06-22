@@ -19,3 +19,10 @@ $(document).ready(function(){
         $("#Hideit").toggle();
     });
 });
+
+//print allotment result
+$(document).ready(function(){
+    $("button").click(function(){
+        printData();
+    });
+});
