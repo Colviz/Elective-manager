@@ -27,13 +27,14 @@
 			  <div style="text-align: left;">
 			  <b>Developers -</b>
 			  <ul>
-			  <li><a style="text-decoration: none;" href="https://github.com/Rishabh04-02" target="_blank">14MI508 - <b>Rishabh Chaudhary</b></a></li>
-			  <li><a style="text-decoration: none;" href="https://github.com/Abhishek-sopho" target="_blank">14MI510 - <b>Abhishek Kumar</b></a></li>
-			  <li><a style="text-decoration: none;" href="https://github.com/Shubhammachal" target="_blank">14MI541 - <b>Shubham Machal</b></a></li>
+			  <li><a style="text-decoration: none;" href="https://github.com/Rishabh04-02" target="_blank"><b>Rishabh Chaudhary</b></a></li>
+			  <li><a style="text-decoration: none;" href="https://github.com/Abhishek-sopho" target="_blank"><b>Abhishek Kumar</b></a></li>
+			  <li><a style="text-decoration: none;" href="https://github.com/Shubhammachal" target="_blank"><b>Shubham Machal</b></a></li>
 			  </ul>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border"></div>
 			  <div style="text-align: left;">
+			  Although there are more contributors to this project who can be viewed <a href="https://github.com/Rishabh04-02/Elective-manager/" style="text-decoration: none;">here</a> along with their contribution graphs.<br>
 			  More information available here - <a href="https://github.com/Rishabh04-02/Elective-manager/graphs/contributors" style="text-decoration: none;">GitHub : Elective-manager</a>
 			  </div>
 		</div>

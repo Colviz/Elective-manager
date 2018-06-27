@@ -67,5 +67,8 @@ Elective Manager is built by the following Developers:
 | :-------------------------------------:|:--------------------------------------------------:|:------------------------------------------------:|
 | ![rishabh04-02-img]    | ![shubhammachal-img] | ![abhishek-img] |
 
+## Contributors 
+Contributors for this project can be seen [here](https://github.com/Rishabh04-02/Elective-manager/graphs/contributors) along with their contribution graphs.
+
 ## License
 This Project is licensed under License - [Apache-2.0](https://github.com/Rishabh04-02/Elective-manager/blob/master/LICENSE.md)
