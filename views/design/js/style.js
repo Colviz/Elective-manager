@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 //print allotment result
 $(document).ready(function(){
-    $("button").click(function(){
+    $("#thiss").click(function(){
         printData();
     });
 });

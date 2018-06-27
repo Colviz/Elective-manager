@@ -71,7 +71,8 @@
   <!-- The hidden div -->
   <div id="Hideit" style="display: none;">
     <br><p>Once you are ready for allotment (All departments have registered and all students have filled their priorities), just start the allotment by clicking on the button below.</p>
-    <br><p><b>Note - Allotment once started can't be undone.</b><br>But you can create a backup of the priorities filled by students.</p><br>
+    When allotment is started, Please don't refresh/close page.<br>This might take few minutes.<br>
+    <br><p><b>Note - Allotment once started can be undone.</b><br>Also It is recommended to create a backup of the priorities filled by students. Using the button below.</p><br>
     <form class="update" action="" method="post">
       <button name="backup" type="submit" value="true" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Create priorities backup</button>
     </form>

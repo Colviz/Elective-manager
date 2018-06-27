@@ -6,23 +6,28 @@
     <div class="page-content">
     <!-- Your content goes here -->
 
+    <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+
     
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">View Registered students</h2>
+    <h2 class="mdl-card__title-text">Registered students</h2>
   </div>
-  <div class="mdl-card__supporting-text">
-    Registered students from various departments will appear here
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-  <?php 
-        for ($i=1; $i < 5; $i++) { 
-                  
-  ?>
-    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect">
-      Department <?php echo $i; ?>
-    </a>
-    <?php
-        }
-    ?>
-    <br><br>On clicking the button the registered students of the particular department will be shown.
-  </div> 
+  <div class="table-responsive">
+  <table id="result" class="mdl-data-table mdl-js-data-table">  
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Roll no.</th>
+      <th class="mdl-data-table__cell--non-numeric">Name of Student</th>
+      <th class="mdl-data-table__cell--non-numeric">Department of Student</th>
+      </tr>
+  </thead>
+  <tbody>
+        <?php  $result = Database::RegisteredStudents();   ?>
+                
+                
+  </tbody>  
+  </table>
+</div>
+</div>
+</div>

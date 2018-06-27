@@ -20,7 +20,6 @@
   <div class="mdl-card__actions mdl-card--border"></div>
 
 <div class="table-responsive">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Print Allotment Result</button><br><br>
   <table id="result" class="mdl-data-table mdl-js-data-table">  
   <thead>
     <tr>
@@ -29,9 +28,25 @@
       </tr>
   </thead>
   <tbody>
-        <?php  Database::Allotmentresult();   ?>
+        <?php  $result = Database::Allotmentresult();   
+                
+                if ($result!=1) {
+                    echo "No result found for :";
+                }
+                else {
+        ?>
+        <button id="thiss" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Print Allotment Result</button><br><br>
+        <?php
+}
+?>
   </tbody>  
   </table>
+
+  <form class="update" action="" method="post">
+      <button name="undo" type="submit" value="true" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Undo Allotment</button>
+  </form>
+    <br>Note (for debugging) - This will clear the priorities table and will unset value to allotment in student profile and will resave priorities from backup table.
+
 </div>
 <script>
     function printData() {

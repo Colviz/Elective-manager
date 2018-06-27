@@ -1961,7 +1961,7 @@ class Database
                 $name = "Unknown Department";
                 break;
             }
-            echo $name;
+            //echo $name;
             return $name;
         }
 
@@ -1982,6 +1982,8 @@ class Database
 
         //allotting electives
         public static function startallotment() {
+            
+            echo "Allotment in Progress, Please don't refresh/close page.<br>This might take few minutes.<br>";
             //selects the total no. of students in the table
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -2025,7 +2027,7 @@ class Database
                 Database::disconnect();
 
                 //no. of available seats
-                $seats_available = $total_seats - $alloted_seats;
+                $seats_available = $total_seats - $alloted_seats;   
 
                 //if seat available then allot priority
                 if ($seats_available != 0) {
@@ -2062,12 +2064,78 @@ class Database
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = "CALL delete_specific_priority(?)";
                     $q = $pdo->prepare($sql); 
-                    $q->execute($rollno);
+                    $q->execute(array($rollno));
                     Database::disconnect();
                 }
             }
 
             return 1;
+        }
+
+        //electives allotment result
+        public static function Allotmentresult()    {
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT rollno,subj_code FROM students_allotted WHERE 1";
+            $q = $pdo->prepare($sql);
+            $q->execute();
+
+            while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr><td>';
+                echo $data['rollno'];
+                echo '</td><td>';
+                echo $data['subj_code'];
+                echo "</td></tr>";
+            }
+            Database::disconnect();
+
+            if ($data['rollno'] != NULL) {
+                return 1;
+            }
+            else return 0;
+        }
+
+        //undo allotment
+        public static function UndoAllotment()  {
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "CALL undo_allotment()";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            $sql = "CALL clear_priorities()";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            $sql = "CALL clear_students_allotted()";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            $sql = "CALL resave_priorities()";
+            $q = $pdo->prepare($sql); 
+            $q->execute();
+            Database::disconnect();
+
+            return 1;
+        }
+
+        public static function RegisteredStudents() {
+
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT rollno, name, branch FROM students WHERE 1";
+            $q = $pdo->prepare($sql);
+            $q->execute();
+
+            while($data = $q->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr><td>';
+                echo $data['rollno'];
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                echo $data['name'];
+                echo '</td><td class="mdl-data-table__cell--non-numeric">';
+                echo Database::departmentsname($data['branch']);
+                echo "</td></tr>";
+            }
+            Database::disconnect();
         }
 
         //generating the tokens (random strings)

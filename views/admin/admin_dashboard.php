@@ -121,6 +121,29 @@
           <?php
                 }
               }
+
+        //catching the markread form values
+    if(isset($_POST['undo']))  {
+
+          Database::UndoAllotment();
+?>
+<!-- Snackbar starts -->
+          <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+          <script>
+          r(function(){
+              var snackbarContainer = document.querySelector('#snackbar');
+              var data = { message: 'Allotments Undo Successful.',timeout: 4000};
+              snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          });
+          function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+          </script>
+<!-- Snackbar ends -->
+          <?php
+                }                
           ?>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
