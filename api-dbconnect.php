@@ -1961,8 +1961,8 @@ class Database
                 $name = "Unknown Department";
                 break;
             }
-            //echo $name;
-            return $name;
+            echo $name;
+            //return $name;
         }
 
 
