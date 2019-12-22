@@ -12,6 +12,7 @@
 # Elective Manager 
 [![PRs & Issues Welcome][welcom-badge]][welcome-link]
 [![standard-readme compliant][standard-readme-badge]][standard-readme-link]
+[![HitCount](http://hits.dwyl.io/Rishabh04-02/Elective-manager.svg)](http://hits.dwyl.io/Rishabh04-02/Elective-manager)
 
 ## Demo
 Try project demo at [http://139.59.13.224:4000/](http://139.59.13.224:4000/)
