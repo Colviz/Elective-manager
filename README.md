@@ -15,7 +15,8 @@
 [![HitCount](http://hits.dwyl.io/Rishabh04-02/Elective-manager.svg)](http://hits.dwyl.io/Rishabh04-02/Elective-manager)
 
 ## Demo
-Try project demo at [http://139.59.13.224:4000/](http://139.59.13.224:4000/)
+~~Try project demo at [http://139.59.13.224/](http://139.59.13.224:/)~~
+The demo for this project is removed.
 
 ## Introduction
 This project named Elective Manager, is an open source project. It will be used to allot the Elective subjects to undergraduate as well as post-graduate students. These elective subjects are published by the departments and are allotted to students based on their priority of published subjects and CGPA. 
