@@ -15,7 +15,6 @@
 [![HitCount](http://hits.dwyl.io/Rishabh04-02/Elective-manager.svg)](http://hits.dwyl.io/Rishabh04-02/Elective-manager)
 
 ## Demo
-~~Try project demo at [http://139.59.13.224/](http://139.59.13.224:/)~~
 The demo for this project is removed.
 
 ## Introduction
@@ -65,7 +64,7 @@ Configure the project by visiting [http://localhost:4000](http://localhost:4000/
 ## Maintainers
 Elective Manager is built by the following Developers:
 
-| [Rishabh Chaudhary](https://github.com/Rishabh04-02) | [Shubham Machal](https://github.com/shubhammachal) | [Abhishek Kumar](https://github.com/Abhishek-sopho) |
+| [Rishabh](https://github.com/Rishabh04-02) | [Shubham Machal](https://github.com/shubhammachal) | [Abhishek Kumar](https://github.com/Abhishek-sopho) |
 | :-------------------------------------:|:--------------------------------------------------:|:------------------------------------------------:|
 | ![rishabh04-02-img]    | ![shubhammachal-img] | ![abhishek-img] |
 
