@@ -7,12 +7,11 @@
     <!-- Your content goes here -->
     <?php
       //deactivating the elective
-        if(isset($_POST['delete']))  {
+        if (isset($_POST['delete'])) {
+            $dlt = Database::deactivateelective($_POST['delete']);
 
-          $dlt = Database::deactivateelective($_POST['delete']);
-
-          if($dlt == 1) {
-            ?>
+            if ($dlt == 1) {
+                ?>
             <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -37,9 +36,8 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
-          else {
-            ?>
+            } else {
+                ?>
             <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -64,16 +62,15 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
+            }
         }
 
         //republishing the deleted elective
-        if(isset($_POST['republish']))  {
+        if (isset($_POST['republish'])) {
+            $rep = Database::republishelective($_POST['republish']);
 
-          $rep = Database::republishelective($_POST['republish']);
-
-          if($rep == 1) {
-            ?>
+            if ($rep == 1) {
+                ?>
             <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -98,9 +95,8 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
-          else {
-            ?>
+            } else {
+                ?>
             <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -125,22 +121,22 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
+            }
         }
 
         //updating electives values
-        if(isset($_POST['upelec'])) {
-          //catching values
-                $_POST['seats'];
-                $_POST['link'];
-                $_POST['info'];
-                $_POST['sem'];
-                $_POST['upelec'];
+        if (isset($_POST['upelec'])) {
+            //catching values
+            $_POST['seats'];
+            $_POST['link'];
+            $_POST['info'];
+            $_POST['sem'];
+            $_POST['upelec'];
 
-      //updating values in database
-      $ret = Database::updateelective($_POST['seats'],$_POST['link'],$_POST['info'],$_POST['sem'],$_POST['upelec']);
-                if($ret == 1)  {
-                  ?>
+            //updating values in database
+            $ret = Database::updateelective($_POST['seats'], $_POST['link'], $_POST['info'], $_POST['sem'], $_POST['upelec']);
+            if ($ret == 1) {
+                ?>
                   <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -165,7 +161,7 @@
           </script>
           <!-- Snackbar ends -->
                   <?php
-                }
+            }
         }
 ?>    
 
@@ -177,11 +173,10 @@
 <div class="mdl-cell mdl-cell--12-col">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives - <a><?php  $eleccount = Database::publishedelectivescount($login_session,$user_type);  
+      Published Electives - <a><?php  $eleccount = Database::publishedelectivescount($login_session, $user_type);
                                       echo "</a>";
-      if($eleccount != 0)  {
-      
-      ?>
+      if ($eleccount != 0) {
+          ?>
     </h4>
   </div>
     <div class="table-responsive">
@@ -200,16 +195,15 @@
     </tr>
   </thead>
   <tbody>
-      <?php  Database::userpublishedelectives($login_session,$user_type);  ?>
+      <?php  Database::userpublishedelectives($login_session, $user_type); ?>
   </tbody>
 </table>
 <br>NOTE - Elective can't be deleted once the students has started to apply for it.
 <hr>
 <?php
-}
-else  {
-  echo "<center><b>No Elective published.</b></center>";
-}
+      } else {
+          echo "<center><b>No Elective published.</b></center>";
+      }
 ?>
 </div>
 </div>
@@ -219,11 +213,11 @@ else  {
 <div class="mdl-cell mdl-cell--12-col">
   <div class="mdl-card__supporting-text">
     <h4>
-      Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session,$user_type);  
+      Deleted Electives - <a><?php  $count = Database::deletedelectivescount($login_session, $user_type);
                                     echo "</a>";
 
-        if($count != 0)  {
-        ?>
+        if ($count != 0) {
+            ?>
     </h4>
   </div>
     <div class="table-responsive">
@@ -241,28 +235,27 @@ else  {
     </tr>
   </thead>
   <tbody>
-      <?php  Database::userdeletedelectives($login_session,$user_type);  ?>
+      <?php  Database::userdeletedelectives($login_session, $user_type); ?>
   </tbody>
 </table>
 <br>NOTE - Elective details can be updated once its republished.
 <hr>
 <?php
-}
+        }
 ?>
 </div>
 </div>
 
 
-  <?php        
+  <?php
         //updating the elective
-        if(isset($_POST['update']))  {
+        if (isset($_POST['update'])) {
             //updating code here
           ?>
           <div id="elecupdate" class="mdl-cell mdl-cell--6-col"><br>
   <?php
         //fetching the elective details
-        $ret = Database::fetchelective($_POST['update']);
-?>
+        $ret = Database::fetchelective($_POST['update']); ?>
 <script type="text/javascript">
 window.onload = function() {
 
@@ -292,7 +285,7 @@ window.onload = function() {
 
 </div>
 <?php
-    }
+        }
 ?>
 </div>
 </div>

@@ -1,8 +1,6 @@
 <?php
    session_start();
    
-   if(session_destroy()) 
-   {
-      header("Location: /");
+   if (session_destroy()) {
+       header("Location: /");
    }
-?>

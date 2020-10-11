@@ -24,36 +24,34 @@
       //Admin registration
       include_once('dbconnect.php');
 
-       if ( !empty($_POST['stureg'] && $_POST['g-recaptcha-response'])) {
+       if (!empty($_POST['stureg'] && $_POST['g-recaptcha-response'])) {
+           $captcha=$_POST['g-recaptcha-response'];
+           $captcha = Database::reCAPTCHAvalidate($captcha);
 
-        $captcha=$_POST['g-recaptcha-response'];
-        $captcha = Database::reCAPTCHAvalidate($captcha);
-
-        //checking for the recaptcha value
-        if($captcha == 1) {
+           //checking for the recaptcha value
+           if ($captcha == 1) {
       
         //collecting values
-        $rollno = $_POST['rollno'];
-        $rollno = strtolower($rollno);
-        $name = $_POST['sname'];
-        $password = md5($_POST['pass']);
-        $fname = $_POST['fname'];
-        $regno = $_POST['regno'];
-        $dob = $_POST['dob'];
-        $dept = $_POST['dept'];
-        $email = $_POST['email'];
-        $mobileno = $_POST['no'];
+               $rollno = $_POST['rollno'];
+               $rollno = strtolower($rollno);
+               $name = $_POST['sname'];
+               $password = md5($_POST['pass']);
+               $fname = $_POST['fname'];
+               $regno = $_POST['regno'];
+               $dob = $_POST['dob'];
+               $dept = $_POST['dept'];
+               $email = $_POST['email'];
+               $mobileno = $_POST['no'];
 
-        $token = Database::generateRandomString();
-        $token = md5($token);
+               $token = Database::generateRandomString();
+               $token = md5($token);
 
-        //inserts data in students database       
-        $ret = Database::studentregister($rollno,$name,$password,$fname,$regno,$dob,$dept,$mobileno,$email,$token);
+               //inserts data in students database
+               $ret = Database::studentregister($rollno, $name, $password, $fname, $regno, $dob, $dept, $mobileno, $email, $token);
   
-         if ($ret == 1)  {
+               if ($ret == 1) {
           
-          //if user created successfully
-          ?>
+          //if user created successfully?>
           <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -71,14 +69,14 @@
           <!-- Snackbar ends -->
           <?php
           $to = $email;
-          $subject = "Student account activation - nith.ac.in";
-          $message = "Your Roll no. - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
+                   $subject = "Student account activation - nith.ac.in";
+                   $message = "Your Roll no. - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
         
-          //mailing the details
-          $mailit = Database::mailthedetails($to,$subject,$message);
+                   //mailing the details
+                   $mailit = Database::mailthedetails($to, $subject, $message);
 
-          if($mailit == 1)  {
-          //echo "Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.<br>";
+                   if ($mailit == 1) {
+                       //echo "Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.<br>";
           ?>
           <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
@@ -96,9 +94,8 @@
           </script>
           <!-- Snackbar ends -->
           <?php
-          }
-          else  {
-          //echo "Account confirmation mail sending failed<br>";
+                   } else {
+                       //echo "Account confirmation mail sending failed<br>";
             ?>
             <!-- Snackbar starts -->
             <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
@@ -116,10 +113,9 @@
             </script>
             <!-- Snackbar ends -->
             <?php
-          }
-        }
-        else  {
-          //echo "User creation failed,Please try again<br>";
+                   }
+               } else {
+                   //echo "User creation failed,Please try again<br>";
           ?>
           <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
@@ -137,9 +133,7 @@
           </script>
           <!-- Snackbar ends -->
           <?php
-        }
-      
-?>
+               } ?>
 <!-- Registration successful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
@@ -147,15 +141,13 @@
     <span class="mdl-chip__text"><a style="color: blue; text-decoration: none;"><?php echo "$username -"; ?></a> Registration Successful <a href="/activate" style="text-decoration: none;">Activate your account here</a>.</span>
 </span>
 </div>
-<?php 
+<?php
     header("refresh:3;url=/activate");
-    }
-    else  {
-    echo "reCAPTCHA validation failed<br>";
-  }
-  }
-    else {
-?>
+           } else {
+               echo "reCAPTCHA validation failed<br>";
+           }
+       } else {
+           ?>
 
 <form id="trial" class="studreg" action="/student/register" method="post">
          <h1 class="studentreg">Student Registration</h1>
@@ -191,7 +183,7 @@
           </button>
         </form>           
 <?php
-    }
+       }
 ?>
 
     </div>

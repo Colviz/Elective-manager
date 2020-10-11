@@ -16,18 +16,18 @@
     <!-- Your content goes here -->
     <div class="mdl-grid">
 <?php
-        if ( !empty($_POST)) {
+        if (!empty($_POST)) {
       
         //collecting values
-        $username = $_POST['uname'];
-        $mobileno = $_POST['no'];
-        $email = $_POST['email'];
+            $username = $_POST['uname'];
+            $mobileno = $_POST['no'];
+            $email = $_POST['email'];
     
-        //Values authentication
-        $check = Database::departmentrecovery($username,$mobileno,$email);
+            //Values authentication
+            $check = Database::departmentrecovery($username, $mobileno, $email);
 
-        //checking the return value
-        if($check == 1)  {
+            //checking the return value
+            if ($check == 1) {
 
           //generating the new password
           //calling the new password generating function
@@ -35,22 +35,22 @@
           $newpassdb = md5($newpass); //insert this encrypted value in database
 
           //Replacing the existing password with new password
-          $pass = Database::departmentchangepassword($username,$newpassdb);
+                $pass = Database::departmentchangepassword($username, $newpassdb);
 
-          if($pass == 1)  {
-          //send the new password in mail
+                if ($pass == 1) {
+                    //send the new password in mail
           
-          //subject of the email
-          $subject = "Department - account recovery email, $username";
+                    //subject of the email
+                    $subject = "Department - account recovery email, $username";
 
-          //message content of the email
-          $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
+                    //message content of the email
+                    $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
 
-          //sending the email
-          $mailit = Database::mailthedetails($email,$subject,$message);
+                    //sending the email
+                    $mailit = Database::mailthedetails($email, $subject, $message);
 
-                if($mailit == 1)  {
-                  ?>
+                    if ($mailit == 1) {
+                        ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -99,8 +99,7 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                  } 
-                  else  {
+                    } else {
                         ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
@@ -128,12 +127,10 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                  }
-          }
-        }
-        else  {
-        
-?>
+                    }
+                }
+            } else {
+                ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -160,10 +157,9 @@
                   <!-- Snackbar ends -->
                   </div>
 <?php
-    }
-  }
-      else {
-?>
+            }
+        } else {
+            ?>
      
       
         <form  action="/department/forget" method="post">
@@ -183,6 +179,6 @@
         </form>
       </div>
       <?php
-          }
+        }
       ?>
       

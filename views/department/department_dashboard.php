@@ -24,34 +24,31 @@
     $user = $login_session;
     $usertype = $_SESSION['usertype'];
 
-    if($usertype == "normaluser") {
-          $destination = $login_session;  
-      }
-      else  {
-          $str = "abc";
-          $destination = Database::departmentcode($user).$str;
-      }
+    if ($usertype == "normaluser") {
+        $destination = $login_session;
+    } else {
+        $str = "abc";
+        $destination = Database::departmentcode($user).$str;
+    }
 
 //catching the markread form values
-    if(isset($_POST['markread']))  {
-
-      $_POST['markread'] = $_POST['markread'].$str;
+    if (isset($_POST['markread'])) {
+        $_POST['markread'] = $_POST['markread'].$str;
       
-      //marking all notifications as read
-      if($_POST['markread'] == "all")  {
+        //marking all notifications as read
+        if ($_POST['markread'] == "all") {
 
           //the mark all feature in department will only work if notificatin is received by user (not superuser)
-          $destination = $login_session; 
-          $ret = Database::markallnotificationread($destination);
-      }
-      else  {
-          //function for marking a notification as read
-          //destination of these type of notifications is admin
-          $ret = Database::marknotificationread($_POST['markread']);
-      }
+            $destination = $login_session;
+            $ret = Database::markallnotificationread($destination);
+        } else {
+            //function for marking a notification as read
+            //destination of these type of notifications is admin
+            $ret = Database::marknotificationread($_POST['markread']);
+        }
 
-        if($ret == 1) {
-?>
+        if ($ret == 1) {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -68,9 +65,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-                else  {
-                    ?>
+        } else {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -87,8 +83,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-              }
+        }
+    }
           ?>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
@@ -103,16 +99,15 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
       <!-- Displaying notification here -->
       <a href="/department/notifications" class="notification"><sup>
-      <?php  
-           $noti = Database::notificationcount($user,$usertype);  ?></sup>
-      <?php if($noti == 0) {?>
+      <?php
+           $noti = Database::notificationcount($user, $usertype);  ?></sup>
+      <?php if ($noti == 0) {?>
             <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+               ?>
             <div class="material-icons mdl-badge mdl-badge--overlap orange" data-badge="<?php echo $noti; ?>">notifications_active</div>
         <?php
-        }  ?></a>
+           }  ?></a>
         <!-- Displaying notification ends -->
         <a href="/department/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> - 
         <a href="/department/profile/publish"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Publish Elective </button></a> - 
@@ -120,11 +115,11 @@
            <?php
             
               //checking if a user is superuser or not
-              if($_SESSION['usertype'] == "superuser")  {
-      ?>
+              if ($_SESSION['usertype'] == "superuser") {
+                  ?>
         <a href="/department/profile/register"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Register User </button></a> - 
       <?php
-            }
+              }
       ?>
         <a href="/department/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"> Logout </button></a>
       </nav>
@@ -137,20 +132,19 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile">Profile</a>
       <!-- Displaying notification here -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/notifications" class="notification"><sup>
-      <?php  
-            Database::notificationcount($user,$usertype);  ?>
-      <?php if($noti == 0) {?>
+      <?php
+            Database::notificationcount($user, $usertype);  ?>
+      <?php if ($noti == 0) {?>
             No Notifications <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+                ?>
             New Notifications <span class="mdl-badge" data-badge="<?php echo $noti; ?>"><i class="material-icons orange">notifications_active</i></span>
         <?php
-        }  ?></a>
+            }  ?></a>
         <!-- Displaying notification ends -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/publish">Publish Elective</a>
-      <?php if($_SESSION['usertype'] == "superuser")  { ?>
+      <?php if ($_SESSION['usertype'] == "superuser") { ?>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/profile/register">Register user</a>
       <?php } ?>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/department/logout">Logout</a>

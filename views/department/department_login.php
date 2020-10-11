@@ -22,34 +22,30 @@
       //automatic login if session is set
       session_start();
       
-      if(isset($_SESSION['login_user']))  {
-
+      if (isset($_SESSION['login_user'])) {
           header("location: /department/profile");
       }
 
         if (!empty($_POST['deptsu'])) {
       
         //collecting values
-        $username = $_POST['uname'];
-        $password = md5($_POST['pass']);
-        $user = $_POST['user'];
+            $username = $_POST['uname'];
+            $password = md5($_POST['pass']);
+            $user = $_POST['user'];
         
-       //inserts data in user database       
-        $ret = Database::departmentlogin($username,$password,$user);
+            //inserts data in user database
+            $ret = Database::departmentlogin($username, $password, $user);
         
-        //checking the return value from the database
-        if ($ret == 1)  {
-          
-          session_start();
-          $_SESSION['login_user'] = $username;
-          $_SESSION['usertype'] = $user;
+            //checking the return value from the database
+            if ($ret == 1) {
+                session_start();
+                $_SESSION['login_user'] = $username;
+                $_SESSION['usertype'] = $user;
 
-              include_once('views/department/department_session.php');
-              header("location: /department/profile");
-        }
-        else  {
-        
-?>
+                include_once('views/department/department_session.php');
+                header("location: /department/profile");
+            } else {
+                ?>
 <br>
 <!-- Login unsuccessful -->
 <div class="snippet">
@@ -74,8 +70,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
 <?php
-    }
-  }
+            }
+        }
 ?>
 
 <form class="admlog" action="/department/login" method="post">

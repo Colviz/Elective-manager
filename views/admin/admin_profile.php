@@ -41,27 +41,26 @@
   </div>
 
   <div class="table-responsive">
-<?php 
+<?php
   //create backup
   if (isset($_POST['backup'])) {
       $backup = Database::createbackup();
 
       if ($backup == 1) {
-        echo "<b>Backup created successfully.</b>";
-      } else  {
-        echo "<b>Backup creation failed. Check if the backup table already exist.</b>";
+          echo "<b>Backup created successfully.</b>";
+      } else {
+          echo "<b>Backup creation failed. Check if the backup table already exist.</b>";
       }
   }
 
   //catching the allotment form result
-  //  $allot = 0;
   if (isset($_POST['allot'])) {
       $allot = Database::startallotment();
 
       if ($allot == 1) {
-        echo "<b>Allotment successful.</b>";
-      } else  {
-        echo "<b>Allotment failed.</b>";
+          echo "<b>Allotment successful.</b>";
+      } else {
+          echo "<b>Allotment failed.</b>";
       }
   }
 ?>

@@ -28,16 +28,15 @@
       </tr>
   </thead>
   <tbody>
-        <?php  $result = Database::Allotmentresult();   
+        <?php  $result = Database::Allotmentresult();
                 
                 if ($result!=1) {
                     echo "No result found for :";
-                }
-                else {
-        ?>
+                } else {
+                    ?>
         <button id="thiss" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Print Allotment Result</button><br><br>
         <?php
-}
+                }
 ?>
   </tbody>  
   </table>

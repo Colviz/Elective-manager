@@ -27,7 +27,7 @@
         <br>
         <select name="code" required>
               <option selected = "true" disabled = "disabled">Select subject code ....</option>
-              <?php 
+              <?php
               //fetching subjects of same department from subjects master
               Database::departmentpublishedelectives();
               ?>
@@ -42,17 +42,14 @@
       if (!empty($_POST['eleccode'] || $_POST['code'])) {
               
               //catching form values
-              $code = $_POST['code'];
+          $code = $_POST['code'];
 
-              $ret = Database::fetchstudentsappliedcount($code);
-              if ($ret == 0) {
-                  echo '<br><a style="color:red;">No student has applied for the elective - '.$code.' .</a>';
-              }
-              else {
-
+          $ret = Database::fetchstudentsappliedcount($code);
+          if ($ret == 0) {
+              echo '<br><a style="color:red;">No student has applied for the elective - '.$code.' .</a>';
+          } else {
               echo "<center><h3><a style='color:yellow;'>$ret</a> - Students have applied for <a style='color:yellow;'>$code</a></h3>";
-              echo "The list below is sorted on the basis of <b>Priority</b> and <b>CGPI</b>.</center>";
-?>
+              echo "The list below is sorted on the basis of <b>Priority</b> and <b>CGPI</b>.</center>"; ?>
 <script type="text/javascript">
 window.onload = function() {
 
@@ -77,8 +74,8 @@ window.onload = function() {
   </table>
 </div>
 <?php
-    }
-  }
+          }
+      }
 ?>
 
 <div class="mdl-card__actions mdl-card--border"></div>

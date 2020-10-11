@@ -9,31 +9,30 @@
 
 <!-- Wide card with share menu button -->
 <?php
-        if ( !empty($_POST['reguser'])) {
+        if (!empty($_POST['reguser'])) {
       
         //collecting values
-        $username = $_POST['uname'];
-        $pass = $_POST['pass'];
-        $password = md5($pass);
-        $email = $_POST['email'];
-        $mobileno = $_POST['mobileno'];
-        $department = Database::departmentcode($login_session);
-        //generating the token
-        $token = Database::generateRandomString();
-        $token = md5($token);
+            $username = $_POST['uname'];
+            $pass = $_POST['pass'];
+            $password = md5($pass);
+            $email = $_POST['email'];
+            $mobileno = $_POST['mobileno'];
+            $department = Database::departmentcode($login_session);
+            //generating the token
+            $token = Database::generateRandomString();
+            $token = md5($token);
         
-        //inserts data in users login database       
-        $ret = Database::departmentregister($username,$password,$mobileno,$email,$department,$token);
+            //inserts data in users login database
+            $ret = Database::departmentregister($username, $password, $mobileno, $email, $department, $token);
 
-        echo "<center><br><br>";
-        //getting the full name of department
-        $department = Database::departmentsname($department);
+            echo "<center><br><br>";
+            //getting the full name of department
+            $department = Database::departmentsname($department);
         
-        //checking the return value from the database
-        if ($ret == 1)  {
+            //checking the return value from the database
+            if ($ret == 1) {
           
-          //if user created successfully
-          ?>
+          //if user created successfully?>
           <br><div class="snippet">
           <span class="mdl-chip mdl-chip--contact">
               <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
@@ -59,16 +58,15 @@
           
           //writing the details to variables
           $to = $email;
-          $subject = "Departmental account activation - nith.ac.in";
-          $message = "Your username - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
-          //mailing the details
-          $mailit = Database::mailthedetails($to,$subject,$message);
+                $subject = "Departmental account activation - nith.ac.in";
+                $message = "Your username - $username\r\n Your password - $pass\r\n Your email - $email\r\n Your mobileno - $mobileno\r\n Your department - $department\r\n Your account activation code is - $token\r\nVisit /activate to activate your account\r\n";
+                //mailing the details
+                $mailit = Database::mailthedetails($to, $subject, $message);
 
-          if($mailit == 1)	{
-          		echo "<center>Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.</center><br>";
-          }
-          else 	{
-          	?>
+                if ($mailit == 1) {
+                    echo "<center>Activate the account, using the activation link sent to - $email<br>Login credentials are also sent in the mail.</center><br>";
+                } else {
+                    ?>
             <!-- Snackbar starts -->
             <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
               <div class="mdl-snackbar__text"></div>
@@ -85,10 +83,9 @@
             </script>
             <!-- Snackbar ends -->
             <?php
-          }
-        }
-        else 	{
-        	?>
+                }
+            } else {
+                ?>
           <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -105,11 +102,9 @@
           </script>
           <!-- Snackbar ends -->
           <?php
-        }
-      }
-      else  {
-
-?>
+            }
+        } else {
+            ?>
 <div class="mdl-grid">
 
 
@@ -126,7 +121,7 @@
     </form>
 </div>
 <?php
-      }
+        }
 ?>
 
 

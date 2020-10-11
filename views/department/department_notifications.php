@@ -22,40 +22,40 @@
 
   <div class="mdl-card__actions mdl-card--border"></div>
   <?php
-      if($noti != 0)  {
-  ?>
+      if ($noti != 0) {
+          ?>
   <div class="mdl-card__supporting-text">
     All Notifications - Mark as read 
     <!-- Form for marking notifications as read -->
     <form class="update" action="" method="post">
-    <button class="notifibutton mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="markread" <?php if($usertype == "superuser") echo "disabled"; ?> ><i class="material-icons">done_all</i> Mark all as read</button></form>
+    <button class="notifibutton mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="markread" <?php if ($usertype == "superuser") {
+              echo "disabled";
+          } ?> ><i class="material-icons">done_all</i> Mark all as read</button></form>
     <!-- Form for marking notifications as read ends -->
   </div>
 
   <?php
-
-        }
+      }
 
         //fetching notifications from datbase
-        $notificontent = Database::notificationcontent($user,$usertype);
+        $notificontent = Database::notificationcontent($user, $usertype);
 
-        if($noti == 0)  {
+        if ($noti == 0) {
 
           //catching variables for viewing older notifications
-          if($_POST['viewread'])  {
-            echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
-            echo "<b>Older Notifications -</b></div>";
-            $oldnotificontent = Database::oldnotificationcontent($user,$usertype); 
-          }
-          else  {
-          ?>
+            if ($_POST['viewread']) {
+                echo '<div class="mdl-card__actions mdl-card--border"></div><div class="mdl-card__supporting-text">';
+                echo "<b>Older Notifications -</b></div>";
+                $oldnotificontent = Database::oldnotificationcontent($user, $usertype);
+            } else {
+                ?>
           <!-- Form for viewing all notifications -->
           <form class="update" action="" method="post">
           <button class="mdl-button mdl-button--green mdl-js-button mdl-js-ripple-effect" type="submit" value="all" name="viewread"><i class="material-icons">done_all</i> View older Notifications</button></form>
           <!-- Form for viewing all notifications ends -->
           <?php
+            }
         }
-      }
   ?>
     
   

@@ -19,36 +19,33 @@
 <?php
       
         if (!empty($_POST['actuser'] && $_POST['g-recaptcha-response'])) {
+            $captcha=$_POST['g-recaptcha-response'];
+            $captcha = Database::reCAPTCHAvalidate($captcha);
 
-          $captcha=$_POST['g-recaptcha-response'];
-          $captcha = Database::reCAPTCHAvalidate($captcha);
-
-          //checking for the recaptcha value
-          if($captcha == 1) {
+            //checking for the recaptcha value
+            if ($captcha == 1) {
       
         //collecting values
-        $username = $_POST['uname'];
-        $password = md5($_POST['pass']);
-        $email = $_POST['email'];
-        $activation = $_POST['actcode'];
-        $user = $_POST['user'];
+                $username = $_POST['uname'];
+                $password = md5($_POST['pass']);
+                $email = $_POST['email'];
+                $activation = $_POST['actcode'];
+                $user = $_POST['user'];
 
-        if($user == "dept")  {
+                if ($user == "dept") {
 
           //department account activation
-          $ret = Database::departmentactivation($username,$password,$email,$activation);
-          
-        }
-        else {
+                    $ret = Database::departmentactivation($username, $password, $email, $activation);
+                } else {
 
-          //student account activation          
-          //student roll no.'s are in lowecase
-          $username = strtolower($username);
-          $ret = Database::studentactivation($username,$password,$email,$activation);
-        }
+          //student account activation
+                    //student roll no.'s are in lowecase
+                    $username = strtolower($username);
+                    $ret = Database::studentactivation($username, $password, $email, $activation);
+                }
 
-        if($ret == NULL || $ret == 0) {       
-?>
+                if ($ret == null || $ret == 0) {
+                    ?>
 <!-- Activation unsuccessful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
@@ -57,9 +54,8 @@
 </span>
 </div>
 <?php
-      }
-      else  {
-        ?>
+                } else {
+                    ?>
 <!-- Activation successful -->
 <div class="snippet">
 <span class="mdl-chip mdl-chip--contact">
@@ -68,13 +64,13 @@
 </span>
 </div>
         <?php
-      }
-    }
-    //reCAPTCHA VALIDATION
-    else  {
-    echo "reCAPTCHA validation failed<br>";
-  }
-}
+                }
+            }
+            //reCAPTCHA VALIDATION
+            else {
+                echo "reCAPTCHA validation failed<br>";
+            }
+        }
 ?>
 
 

@@ -18,24 +18,23 @@
 <?php
       //Admin password recovery
       
-        if ( !empty($_POST['admfor'] && $_POST['g-recaptcha-response'])) {
+        if (!empty($_POST['admfor'] && $_POST['g-recaptcha-response'])) {
+            $captcha=$_POST['g-recaptcha-response'];
+            $captcha = Database::reCAPTCHAvalidate($captcha);
 
-          $captcha=$_POST['g-recaptcha-response'];
-          $captcha = Database::reCAPTCHAvalidate($captcha);
-
-          //checking for the recaptcha value
-      if($captcha == 1) {
+            //checking for the recaptcha value
+            if ($captcha == 1) {
       
                     //collecting values
-                    $username = $_POST['uname'];
-                    $mobileno = $_POST['no'];
-                    $email = $_POST['email'];
+                $username = $_POST['uname'];
+                $mobileno = $_POST['no'];
+                $email = $_POST['email'];
                 
-                    //Values authentication
-                    $check = Database::adminrecovery($username,$mobileno,$email);
+                //Values authentication
+                $check = Database::adminrecovery($username, $mobileno, $email);
 
-                    //checking the return value
-                    if($check == 1)  {
+                //checking the return value
+                if ($check == 1) {
 
                       //generating the new password
                       //calling the new password generating function
@@ -43,22 +42,22 @@
                       $newpassdb = md5($newpass); //insert this encrypted value in database
 
                       //Replacing the existing password with new password
-                      $pass = Database::adminchangepassword($username,$newpassdb);
+                    $pass = Database::adminchangepassword($username, $newpassdb);
 
-                      if($pass == 1)  {
-                      //send the new password in mail
+                    if ($pass == 1) {
+                        //send the new password in mail
                       
-                      //subject of the email
-                      $subject = "Admin - account recovery email, $username";
+                        //subject of the email
+                        $subject = "Admin - account recovery email, $username";
 
-                      //message content of the email
-                      $message = "Hey, $username\r\nYour request to recover your password is received\r\nYour new password is - $newpass.\r\n";
+                        //message content of the email
+                        $message = "Hey, $username\r\nYour request to recover your password is received\r\nYour new password is - $newpass.\r\n";
 
-                      //sending the email
-                      $mailit = Database::mailthedetails($email,$subject,$message);
+                        //sending the email
+                        $mailit = Database::mailthedetails($email, $subject, $message);
 
-                          if($mailit == 1)  {
-                          ?>
+                        if ($mailit == 1) {
+                            ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -107,8 +106,7 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                          } 
-                          else  {
+                        } else {
                             //echo "Account Recovery mail sending failed<br>";
                             ?>
                   <div class="mdl-cell mdl-cell--12-col">
@@ -137,12 +135,10 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                            }
-                      }
+                        }
                     }
-                    else  {
-                    
-            ?>
+                } else {
+                    ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -170,9 +166,8 @@
                   </div>
             <?php
                 }
-  }
-  else  {
-    //echo "reCAPTCHA validation failed<br>";
+            } else {
+                //echo "reCAPTCHA validation failed<br>";
     ?>
               <br><center>
           <!-- success snippet -->
@@ -198,10 +193,9 @@
           </script>
           <!-- Snackbar ends -->
               <?php
-  }
-}
-      else {
-?>
+            }
+        } else {
+          ?>
       
         <form action="/admin/forget" method="post">
         <h1>Admin Password recovery</h1>
@@ -218,7 +212,7 @@
           </button>
         </form>
       <?php
-          }
+      }
       ?>
 
     </div>

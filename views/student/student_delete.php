@@ -24,9 +24,8 @@
 
           $check = Database::studentaccountcheck($roll);
 
-          if($check == 1)  {
-            //echo "<b>Your account exists. <a>Have you activated it, before trying to login.</a></b>";
-            ?>
+          if ($check == 1) {
+              //echo "<b>Your account exists. <a>Have you activated it, before trying to login.</a></b>";?>
             <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -72,9 +71,8 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
-          else  {
-            //echo "<b><a>Your account doesn't exist.</a><br>Register <a href ='/student/register'>here</a></b>";
+          } else {
+              //echo "<b><a>Your account doesn't exist.</a><br>Register <a href ='/student/register'>here</a></b>";
             ?>
             <br><center>
           <!-- success/failure snippet -->
@@ -128,7 +126,7 @@
       if (isset($_POST['studel'])) {
           $_POST['rollno'];
           $del = Database::studentaccountdelete($_POST['rollno']);
-          if($del == 1)  {
+          if ($del == 1) {
               //echo "<br><a>Account successfully deleted<br>Check your account status using the above form.</a><br>";
             ?>
             <br><center>
@@ -155,9 +153,8 @@
           </script>
           <!-- Snackbar ends -->
             <?php
-          }
-          else if($del == 2)  {
-              //echo "<br><a>Account deletion failed<br>Your account is activated, proceed to login.</a><br>"; 
+          } elseif ($del == 2) {
+              //echo "<br><a>Account deletion failed<br>Your account is activated, proceed to login.</a><br>";
             ?>
             <br><center>
           <!-- success/failure snippet -->

@@ -1,3 +1,2 @@
 <?php
-	include_once('views/student/student_login.php');
-?>
+    include_once('views/student/student_login.php');

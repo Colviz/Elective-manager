@@ -23,39 +23,34 @@
       session_start();
       echo $_SESSION['login_user'];
       
-      if(isset($_SESSION['login_user']))  {
-
+      if (isset($_SESSION['login_user'])) {
           header("location: /admin/profile");
       }
 
         if (!empty($_POST['admlog'] && $_POST['g-recaptcha-response'])) {
-      
             $captcha=$_POST['g-recaptcha-response'];
             $captcha = Database::reCAPTCHAvalidate($captcha);
 
-              //checking for the recaptcha value
-                if($captcha == 1) {
+            //checking for the recaptcha value
+            if ($captcha == 1) {
 
                   //collecting values
-                          $username = $_POST['uname'];
-                          $password = md5($_POST['pass']);
+                $username = $_POST['uname'];
+                $password = md5($_POST['pass']);
                     
-                        //inserts data in admin registration database       
-                    $ret = Database::adminlogin($username,$password);
+                //inserts data in admin registration database
+                $ret = Database::adminlogin($username, $password);
                     
-                    //checking the return value from the database
-                    if ($ret == 1)  {
-                      
-                      session_start();
-                      $_SESSION['login_user'] = $username;
+                //checking the return value from the database
+                if ($ret == 1) {
+                    session_start();
+                    $_SESSION['login_user'] = $username;
 
-                      include_once('views/admin/admin_session.php');
+                    include_once('views/admin/admin_session.php');
 
-                      header("location: /admin/profile");
-                    }
-                    else  {
-        
-?>
+                    header("location: /admin/profile");
+                } else {
+                    ?>
 <br>
 <!-- Login unsuccessful -->
 <div class="snippet">
@@ -80,10 +75,9 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
 <?php
-    }
-  }
-  else  {
-    //echo "reCAPTCHA validation failed<br>";
+                }
+            } else {
+                //echo "reCAPTCHA validation failed<br>";
     ?>
               <br><center>
           <!-- success snippet -->
@@ -109,8 +103,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
           </script>
           <!-- Snackbar ends -->
               <?php
-  }
-}
+            }
+        }
 ?>
       
       

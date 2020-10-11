@@ -18,28 +18,26 @@
   </thead>
 <?php
 
-          if(!empty($_POST['subpri']))  {
-
+          if (!empty($_POST['subpri'])) {
               $count = $_SESSION['tempcount'];
               //fetching the student cgpi
               $cgpi = Database::studentcgpi($_SESSION['login_user']);
               
               echo "<tbody>";
               //printing the cached values
-              for($i = 0; $i < $count; $i++) {
-                
-                echo '<tr><td>';
-                echo "Priority ".$i."";
-                echo '</td><td>';
-                echo $_POST[$i];
-                echo '</td></tr">';
+              for ($i = 0; $i < $count; $i++) {
+                  echo '<tr><td>';
+                  echo "Priority ".$i."";
+                  echo '</td><td>';
+                  echo $_POST[$i];
+                  echo '</td></tr">';
 
-                //insert these values in database
-                $ret = Database::insertelectivepriorities($_SESSION['login_user'],$cgpi,$i,$_POST[$i]);
+                  //insert these values in database
+                  $ret = Database::insertelectivepriorities($_SESSION['login_user'], $cgpi, $i, $_POST[$i]);
               }
               echo "</tbody></table></div>";
 
-              if($ret ==1) {
+              if ($ret ==1) {
                   //echo "<br><b>Priorities added to database.</b><br>";
                 ?>
                 <br><center>
@@ -67,8 +65,7 @@
           <!-- Snackbar ends -->
           <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/student/profile">Go to your Profile</a>
                 <?php
-                }
-                else {
+              } else {
                   //echo "<br><b>Priorities added to database.</b><br>";
                 ?>
                 <br><center>
@@ -103,12 +100,11 @@
           <!-- Snackbar ends -->
           <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/student/profile">Go to your Profile</a>
                 <?php
-                }
-      ?>
+              } ?>
     </center>
     </div>
       <?php
-      }
+          }
 ?>
 
 
