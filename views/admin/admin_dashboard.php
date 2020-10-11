@@ -23,12 +23,11 @@
 
 <?php
     //catching the accdelete form values
-    if(isset($_POST['accdelete']))  {
-
+    if (isset($_POST['accdelete'])) {
         $delete = Database::accountdeleteadmin($_POST['accdelete']);
 
-        if($delete == 1)  {
-?>
+        if ($delete == 1) {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -45,9 +44,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-                else  {
-                    ?>
+        } else {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -68,22 +66,19 @@
     }
     
     //catching the markread form values
-    if(isset($_POST['markread']))  {
+    if (isset($_POST['markread'])) {
+        $destination = "admin";
+        //marking all notifications as read
+        if ($_POST['markread'] == "all") {
+            $ret = Database::markallnotificationread($id);
+        } else {
+            //function for marking a notification as read
+            //destination of these type of notifications is admin
+            $ret = Database::marknotificationread($_POST['markread'], $id);
+        }
 
-      $destination = "admin";
-      //marking all notifications as read
-      if($_POST['markread'] == "all")  {
-
-          $ret = Database::markallnotificationread($id);
-      }
-      else  {
-          //function for marking a notification as read
-          //destination of these type of notifications is admin
-          $ret = Database::marknotificationread($_POST['markread'],$id);
-      }
-
-        if($ret == 1) {
-?>
+        if ($ret == 1) {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -100,9 +95,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-                else  {
-                    ?>
+        } else {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -119,14 +113,12 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-              }
+        }
+    }
 
         //catching the markread form values
-    if(isset($_POST['undo']))  {
-
-          Database::UndoAllotment();
-?>
+    if (isset($_POST['undo'])) {
+        Database::UndoAllotment(); ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -143,7 +135,7 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }                
+    }
           ?>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
@@ -158,18 +150,17 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
       <!-- Displaying notification here -->
       <a href="/admin/notifications" class="notification"><sup>
-      <?php  
+      <?php
               $user = "admin";
               $usertype = 0;
-           $noti = Database::notificationcount($user,$usertype);  ?></sup>
-      <?php if($noti == 0) {?>
+           $noti = Database::notificationcount($user, $usertype);  ?></sup>
+      <?php if ($noti == 0) {?>
             <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+               ?>
             <div class="material-icons mdl-badge mdl-badge--overlap orange" data-badge="<?php echo $noti; ?>">notifications_active</div>
         <?php
-        }  ?></a>
+           }  ?></a>
         <!-- Displaying notification ends -->
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="/admin/profile">Profile</a>
         <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="/admin/profile/registered">Registered Students</a>
@@ -186,16 +177,15 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--red" href="/admin/security">Security</a>
       <!-- Displaying notification here -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/notifications" class="notification"><sup>
-      <?php  
-            Database::notificationcount($user,$usertype);  ?>
-      <?php if($noti == 0) {?>
+      <?php
+            Database::notificationcount($user, $usertype);  ?>
+      <?php if ($noti == 0) {?>
             No Notifications <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+                ?>
             New Notifications <span class="mdl-badge" data-badge="<?php echo $noti; ?>"><i class="material-icons orange">notifications_active</i></span>
         <?php
-        }  ?></a>
+            }  ?></a>
         <!-- Displaying notification ends -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/admin/profile/registered">Registered Students</a>

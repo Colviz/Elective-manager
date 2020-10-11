@@ -9,21 +9,20 @@
 
 <!-- Wide card with share menu button -->
 <?php
-        if ( !empty($_POST['stuch'])) {
+        if (!empty($_POST['stuch'])) {
       
         //collecting values
-        $username = $_SESSION['login_user'];
-        $newpassdb = md5($_POST['newpass']);
+            $username = $_SESSION['login_user'];
+            $newpassdb = md5($_POST['newpass']);
         
-        //inserts data in admin login database       
-        $pass = Database::studentchangepassword($username,$newpassdb);
+            //inserts data in admin login database
+            $pass = Database::studentchangepassword($username, $newpassdb);
         
-        //checking the return value from the database
-        if ($pass == 1)  {
+            //checking the return value from the database
+            if ($pass == 1) {
           
           //if password updated successfully
-          //echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";
-          ?>
+                //echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";?>
           <br><center>
           <!-- success snippet -->
           <div class="snippet">
@@ -48,12 +47,10 @@
           </script>
           <!-- Snackbar ends -->
           <?php
-          header("refresh:5;url=/student/logout");          
-        }
-      }
-      else  {
-
-?>
+          header("refresh:5;url=/student/logout");
+            }
+        } else {
+            ?>
 <div class="mdl-grid">
 
 
@@ -69,7 +66,7 @@
 </div>
 </div>
 <?php
-      }
+        }
 ?>
 		
   </div>

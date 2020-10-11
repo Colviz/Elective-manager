@@ -20,15 +20,15 @@
 
       
         //collecting values
-        $username = $_POST['uname'];
-        $mobileno = $_POST['no'];
-        $email = $_POST['email'];
+            $username = $_POST['uname'];
+            $mobileno = $_POST['no'];
+            $email = $_POST['email'];
     
-        //Values authentication
-        $check = Database::studentrecovery($username,$mobileno,$email);
+            //Values authentication
+            $check = Database::studentrecovery($username, $mobileno, $email);
       
-        //checking the return value
-        if($check == 1)  {
+            //checking the return value
+            if ($check == 1) {
 
           //generating the new password
           //calling the new password generating function
@@ -36,23 +36,22 @@
           $newpassdb = md5($newpass); //insert this encrypted value in database
 
           //Replacing the existing password with new password
-          $pass = Database::studentchangepassword($username,$newpassdb);
+                $pass = Database::studentchangepassword($username, $newpassdb);
 
-          if($pass == 1)  {
-          //send the new password in mail
+                if ($pass == 1) {
+                    //send the new password in mail
           
-          //subject of the email
-          $subject = "Student - account recovery email, $username";
+                    //subject of the email
+                    $subject = "Student - account recovery email, $username";
 
-          //message content of the email
-          $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
+                    //message content of the email
+                    $message = "Hey, $username<br>Your request to recover your password is received<br>Your new password is <b>$newpass</b> .<br>";
 
-          //sending the email
-          $mailit = Database::mailthedetails($email,$subject,$message);
+                    //sending the email
+                    $mailit = Database::mailthedetails($email, $subject, $message);
 
-                if($mailit == 1)  {
-                  //echo "Account recovery email sent to $email. <br>";
-                  ?>
+                    if ($mailit == 1) {
+                        //echo "Account recovery email sent to $email. <br>";?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -101,8 +100,7 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                  } 
-                  else  {
+                    } else {
                         //echo "Account Recovery mail sending failed<br>";
                     ?>
                   <div class="mdl-cell mdl-cell--12-col">
@@ -131,12 +129,10 @@
                   <!-- Snackbar ends -->
                   </div>
                   <?php
-                  }
-          }
-        }
-        else  {
-        
-?>
+                    }
+                }
+            } else {
+                ?>
                   <div class="mdl-cell mdl-cell--12-col">
                   <br><center>
                   <!-- success/failure snippet -->
@@ -163,10 +159,9 @@
                   <!-- Snackbar ends -->
                   </div>
 <?php
-    }
-  }
-      else {
-?>
+            }
+        } else {
+            ?>
       <div class="mdl-cell mdl-cell--6-col">
       
         <form class="admlog" action="/student/forget" method="post">
@@ -179,7 +174,7 @@
         </form>
       </div>
       <?php
-          }
+        }
       ?>
 
 

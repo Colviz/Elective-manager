@@ -1,5 +1,5 @@
 <?php
-		include_once('views/includes/includes_header.php');
+        include_once('views/includes/includes_header.php');
   /**
    * DATABASE CONNECTING API FILE IS NOT INCLUDED HERE
    * Hence due to that the captcha on this page won't work
@@ -19,35 +19,30 @@
     <!-- Your content goes here -->
     <div class="mdl-grid">
 <?php
-	   	//Admin registration
+        //Admin registration
       //automatic login if session is set
       session_start();
       echo $_SESSION['login_user'];
       
-      if(isset($_SESSION['login_user']))  {
-
+      if (isset($_SESSION['login_user'])) {
           header("location: /admin/profile");
       }
 
-        if ( !empty($_POST['admreg'] && $_POST['g-recaptcha-response'])) {
-
+        if (!empty($_POST['admreg'] && $_POST['g-recaptcha-response'])) {
             $captcha=$_POST['g-recaptcha-response'];
             $captcha = Database::reCAPTCHAvalidate($captcha);
       
-        //checking for the recaptcha value
-                if($captcha == 1) {
+            //checking for the recaptcha value
+            if ($captcha == 1) {
 
         //collecting values
-        $username = $_POST['uname'];
-        $password = md5($_POST['pass']);
-        $mobileno = $_POST['no'];
-        $email = $_POST['email'];
- 		
- 		//inserts data in admin registration database       
-        Database::adminregister($username,$password,$mobileno,$email);
-	
-    
-?>
+                $username = $_POST['uname'];
+                $password = md5($_POST['pass']);
+                $mobileno = $_POST['no'];
+                $email = $_POST['email'];
+        
+                //inserts data in admin registration database
+                Database::adminregister($username, $password, $mobileno, $email); ?>
           <br><center>
           <!-- success snippet -->
           <div class="snippet">
@@ -71,12 +66,11 @@
           function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
           </script>
           <!-- Snackbar ends -->
-<?php 
+<?php
 
     header("refresh:5;url=/admin/login");
-  }
-  else  {
-    //echo "reCAPTCHA validation failed<br>";
+            } else {
+                //echo "reCAPTCHA validation failed<br>";
     ?>
           <br><center>
           <!-- success snippet -->
@@ -102,10 +96,9 @@
           </script>
           <!-- Snackbar ends -->
     <?php
-  }
-		}
-		else {
-?>
+            }
+        } else {
+            ?>
 
 	 
   		<div class="mdl-cell mdl-cell--6-col">
@@ -141,7 +134,7 @@
 				</form>			
 			</div>
 <?php
-		}
+        }
 ?>
 
   	</div>

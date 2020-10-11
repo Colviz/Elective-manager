@@ -8,12 +8,11 @@
 <!-- Wide card with share menu button -->
 <?php
 
-        if ( !empty($_POST['elective'])) {
-
-          $elec = $_POST['type'];
-          $elective = $_POST['type'];
+        if (!empty($_POST['elective'])) {
+            $elec = $_POST['type'];
+            $elective = $_POST['type'];
           
-          switch ($elective) {
+            switch ($elective) {
             case 'open_elective':
             $elective = "Open Elective";
              break;
@@ -24,18 +23,17 @@
 
             case 'pg_elective':
             $elective = "PG Elective";
-            break;            
+            break;
           }
 
             //fetching students department
             $department = Database::studentdepartment($_SESSION['login_user']);
 
             //count the no. of electives
-            $count = Database::studentelectivescount($elec,$department);
+            $count = Database::studentelectivescount($elec, $department);
             $_SESSION['tempcount'] = $count;
             if ($count == 0 || $count == '') {
-              //echo "<center><b>No $elective published at this time<br>Try after sometime.<b></center>";
-              ?>
+                //echo "<center><b>No $elective published at this time<br>Try after sometime.<b></center>";?>
               <br><center>
               <!-- success/failure snippet -->
           <div class="snippet">
@@ -60,9 +58,8 @@
           </script>
           <!-- Snackbar ends -->
               <?php
-            }
-            else  {
-      ?>
+            } else {
+                ?>
     <div class="mdl-cell mdl-cell--6-col">
     <form action="/student/profile/applied" method="post">
     <h1 class="dept">Prioritize <?php echo $elective; ?></h1>
@@ -73,23 +70,20 @@
     <th style="text-align: left; font-size: 1.1em;">Priority | Subject code - Subject name - Seats</th>
     </tr>
   </thead>
-      <?php 
+      <?php
               echo "<tbody>";
-              echo '<tr><td>';
-              for ($i=0; $i < $count; $i++) { 
+                echo '<tr><td>';
+                for ($i=0; $i < $count; $i++) {
+                    echo "<b>Priority <a>$i</a> </b>- ";
               
-              echo "<b>Priority <a>$i</a> </b>- ";
-              
-              echo '<select name="'.$i.'" class="go" required>';
-              echo '<option selected="true" disabled="disabled">Select the course....</option>';
-              //fetching published electives
-              Database::publishedelectivespriority($elec,$department);
-              echo '</select><br><br>';
-              
-              }
-              echo '</td></tr">';
-              echo "</tbody>";
-      ?>
+                    echo '<select name="'.$i.'" class="go" required>';
+                    echo '<option selected="true" disabled="disabled">Select the course....</option>';
+                    //fetching published electives
+                    Database::publishedelectivespriority($elec, $department);
+                    echo '</select><br><br>';
+                }
+                echo '</td></tr">';
+                echo "</tbody>"; ?>
 </table>
 </div>
     <br><br><button name="subpri" value="subpri" class="login" type="submit">Submit priorities</button>
@@ -97,8 +91,8 @@
 </div>
 
       <?php
-      }
-    }
+            }
+        }
 ?>
 
 </div>

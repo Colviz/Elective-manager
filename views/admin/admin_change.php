@@ -1,5 +1,5 @@
 <?php
-		include_once('views/admin/admin_dashboard.php');
+        include_once('views/admin/admin_dashboard.php');
 ?>
      
   <main class="mdl-layout__content">
@@ -9,27 +9,25 @@
 <!-- Wide card with share menu button -->
 <?php
       
-        if ( !empty($_POST['admch'] && $_POST['g-recaptcha-response'])) {
-      
-          $captcha=$_POST['g-recaptcha-response'];
-          $captcha = Database::reCAPTCHAvalidate($captcha);
+        if (!empty($_POST['admch'] && $_POST['g-recaptcha-response'])) {
+            $captcha=$_POST['g-recaptcha-response'];
+            $captcha = Database::reCAPTCHAvalidate($captcha);
 
-          //checking for the recaptcha value
-          if($captcha == 1) {
+            //checking for the recaptcha value
+            if ($captcha == 1) {
 
                 //collecting values
                 $username = $_SESSION['login_user'];
-                $newpassdb = md5($_POST['newpass']); 
+                $newpassdb = md5($_POST['newpass']);
                 
-                //inserts data in admin login database       
-                $pass = Database::adminchangepassword($username,$newpassdb);
+                //inserts data in admin login database
+                $pass = Database::adminchangepassword($username, $newpassdb);
                 
                 //checking the return value from the database
-                if ($pass == 1)  {
+                if ($pass == 1) {
                   
                   //if password updated successfully
-                  //echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";
-                  ?>
+                    //echo "<br><b><center>Password updated successfully<br>You're being logged out in 5 seconds<br></b></center>";?>
                   <br><center>
           <!-- success snippet -->
           <div class="snippet">
@@ -55,9 +53,8 @@
           <!-- Snackbar ends -->
                   <?php
                   header("refresh:5;url=/admin/logout");
-                }
-                else  {
-                  //echo "Password updating failed<br>.";
+                } else {
+                    //echo "Password updating failed<br>.";
                   ?>
                   <br><center>
           <!-- success snippet -->
@@ -86,8 +83,8 @@
                 }
             }
             //reCAPTCHA FAILED
-            else  {
-            //echo "reCAPTCHA validation failed<br>";
+            else {
+                //echo "reCAPTCHA validation failed<br>";
               ?>
               <br><center>
           <!-- success snippet -->
@@ -113,11 +110,9 @@
           </script>
           <!-- Snackbar ends -->
               <?php
-          }
-        }
-      else  {
-
-?>
+            }
+        } else {
+            ?>
 <div class="mdl-grid">
 
 
@@ -136,5 +131,5 @@
 </div>
 </div>
 <?php
-      }
+        }
 ?> 

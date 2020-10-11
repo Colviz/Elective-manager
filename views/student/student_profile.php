@@ -1,14 +1,14 @@
 <?php
     include_once('views/student/student_dashboard.php');
     
-        // checks for requested updates 
+        // checks for requested updates
         if (isset($_POST['up']) || isset($_POST['down'])) {
 
         //updating the user priority
-        if(isset($_POST['up'])) {
-          $upd = Database::upstudentpriority($_POST['up'],$_SESSION['login_user']);
-          if ($upd == 1) {
-          ?>
+            if (isset($_POST['up'])) {
+                $upd = Database::upstudentpriority($_POST['up'], $_SESSION['login_user']);
+                if ($upd == 1) {
+                    ?>
           <!-- Snackbar starts -->
 <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
@@ -25,9 +25,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
           <?php
-          }
-          else  {
-          ?>
+                } else {
+                    ?>
           <!-- Snackbar starts -->
 <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
@@ -44,12 +43,11 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
           <?php
-          }  
-        }
-        else {
-          $dwd = Database::downstudentpriority($_POST['down'],$_SESSION['login_user']);
-          if ($dwd == 1) {
-          ?>
+                }
+            } else {
+                $dwd = Database::downstudentpriority($_POST['down'], $_SESSION['login_user']);
+                if ($dwd == 1) {
+                    ?>
           <!-- Snackbar starts -->
 <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
@@ -66,9 +64,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
           <?php
-          }
-          else  {
-          ?>
+                } else {
+                    ?>
           <!-- Snackbar starts -->
 <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
@@ -85,18 +82,18 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
           <?php
-          }
+                }
+            }
         }
-      } 
 
       //if elective is deleted
       if (isset($_POST['delete'])) {
         
         //deleting the user priority
-        $dlt = Database::deletepriority($_POST['delete'],$_SESSION['login_user']);
+          $dlt = Database::deletepriority($_POST['delete'], $_SESSION['login_user']);
 
-        if ($dlt == 1) {
-          ?>
+          if ($dlt == 1) {
+              ?>
           <!-- Snackbar starts -->
 <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
@@ -113,7 +110,7 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
           <?php
-        }
+          }
       }
 ?>   
   <main class="mdl-layout__content">
@@ -130,12 +127,12 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 <hr>
 <div class="mdl-grid">
 <?php
-      if(isset($_POST['pubelec']))  {
-?>
+      if (isset($_POST['pubelec'])) {
+          ?>
 <div class="mdl-cell">
   <div class="mdl-card__supporting-text">
     <h4>
-      Published Electives - <a><?php   Database::publishedelectives();  ?></a>
+      Published Electives - <a><?php   Database::publishedelectives(); ?></a>
     </h4>
   </div>
   <div class="table-responsive">
@@ -153,18 +150,18 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
     </tr>
   </thead>
   <tbody>
-        <?php  Database::publishedelectivesdetails();   ?>
+        <?php  Database::publishedelectivesdetails(); ?>
   </tbody>
 </table>
 </div>
 </div>
 <?php
-    } ?>
+      } ?>
 </div>
     <?php
 
-      if(isset($_POST['fillprior']))  {
-?>
+      if (isset($_POST['fillprior'])) {
+          ?>
 <form class="admlog" action="/student/profile/apply" method="post">
     <h1 class="dept">Apply for elective</h1>
     <center>
@@ -178,15 +175,15 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
     <button name="elective" value="elective" class="login" type="submit">Next</button>
 </form>
 <?php
-    }
+      }
 ?>
 <div class="mdl-grid">
 <div class="mdl-cell">
   <div class="mdl-card__supporting-text">
-    <h4>Applied for Electives - <a><?php $count = Database::appliedforelectivescount($_SESSION['login_user']); 
-                                                 echo "</a>"; 
-        if($count !=0 )  {
-    ?>
+    <h4>Applied for Electives - <a><?php $count = Database::appliedforelectivescount($_SESSION['login_user']);
+                                                 echo "</a>";
+        if ($count !=0) {
+            ?>
     </h4>
   </div>
   <div class="table-responsive">
@@ -203,11 +200,11 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
     </tr>
   </thead>
   <tbody>
-        <?php  Database::appliedforelectives($_SESSION['login_user'],$count);   ?>
+        <?php  Database::appliedforelectives($_SESSION['login_user'], $count); ?>
   </tbody>
 </table>
 <?php
-}
+        }
 ?>
 </div>
 </div>

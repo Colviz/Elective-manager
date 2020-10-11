@@ -9,20 +9,19 @@
 
 <!-- Wide card with share menu button -->
 <?php
-        if ( !empty($_POST['deptch'])) {
+        if (!empty($_POST['deptch'])) {
       
         //collecting values
-        $username = $_SESSION['login_user'];
-        $newpassdb = md5($_POST['newpass']);
+            $username = $_SESSION['login_user'];
+            $newpassdb = md5($_POST['newpass']);
         
-        //inserts data in admin login database       
-        $pass = Database::departmentchangepassword($username,$newpassdb);
+            //inserts data in admin login database
+            $pass = Database::departmentchangepassword($username, $newpassdb);
         
-        //checking the return value from the database
-        if ($pass == 1)  {
+            //checking the return value from the database
+            if ($pass == 1) {
           
-          //if password updated successfully
-          ?>
+          //if password updated successfully?>
           <br><center>
           <!-- success snippet -->
           <div class="snippet">
@@ -48,12 +47,9 @@
           <!-- Snackbar ends -->
           <?php
           header("refresh:5;url=/department/logout");
-          
-        }
-      }
-      else  {
-
-?>
+            }
+        } else {
+            ?>
 <div class="mdl-grid">
 
 
@@ -69,7 +65,7 @@
 </div>
 </div>
 <?php
-      }
+        }
 ?>
 		
   </div>

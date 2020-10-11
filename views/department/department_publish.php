@@ -12,16 +12,16 @@
         if (!empty($_POST['pubelec'])) {
               
               //catching form values
-              $seats = $_POST['seats'];
-              $link = $_POST['link'];
-              $semester = $_POST['sem'];
-              $subject = $_POST['subj'];
-              $info = $_POST['info'];
+            $seats = $_POST['seats'];
+            $link = $_POST['link'];
+            $semester = $_POST['sem'];
+            $subject = $_POST['subj'];
+            $info = $_POST['info'];
 
-            $publish = Database::publishelective($_SESSION['login_user'],$type,$subject,$seats,$link,$semester,$info);
+            $publish = Database::publishelective($_SESSION['login_user'], $type, $subject, $seats, $link, $semester, $info);
 
-            if($publish == 1)  {
-              ?>
+            if ($publish == 1) {
+                ?>
                 <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -47,9 +47,8 @@
           <!-- Snackbar ends -->
           <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/department/profile">Go to your Profile</a></center>
                 <?php
-            }
-            else  {
-              ?>
+            } else {
+                ?>
                 <br><center>
           <!-- success/failure snippet -->
           <div class="snippet">
@@ -76,14 +75,13 @@
           <a class="mdl-button mdl-js-ripple-effect stuleft mdl-button--accent" href="/department/profile">Go to your Profile</a></center>
                 <?php
             }
-          }
+        }
 
-        if ( !empty($_POST['elective'])) {
-
-          $_SESSION['temptype'] = $_POST['type'];
-          $elective = $_POST['type'];
+        if (!empty($_POST['elective'])) {
+            $_SESSION['temptype'] = $_POST['type'];
+            $elective = $_POST['type'];
           
-          switch ($elective) {
+            switch ($elective) {
             case 'open_elective':
               $elective = "Open Elective";
               break;
@@ -94,10 +92,8 @@
 
             case 'pg_elective':
             $elective = "PG Elective";
-            break;            
-          }
-
-      ?>
+            break;
+          } ?>
     <div class="mdl-cell mdl-cell--6-col">
     <form class="admlog" action="/department/profile/publish" method="post">
     <h1 class="dept">Publish <?php echo $elective; ?></h1>
@@ -105,10 +101,9 @@
     <center>
     <select name="subj" required>
       <option selected="true" disabled="disabled">Select  the course....</option>
-      <?php 
+      <?php
               //fetching subjects of same department from subjects master
-              Database::departmentelectivesubjects($_SESSION['login_user'],$_POST['type']);
-      ?>
+              Database::departmentelectivesubjects($_SESSION['login_user'], $_POST['type']); ?>
     </select></center> <br><br>
     <input placeholder="Total Seats" name="seats" type="number" required>
     <input placeholder="Syllabus link" name="link" type="link" required>
@@ -122,10 +117,8 @@
 </div>
 
       <?php
-      }
-      else  {
-
-?>
+        } else {
+            ?>
 
 <div class="mdl-grid">
 
@@ -148,7 +141,7 @@
 
 
 <?php
-      }
+        }
 ?>
 
 </div>

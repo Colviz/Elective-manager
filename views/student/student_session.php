@@ -8,19 +8,15 @@
    
    
    //checking in database username
-   if(!empty($user_check))  {
-      $stuses = Database::studentsession($user_check);
+   if (!empty($user_check)) {
+       $stuses = Database::studentsession($user_check);
    }
 
-   if($stuses == 1)  {
-
-      $login_session = $user_check;
-      $_SESSION['login_user'] = $user_check;
-      
+   if ($stuses == 1) {
+       $login_session = $user_check;
+       $_SESSION['login_user'] = $user_check;
    }
    
-   if(!isset($_SESSION['login_user'])|| $login_session=='' || $stuses != 1)
-   {
-      header("location:/student/logout");
+   if (!isset($_SESSION['login_user'])|| $login_session=='' || $stuses != 1) {
+       header("location:/student/logout");
    }
-?>

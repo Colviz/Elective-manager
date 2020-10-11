@@ -21,32 +21,28 @@
       //automatic login if session is set
       session_start();
       
-      if(isset($_SESSION['login_user']))  {
-
+      if (isset($_SESSION['login_user'])) {
           header("location: /student/profile");
       }
 
         if (!empty($_POST['stulog'])) {
       
         //collecting values
-        $rollno = $_POST['rollno'];
-        $rollno = strtolower($rollno);
-        $password = md5($_POST['pass']);
+            $rollno = $_POST['rollno'];
+            $rollno = strtolower($rollno);
+            $password = md5($_POST['pass']);
         
-       //inserts data in user database       
-        $ret = Database::studentlogin($rollno,$password);
+            //inserts data in user database
+            $ret = Database::studentlogin($rollno, $password);
         
-        //checking the return value from the database
-        if ($ret == 1)  {
-          
-          $_SESSION['login_user'] = $rollno;
+            //checking the return value from the database
+            if ($ret == 1) {
+                $_SESSION['login_user'] = $rollno;
 
-              include_once('views/student/student_session.php');
-              header("location: /student/profile");
-        }
-        else  {
-        
-?>
+                include_once('views/student/student_session.php');
+                header("location: /student/profile");
+            } else {
+                ?>
 <br>
 <!-- Login unsuccessful -->
 <div class="snippet">
@@ -71,8 +67,8 @@ function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 </script>
 <!-- Snackbar ends -->
 <?php
-    }
-  }
+            }
+        }
 ?>
 
 

@@ -1,6 +1,6 @@
 <?php
-		include_once('views/includes/includes_header.php');
-		include_once('dbconnect.php');
+        include_once('views/includes/includes_header.php');
+        include_once('dbconnect.php');
 ?>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/about">About</a>

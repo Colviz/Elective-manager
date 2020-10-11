@@ -23,22 +23,19 @@
 
 <?php
 //catching the markread form values
-    if(isset($_POST['markread']))  {
+    if (isset($_POST['markread'])) {
+        $destination = $login_session;
+        //marking all notifications as read
+        if ($_POST['markread'] == "all") {
+            $ret = Database::markallnotificationread($destination);
+        } else {
+            //function for marking a notification as read
+            //destination of these type of notifications is the user/student
+            $ret = Database::marknotificationread($_POST['markread']);
+        }
 
-      $destination = $login_session;
-      //marking all notifications as read
-      if($_POST['markread'] == "all")  {
-
-          $ret = Database::markallnotificationread($destination);
-      }
-      else  {
-          //function for marking a notification as read
-          //destination of these type of notifications is the user/student
-          $ret = Database::marknotificationread($_POST['markread']);
-      }
-
-        if($ret == 1) {
-?>
+        if ($ret == 1) {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -55,9 +52,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-                else  {
-                    ?>
+        } else {
+            ?>
 <!-- Snackbar starts -->
           <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>
@@ -74,8 +70,8 @@
           </script>
 <!-- Snackbar ends -->
           <?php
-                }
-              }
+        }
+    }
           ?>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
@@ -90,18 +86,17 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
       <!-- Displaying notification here -->
       <a href="/student/notifications" class="notification"><sup>
-      <?php  
+      <?php
               $user =  $login_session;
               $usertype = "student";
-           $noti = Database::notificationcount($user,$usertype);  ?></sup>
-      <?php if($noti == 0) {?>
+           $noti = Database::notificationcount($user, $usertype);  ?></sup>
+      <?php if ($noti == 0) {?>
             <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+               ?>
             <div class="material-icons mdl-badge mdl-badge--overlap orange" data-badge="<?php echo $noti; ?>">notifications_active</div>
         <?php
-        }  ?></a>
+           }  ?></a>
         <!-- Displaying notification ends -->
         <a href="/student/profile"><button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"> Profile </button></a> -
         <a href="/student/logout"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">Logout</button></a>
@@ -115,16 +110,15 @@
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/profile">Profile</a>
       <!-- Displaying notification here -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/notifications" class="notification"><sup>
-      <?php  
-            Database::notificationcount($user,$usertype);  ?>
-      <?php if($noti == 0) {?>
+      <?php
+            Database::notificationcount($user, $usertype);  ?>
+      <?php if ($noti == 0) {?>
             No Notifications <i class="material-icons md-inactive md-dark">notifications_none</i>
-      <?php   }
-      else  {
-        ?>
+      <?php   } else {
+                ?>
             New Notifications <span class="mdl-badge" data-badge="<?php echo $noti; ?>"><i class="material-icons orange">notifications_active</i></span>
         <?php
-        }  ?></a>
+            }  ?></a>
         <!-- Displaying notification ends -->
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/change">Change Password</a>
       <a class="mdl-button mdl-js-ripple-effect stuleft" href="/student/logout">Logout</a>
