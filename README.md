@@ -12,7 +12,6 @@
 # Elective Manager 
 [![PRs & Issues Welcome][welcom-badge]][welcome-link]
 [![standard-readme compliant][standard-readme-badge]][standard-readme-link]
-[![HitCount](http://hits.dwyl.io/Rishabh04-02/Elective-manager.svg)](http://hits.dwyl.io/Rishabh04-02/Elective-manager)
 
 ## Demo
 The demo for this project is removed.
