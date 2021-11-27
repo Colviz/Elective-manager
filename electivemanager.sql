@@ -46,7 +46,7 @@ DELETE FROM priorities WHERE rollno = roll$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `max_cgpi` ()  READS SQL DATA
 SELECT rollno from students WHERE cgpi = (
     select max(cgpi)
-    from students WHERE allotment = 0
+    from students WHERE allotment = 0 LIMIT 1
 )$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `max_cgpi_priorities` ()  READS SQL DATA
